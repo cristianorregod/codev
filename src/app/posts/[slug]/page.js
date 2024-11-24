@@ -1,6 +1,7 @@
 import { getPostBySlug, getPosts } from '@/lib/mdx'
 import { ArticleBody } from '@/components/ArticleBody'
 import 'highlight.js/styles/atom-one-dark.css'
+import TableOfContents from '@/components/TableOfContent'
 
 export async function generateStaticParams() {
     const posts = getPosts(process.env.ARTICLES_PATH)
@@ -34,6 +35,7 @@ export default async function PostPage({ params }) {
         <>
             {/* <Banner image={frontmatter?.cover} title={frontmatter?.title} /> */}
             <ArticleBody content={content} frontmatter={frontmatter} />
+            {/* <TableOfContents /> */}
         </>
     )
 }

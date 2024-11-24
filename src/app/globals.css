@@ -59,9 +59,10 @@ body {
 }
 
 #article-body p {
-    font-size: 17px;
+    font-size: 18px;
     color: #334155;
     margin-bottom: 20px;
+    line-height: 30px;
 }
 #article-body p > a {
     font-weight: 600;

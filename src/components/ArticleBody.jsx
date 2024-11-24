@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import { LocalDate } from '@/lib/local-date'
 import hljs from 'highlight.js'
+import TableOfContents from './TableOfContent'
 
 export const ArticleBody = ({ content, frontmatter }) => {
     useEffect(() => {
@@ -12,8 +13,8 @@ export const ArticleBody = ({ content, frontmatter }) => {
     }, [])
     const timeReading = Math.ceil(content.split(' ').length / 200)
     return (
-        <section className="container mx-auto px-2 lg:px-22 xl:px-28 2xl:max-w-[1200px] mt-10">
-            <header className="mt-24 lg:mt-28 mb-8 lg:mb-12 max-w-[800px] mx-auto lg:grid lg:grid-cols-2 lg:gap-6">
+        <section className="container mx-auto px-2 2xl:max-w-[1200px] mt-10">
+            <header className="mt-24 lg:mt-28 mb-8 lg:mb-12 max-w-[1000px] mx-auto lg:grid lg:grid-cols-2 lg:gap-6">
                 <Image
                     src={frontmatter?.cover}
                     alt={frontmatter?.title}
@@ -82,8 +83,11 @@ export const ArticleBody = ({ content, frontmatter }) => {
                     </ul>
                 </section>
             </header>
-            <main id="article-body" className="max-w-[800px] mx-auto">
-                <Markdown>{content}</Markdown>
+            <main className="flex items-start gap-x-8 max-w-[1000px] mx-auto">
+                <article id="article-body" className=" w-full lg:max-w-[680px]">
+                    <Markdown>{content}</Markdown>
+                </article>
+                <TableOfContents />
             </main>
         </section>
     )

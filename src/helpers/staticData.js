@@ -15,7 +15,7 @@ import NextJSIcon from '@/components/icons/stack/NextJS'
 import NginxIcon from '@/components/icons/stack/Nginx'
 import NodeJSIcon from '@/components/icons/stack/NodeJS'
 import NpmIcon from '@/components/icons/stack/Npm'
-import PHPIcon from '@/components/icons/stack/PHP'
+import PowerAutomateIcon from '@/components/icons/stack/PowerAutomate'
 import PythonIcon from '@/components/icons/stack/Python'
 import ReactJSIcon from '@/components/icons/stack/ReactJS'
 import SassIcon from '@/components/icons/stack/Sass'
@@ -24,7 +24,15 @@ import TerminalIcon from '@/components/icons/stack/Terminal'
 import TypeScriptIcon from '@/components/icons/stack/TypeScript'
 import VSCodeIcon from '@/components/icons/stack/VSCode'
 import WordPressIcon from '@/components/icons/stack/WordPress'
+import MicrosoftAzureIcon from '@/components/icons/stack/Azure'
 export const experienceInfo = [
+    {
+        role: 'Programador FullStack',
+        date: 'Mayo 2024 - Presente',
+        company: 'Industrial Distributions International Co.',
+        description:
+            'Líderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa.',
+    },
     {
         role: 'Programador FullStack',
         date: 'Enero 2022 - Presente',
@@ -45,16 +53,16 @@ export const experienceInfo = [
         date: 'Diciembre 2018 - Diciembre 2019',
         company: 'La Sucursal',
         description:
-            'Desarrollar calculdaora de simulación de costos para materiales de construcción. Administrar y dar soporte técnico al software contable y de facturación. Implementar herramientas de gestión de la comunicación y trabajo en equipo.',
+            'Desarrollar aplicación de simulación de costos para materiales de construcción. Administrar y dar soporte técnico al software contable y de facturación. Implementar herramientas de gestión de la comunicación y trabajo en equipo.',
     },
 
-    {
-        role: 'Aprendizaje autónomo',
-        date: '2018 - 2019',
-        company: 'Autónomo',
-        description:
-            'Primeros pasos en el desarrollo web aprendiendo en mis clases de ingeniería y de forma autodidacta con cursos virtuales, donde creé algunos proyectos personales los cuáles me abrieron las puertas al mundo laboral dentro de la insdustria TI.',
-    },
+    // {
+    //     role: 'Aprendizaje autónomo',
+    //     date: '2018 - 2019',
+    //     company: 'Autónomo',
+    //     description:
+    //         'Primeros pasos en el desarrollo web aprendiendo en mis clases de ingeniería y de forma autodidacta con cursos virtuales, donde creé algunos proyectos personales los cuáles me abrieron las puertas al mundo laboral dentro de la insdustria TI.',
+    // },
 ]
 
 export const MY_STACK = {
@@ -68,7 +76,7 @@ export const MY_STACK = {
         { name: 'Figma', icon: FigmaIcon },
     ],
     backend: [
-        { name: 'PHP', icon: PHPIcon },
+        { name: 'Python', icon: PythonIcon },
         { name: 'NodeJS', icon: NodeJSIcon },
         { name: 'Laravel', icon: LaravelIcon },
         { name: 'ExpressJS', icon: ExpressIcon },
@@ -79,10 +87,11 @@ export const MY_STACK = {
         { name: 'Apache', icon: ApacheIcon },
     ],
     learning: [
-        { name: 'Python', icon: PythonIcon },
+        { name: 'Power Automate', icon: PowerAutomateIcon },
         { name: 'Astro', icon: AstroIcon },
         { name: 'Docker', icon: DockerIcon },
         { name: 'TypeScript', icon: TypeScriptIcon },
+        { name: 'Microsoft Azure', icon: MicrosoftAzureIcon },
     ],
     tools: [
         { name: 'Git', icon: GitIcon },

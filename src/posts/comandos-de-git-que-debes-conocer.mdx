@@ -1,0 +1,197 @@
+---
+title: 15 comandos de Git que todo desarrollador debe conocer
+date: '2024-11-23'
+description: Aprende a usar Git en la CLI para que tu flujo de trabajo sea más fluido, rápido y flexible.
+toc: true
+tags:
+    - git
+cover: '/images/posts/comandos-de-git-que-debes-conocer.webp'
+author: '@cristianorregodev'
+---
+
+Si bien la interfaz de línea de comandos puede parecer intimidante a primera vista, en realidad es una herramienta muy útil que te brinda control sobre tu código de maneras que las GUI no suelen ofrecer. Si logras familiarizarte con algunos comandos de Git, serás más productivo.
+
+En esta guía, abordaré 15 tips de línea de comandos de Git que ayudarán a que tu flujo de trabajo sea más fluido, rápido y flexible, ya sea que trabajes solo o con un equipo.
+
+## `git init`: Inicializa un repositorio
+
+`git init` es donde todo comienza. Este comando inicializa un nuevo repositorio Git en el directorio actual, preparándolo para el control de versiones. Es fundamental y algo que usarás cada vez que inicies un nuevo proyecto localmente. Para usarlo, ejecuta el siguiente comando en tu terminal:
+
+```bash
+git init
+```
+
+En mi experiencia, es útil ejecutar `git init` incluso para proyectos más pequeños o personales, porque tener el control de versiones desde el principio mantiene las cosas organizadas, independientemente del tamaño del proyecto.
+
+## `git clone`: Copia (clona) un repositorio
+
+Cuando te unes a un proyecto existente o trabajas en algo alojado de forma remota, `git clone` es el comando que usarás para traer una copia del repositorio a tu entorno local. Este comando te conecta de inmediato con el historial y los archivos del proyecto.
+
+```bash
+git clone https://github.com/user/repo.git
+```
+
+`git clone` me ha ahorrado tiempo en innumerables ocasiones al simplificar el proceso de configuración. Es una forma sencilla de comenzar a colaborar, lo que te permite concentrarte en la codificación en lugar de en la configuración.
+
+## `git add`: Prepara tu trabajo
+
+Agregar archivos al área de preparación es uno de los primeros pasos para confirmar los cambios. `git add <file>` archivos específicos de las etapas, mientras `git add -A` prepara todos los cambios modificados. Saber preparar los cambios correctamente es un hábito que permite que las confirmaciones sean claras y manejables.
+
+```bash
+# Agrega un archivo específico
+git add index.js
+```
+
+```bash
+# Agrega tooos los archivos modificados
+git add -A
+```
+
+## `git commit`: Confirmación de tus cambios
+
+Todo usuario de Git necesita sentirse cómodo con `git commit -m` este comando crea una instantánea de los cambios realizados actualmente con un mensaje, lo que facilita la comprensión del historial del proyecto.
+
+```bash
+git commit -m "Implement user login feature"
+```
+
+Un mensaje de confirmación claro ahorra mucho tiempo a largo plazo. Es fácil olvidarse de describir una confirmación con precisión, pero he descubierto que ser claro en este punto puede evitar dolores de cabeza futuros cuando intentes localizar problemas.
+
+## `git add [-p]`: Preparar cambios en partes
+
+A veces solo deseas confirmar cambios específicos desde un archivo. `git add -p` (parche) le permite revisar y agregar cambios individuales en partes, lo que hace más fácil mantener cada confirmación enfocada en una sola tarea.
+
+```bash
+git add -p
+```
+
+Este comando cambió mi flujo de trabajo al permitirme mantener las confirmaciones ordenadas y ordenadas. Recomiendo familiarizarse con él porque es invaluable cuando se trabaja en múltiples correcciones o funciones simultáneamente.
+
+## `git status`: Comprueba estado del espacio de trabajo
+
+`git status` te permite echar un vistazo rápido a tu directorio de trabajo. Muestra lo que está preparado, lo que se ha modificado y lo que no se ha rastreado. Este comando es esencial para evitar confirmar cambios que no tenías intención de hacer.
+
+```bash
+git status
+```
+
+Es posible que utilices este comando con frecuencia, ya que siempre proporciona una imagen clara de cómo están las cosas antes de realizar más confirmaciones o cambios de preparación. Es la mejor manera de garantizar que no se realicen cambios accidentales.
+
+##`git log`: Muestra el historial de tu proyecto
+
+`git log` proporciona un historial de confirmaciones detallado, que muestra todas las confirmaciones, autores y marcas de tiempo. `git log --oneline` también es útil cuando desea una vista más concisa del historial de confirmaciones, con cada confirmación condensada en una sola línea.
+
+```bash
+# Historial completo de commits
+git log
+
+# Historial de commits condensado
+git log --oneline
+```
+
+Este comando ayuda a realizar un seguimiento del historial del proyecto y --oneline es ideal para revisar rápidamente el trabajo reciente. Es ideal para realizar un seguimiento del proyecto y siempre está ahí cuando necesitas una revisión más detallada.
+
+## `git diif`: Cambios entre dos puntos específicos
+
+Es muy útil para ver los cambios entre el directorio de trabajo y la última confirmación. Te ayuda a comprobar las modificaciones antes de confirmarlas, lo que garantiza que todo esté en orden.
+
+```bash
+git diff
+```
+
+Suelo utilizar esta opción antes de realizar una confirmación. Me ha evitado incluir código incompleto más veces de las que puedo contar, especialmente en tareas más grandes.
+
+## `gif branch`: Enumera, crea y elimina ramas
+
+La ramificación es esencial para trabajar en funciones o tareas independientes. `git branch` te ayuda a enumerar las ramas existentes, crear ramas nuevas y eliminar las antiguas. Una gestión adecuada de las ramas mantiene los proyectos organizados y evita problemas con el trabajo en paralelo.
+
+```bash
+# Lista todas las ramas
+git branch
+
+# Crea una nueva rama
+git branch feature-login
+
+# Elimina una rama
+git branch -d feature-login
+```
+
+##`git checkout`: Cambia o crea nuevas ramas
+Cambiar de rama es otra tarea cotidiana en Git. `git checkout <rama>` le permite moverse entre ramas, mientras
+`git checkout -b <nueva rama>` crea una nueva rama y cambia a ella inmediatamente.
+
+```bash
+# Cambia a una rama existente
+git checkout feature-login
+
+# Crea y cambia a una nueva rama
+git checkout -b feature-signup
+```
+
+## `git remote add <alias>`: Vincula repositorios remotos
+
+Al configurar un nuevo repositorio, vincularlo a un control remoto suele ser una de las primeras tareas.
+git remote add origin conecta su repositorio local a uno remoto, preparándolo para el trabajo colaborativo.
+
+```bash
+git remote add origin https://github.com/user/repo.git
+```
+
+Este comando puede parecer trivial, pero si se ejecuta correctamente desde el principio, el resto de las operaciones remotas se simplifican. Siempre verifico dos veces la URL para evitar futuros errores de inserción y extracción.
+
+## `git pull/push`: Sincronización de cambios
+
+Son fundamentales para cualquier flujo de trabajo de Git que involucre un repositorio remoto.
+`git pull` trae cambios desde el control remoto a su sucursal local, mientras `git push` nvía tus confirmaciones locales a la rama remota.
+
+```bash
+# Trae cambios del remoto
+git pull origin main
+
+# Envia cambios al remoto
+git push origin main
+```
+
+Dominar las técnicas pull y push es esencial para la colaboración. Saber cuándo y cómo utilizar cada una de ellas es clave, especialmente en proyectos de mayor envergadura en los que la sincronización es importante.
+
+## `git reset <commit>`: Deshace cambios
+
+Ya sea por errores o actualizaciones, hay ocasiones en las que es necesario dar marcha atrás. `git reset` te ayuda a deshacer confirmaciones moviendo el puntero HEAD a una confirmación específica. Es un comando sencillo que resulta útil cuando es necesario corregir errores.
+
+```bash
+# Deshacer cambios en el último commit
+git reset HEAD~1
+```
+
+El comando reset es útil para borrar commits que consideres erróneos. Sin embargo, debes tener cuidado al usarlo, ya que altera el historial de commits.
+
+## `git stash`: Guarda cambios temporales
+
+En entornos de trabajo de ritmo rápido, es posible que necesites cambiar de tareas rápidamente. `git stash` le permite guardar su trabajo actual sin comprometerse, lo que hace que sea más fácil regresar y continuar donde lo dejó.
+
+```bash
+git stash
+```
+
+Para mayor flexibilidad, si tiene archivos sin seguimiento que también desea guardar, utilice:
+
+```bash
+git stash -u
+```
+
+El comando `git stash` es práctico en situaciones del mundo real. Me resultó útil para hacer borrón y cuenta nueva temporalmente, especialmente cuando tengo que hacer malabarismos con múltiples responsabilidades.
+
+##`git reflog`: Accede a cambios perdidos
+A menudo se pasa por alto, pero es muy útil para acceder al historial completo de comandos de Git. Puede ser un salvavidas cuando se intenta recuperar trabajo perdido o solucionar problemas complejos.
+
+```bash
+git reflog
+```
+
+Si algo sale mal, `git reflog` puede proporcionar un rastro para recuperar los cambios perdidos, por lo que vale la pena conocerlo incluso si no se usa a diario.
+
+## Conclusiones
+
+Estos 15 tips de línea de comandos de Git sientan una base sólida tanto para proyectos individuales como para flujos de trabajo en equipo. Dominar estos conceptos básicos garantiza que trabajará de manera eficiente, minimizará los errores y mantendrá un historial de proyectos limpio. Con el tiempo, a medida que se sienta cómodo con cada comando, aumentará su confianza en la gestión de código.
+
+El poder de Git reside en su flexibilidad, y aprender a usar la línea de comandos te permite aprovecharla al máximo. Practícalas, aplícalas y deja que se conviertan en algo natural para que tu experiencia de desarrollo sea más fluida.

@@ -54,7 +54,7 @@ $username = $user?->getUsername();
 
 En el fragmento de código anterior, si **`$user`** es nulo, el Null Safe Operator devolverá nulo sin generar un error. Si **`$user`** no es nulo, el método **`getUsername()`** se llamará como se esperaba.
 
-### El Null Safe Operator también se puede utilizar para el acceso a la propiedad.
+El Null Safe Operator también se puede utilizar para el acceso a la propiedad.
 
 ```php
 $age = $person?->address?->getAge();
