@@ -1,0 +1,200 @@
+---
+title: 'Top 5 patrones de diseño en Node.js'
+date: '2025-04-18'
+description: >-
+    Descubre 5 de los patrones de diseño más esenciales en Node.js para construir aplicaciones escalables y mantenibles.
+toc: true
+tags:
+    - node.js
+cover: '/images/posts/5-patrones-de-diseno-nodejs.webp'
+author: '@cristianorregodev'
+---
+
+Node.js se ha posicionado como una de las tecnologías favoritas para construir aplicaciones rápidas, 
+escalables y orientadas a eventos. Su arquitectura asincrónica y sin bloqueo lo convierte en una excelente 
+opción para manejar grandes volúmenes de operaciones simultáneas.
+
+Pero elegir Node.js no es suficiente por sí solo para garantizar una aplicación escalable y mantenible. 
+Ahí es donde entran en juego los patrones de diseño: soluciones reutilizables que nos ayudan a resolver 
+problemas comunes de forma estructurada y eficiente. Aplicarlos correctamente puede marcar una gran 
+diferencia en la calidad, organización y crecimiento del proyecto.
+
+En este artículo, vamos a descubrir 5 de los patrones de diseño más importantes en Node.js. Verás para qué 
+sirve cada uno, cómo se implementa y por qué pueden ser claves para que tus aplicaciones crezcan de forma 
+ordenada y robusta.
+
+## 1. Patrón de diseño Singleton
+
+El patrón de diseño Singleton es una solución para la creación de objetos que deben ser compartidos por 
+varias partes de una aplicación. Este patrón se utiliza para crear una instancia única de un objeto, que 
+puede ser accedido desde cualquier parte de la aplicación.
+
+Ejemplo:
+
+```javascript
+class DatabaseConnection {  
+  constructor() {  
+    if (!DatabaseConnection.instance) {  
+      this.connection = this.createConnection();  
+      DatabaseConnection.instance = this;  
+    }  
+    return DatabaseConnection.instance;  
+  }  
+  
+  createConnection() {  
+    console.log('New database connection created');  
+    return {}; // Simulate connection object  
+  }  
+}  
+  
+const db1 = new DatabaseConnection();  
+const db2 = new DatabaseConnection();  
+  
+console.log(db1 === db2); // true
+```
+Al garantizar solo una instancia, ahorramos recursos y evitamos reinicializaciones innecesarias.
+
+## 2. Patrón de diseño Factory
+
+El patrón de diseño Factory es una solución para la creación de objetos que pueden ser instanciados de 
+manera diferente según los parámetros que se le pasen. Este patrón se utiliza para crear objetos que 
+necesitan configuración o parámetros específicos para su funcionamiento.
+
+Ejemplo:
+
+```javascript
+class Logger {  
+  static createLogger(type) {  
+    if (type === 'console') {  
+      return new ConsoleLogger();  
+    } else if (type === 'file') {  
+      return new FileLogger();  
+    }  
+    throw new Error('Invalid logger type');  
+  }  
+}  
+  
+class ConsoleLogger {  
+  log(message) {  
+    console.log(`Console: ${message}`);  
+  }  
+}  
+  
+class FileLogger {  
+  log(message) {  
+    console.log(`File: ${message}`); // Simulate file logging  
+  }  
+}  
+  
+const logger = Logger.createLogger('console');  
+logger.log('This is a log message');
+```
+
+## 3. Patrón de diseño Observer
+
+El patrón de diseño Observer es una solución para la creación de objetos que se encuentran en una 
+situación de interacción entre sí. Este patrón se utiliza para crear objetos que pueden observar y 
+modificar el estado de otros objetos.
+
+Ejemplo:
+
+```javascript
+const EventEmitter = require('events');  
+  
+class NotificationService extends EventEmitter { }  
+  
+const notifier = new NotificationService();  
+  
+notifier.on('event', (data) => {  
+  console.log(`Event received: ${data}`);  
+});  
+  
+notifier.emit('event', 'New notification');
+```
+
+## 4. Patrón de diseño Middleware
+
+El patrón de middleware se utiliza ampliamente en marcos como Express.js. Le permite encadenar 
+funciones que procesan una solicitud en secuencia, lo que hace que su aplicación sea modular y manejable. 
+Este patrón se utiliza para crear funciones que pueden modificar o manipular la solicitud o respuesta 
+antes o después de que se ha recibido.
+
+Ejemplo:
+
+```javascript
+const express = require('express');  
+const app = express();  
+  
+const middleware1 = (req, res, next) => {  
+  console.log('Middleware 1');  
+  next();  
+};  
+  
+const middleware2 = (req, res, next) => {  
+  console.log('Middleware 2');  
+  next();  
+};  
+  
+app.use(middleware1);  
+app.use(middleware2);  
+  
+app.get('/', (req, res) => {  
+  res.send('Hello World!');  
+});  
+  
+app.listen(3000, () => console.log('Server running on port 3000'));
+```
+
+## 5. Patrón de diseño Proxy
+
+El patrón Proxy proporciona un suplente o marcador de posición para controlar el acceso a otro objeto. 
+Es útil para la inicialización diferida, el control de acceso y el registro. Actúa como un intermediario 
+entre el cliente y el objeto real al que se quiere acceder. 
+Es como un “portero” que decide si alguien puede entrar, si debe esperar, o si se necesita hacer algo 
+extra antes de dejarlo pasar.
+
+Ejemplo:
+
+```javascript
+class APIProxy {  
+  constructor(api) {  
+    this.api = api;  
+    this.cache = {};  
+  }  
+  
+  fetchData(endpoint) {  
+    if (this.cache[endpoint]) {  
+      console.log('Returning cached data');  
+      return this.cache[endpoint];  
+    }  
+    console.log('Fetching data from API');  
+    const data = this.api.fetchData(endpoint);  
+    this.cache[endpoint] = data;  
+    return data;  
+  }  
+}  
+  
+class API {  
+  fetchData(endpoint) {  
+    return `Data from ${endpoint}`;  
+  }  
+}  
+  
+const api = new API();  
+const proxy = new APIProxy(api);  
+  
+console.log(proxy.fetchData('/users'));  
+console.log(proxy.fetchData('/users'));
+```
+
+## Conclusiones
+
+La adopción de estos patrones de diseño en Node.js puede mejorar significativamente la escalabilidad, 
+la capacidad de mantenimiento y el rendimiento de la aplicación. Estos patrones ofrecen las mejores prácticas 
+y reducen la probabilidad de errores comunes en el desarrollo de software.
+
+## Infografía
+<img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1744988751/posts/bp5jchkezl2msanzxhuy.svg"
+    alt="Infografía Patrones de Diseño Node.js"
+/>
