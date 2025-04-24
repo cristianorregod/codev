@@ -1,0 +1,219 @@
+---
+title: "5 Claves para desarrollar APIs eficientes y escalables"
+date: "2025-04-22"
+description: >-
+  Aprende a desarrollar RESTful APIs siguiendo buenas prácticas asegurando escalabilidad y eficiencia.
+toc: true
+tags:
+  - API REST
+cover: "/images/posts/restful-api-practicas.webp"
+author: "@cristianorregodev"
+---
+
+Una API RESTful es un estilo de diseño para la comunicación entre aplicaciones en la red, basado en principios arquitectónicos en lugar de estándares rígidos. Su objetivo es ofrecer servicios eficientes, confiables y escalables. Cada solicitud debe contener toda la información necesaria, sin depender del estado del servidor. Además, una arquitectura RESTful puede estar compuesta por múltiples capas, facilitando el desarrollo de aplicaciones complejas y robustas.
+
+## Diseño de URI
+
+En el diseño de API RESTful, las URL suelen representar recursos (objetos), mientras que los métodos HTTP (como GET, POST, PUT, DELETE, etc.) representan operaciones en estos recursos (verbos). Este estilo de diseño enfatiza el estado y la representación de los recursos en lugar de las acciones.
+
+### Verbo + Objeto
+
+Los verbos en las API RESTful suelen ser los cinco métodos HTTP, correspondientes a las operaciones CRUD:
+
+- **GET**: Leer
+- **POST**: Crear
+- **PUT**: Actualización
+- **PATCH**: Actualización (normalmente para actualizaciones parciales)
+- **DELETE**: Eliminar
+
+<br />
+De acuerdo con la especificación HTTP, los verbos siempre deben estar en mayúsculas.
+
+**El objeto debe ser un sustantivo**
+
+Al diseñar una API, la URL (Uniform Resource Locator) suele representar un recurso que sirve como objeto de un verbo HTTP. De acuerdo con los principios de diseño RESTful, las URL deben ser sustantivos en lugar de verbos porque representan una colección de "recursos" o una sola instancia, no una acción.
+
+**Ejemplos incorrectos**:
+
+- `/getAllCars`
+- `/createNewCar`
+- `/deleteAllRedCars`
+
+<br />
+
+Estas direcciones URL incluyen verbos (como obtener, crear, eliminar), que describen acciones en lugar de los recursos en sí. Este diseño no se ajusta a los estándares semánticos RESTful.
+
+**Enfoque correcto**:
+Las URL deben centrarse en la descripción de los recursos en lugar de las operaciones. A continuación, se muestran ejemplos de diseños de URL compatibles:
+
+- `/users`: Representa una colección de usuarios
+- `/users/123`: Representa a un solo usuario con un ID específico (123)
+
+<br />
+En los ejemplos anteriores, y son ambos sustantivos, que representan una colección
+de usuarios y un recurso de usuario específico, respectivamente. Este diseño de URL
+hace que las API sean más fáciles de entender y se alinea con los principios orientados
+a los recursos RESTful./users/users/123
+
+Al seguir esta convención de nomenclatura, nos aseguramos de que las rutas de acceso de la API sean claras, coherentes y fáciles de entender y mantener.
+
+## URLs en plural
+
+Por lo general, se recomienda el uso de la forma plural en las direcciones URL para mantener la coherencia y la claridad, ya que suelen representar colecciones de recursos.
+
+Cuando la URL apunte a una colección de recursos, usa sustantivos en plural. Por ejemplo, usa `/users` en lugar de `/user` para representar una colección de todos los usuarios.
+
+Incluso cuando se apunta a un solo recurso, se recomienda usar la forma plural. Por ejemplo, representa al usuario con el identificador 123 `/users/123`. Este enfoque mantiene la coherencia de la URL.
+
+Cuando los recursos tienen relaciones jerárquicas, la dirección URL debe reflejar esta estructura. Por ejemplo, puede representar la colección de publicaciones para el usuario 123 `/users/123/posts`.
+
+## Evitar las URL anidadas en profundidad
+
+Un escenario común es cuando los recursos requieren varios niveles de clasificación, lo que lleva a direcciones URL profundamente anidadas, como la recuperación de una determinada categoría de artículos de un autor específico:
+
+```bash
+GET /authors/12/categories/2
+```
+
+Estas URL son difíciles de ampliar y su semántica no está clara, por lo que a menudo requiere un esfuerzo adicional para entenderlas. Un mejor enfoque es usar parámetros de consulta más allá del primer nivel:
+
+```bash
+GET /authors/12?categories=2
+```
+
+## Códigos de estado
+
+Para cada solicitud de cliente, el servidor debe responder con un código de estado HTTP y datos.
+
+Un código de estado HTTP es un número de tres dígitos dividido en cinco categorías:
+
+- 1xx: Informativo
+- 2xx: Éxito
+- 3xx: Redirección
+- 4xx: Errores del cliente
+- 5xx: Errores del servidor
+
+<br />
+
+Estas cinco categorías contienen más de 100 códigos de estado que cubren la mayoría
+de las situaciones posibles. Cada código de estado tiene un significado estándar
+(o convencionalmente aceptado), lo que permite al cliente determinar lo que sucedió
+con solo verificar el código de estado. Por lo tanto, el servidor debe devolver el
+código de estado más preciso posible. **<a href="https://http.cat/" target="_blank">Amplia más información sobre los códigos de estado HTTP aquí.</a>**
+
+Las API no necesitan códigos de estado 1xx. A continuación se muestra una explicación de las otras cuatro categorías.
+
+## Respuestas del servidor
+
+Las respuestas de la API no deben ser texto sin formato, sino objetos JSON estructurados para garantizar un formato estándar. El encabezado Content-Type del servidor debe establecerse en application/json.
+
+El cliente también debe especificar que acepta respuestas JSON estableciendo el encabezado Accept en su solicitud:
+
+```bash
+GET /orders/2 HTTP/1.1
+Accept: application/json
+```
+
+**No devolver códigos de estado 200 para errores**
+
+Un enfoque incorrecto es devolver siempre 200 OK, incluso cuando se produce un error, e incluir los detalles del error en el cuerpo de la respuesta. Esto obliga al cliente a analizar el cuerpo de la respuesta para determinar si se produjo un error en la solicitud, lo que socava el propósito de los códigos de estado.
+
+Incorrecto:
+
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "status": "failure",
+  "data": {
+    "error": "Expected at least two items in list."
+  }
+}
+```
+
+Correcto:
+
+El código de estado debe indicar el resultado de la solicitud. Los errores deben transmitirse mediante los códigos de estado adecuados, mientras que el cuerpo de la respuesta proporciona más detalles.
+
+Por ejemplo, si la solicitud no es válida, el servidor debe devolver 400 Bad Request, con detalles de error en formato JSON:
+
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+{
+  "error": "Invalid payload.",
+  "detail": {
+    "surname": "This field is required."
+  }
+}
+```
+
+## Proporcionar enlaces
+
+En las API RESTful, la inclusión de enlaces en las respuestas es una práctica común. Esto sigue el principio de hipermedia como motor de estado de aplicación (HATEOAS), que mejora la capacidad de descubrimiento de la API y la autodescriptividad.
+
+Estas son dos formas comunes de incluir enlaces:
+
+- **HAL**: Es un popular formato hipermedia que representa relaciones entre recursos. Utiliza el campo \_links en las respuestas JSON:
+
+```json
+{
+  "id": 1,
+  "name": "Example",
+  "_links": {
+    "self": {
+      "href": "http://api.example.com/resource/1"
+    },
+    "related": {
+      "href": "http://api.example.com/resource/2"
+    }
+  }
+}
+```
+
+- **Directamente en el JSON**:
+
+```json
+{
+  "id": 1,
+  "name": "Example",
+  "links": {
+    "self": "http://api.example.com/resource/1",
+    "related": "http://api.example.com/resource/2"
+  }
+}
+```
+
+## Devolver contenido
+
+En el diseño de API RESTful, las solicitudes POST se utilizan para crear nuevos recursos. El hecho de que la respuesta incluya el recurso recién creado depende de las necesidades de implementación. Hay dos enfoques comunes:
+
+- **Retornar el recurso creado**: Este enfoque incluye un código de estado 201 Created y los detalles completos del nuevo recurso en la respuesta. También incluye un encabezado Location que apunta al URI del recurso.
+
+```bash
+HTTP/1.1 201 Created
+Location: /resources/123
+Content-Type: application/json
+{
+  "id": 123,
+  "name": "New Resource"
+}
+```
+
+- **No retornar contenido**: Como alternativa, el servidor puede optar por devolver solo una respuesta 201 Created o 204 No Content con un encabezado Location, omitiendo los detalles del recurso. Esto minimiza la transferencia de datos y permite al cliente decidir si recuperar el recurso más adelante.
+
+```bash
+HTTP/1.1 201 Created
+Location: /resources/123
+```
+
+## Conclusiones
+
+Las API RESTful siguen el protocolo HTTP, haciendo hincapié en la representación de recursos y las interacciones sin estado. Mediante el uso de métodos HTTP estándar (GET, POST, PUT, DELETE) y códigos de estado precisos, las arquitecturas RESTful proporcionan una forma **sencilla, eficiente y fácil de mantener\* para crear aplicaciones de red. Este enfoque mejora la **escalabilidad, la flexibilidad y la capacidad de mantenimiento\*\* de los servicios web.
+
+## Infografía
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1745462685/posts/zf80dccbmzk2umxcrciq.svg"
+  alt="Claves para diseñar API REST eficientes y escalables"
+/>
