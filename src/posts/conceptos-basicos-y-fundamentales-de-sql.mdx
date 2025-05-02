@@ -1,0 +1,197 @@
+---
+title: "10 Conceptos básicos y fundamentales de bases de datos SQL"
+date: "2025-04-30"
+description: >-
+  Si estas aprendiendo bases de datos SQL necesitas conocer estos 10 conceptos fundamentales para bases de datos SQL.
+toc: true
+tags:
+  - SQL
+cover: "/images/posts/conceptos-basicos-de-bases-de-datos-sql.webp"
+author: "@cristianorregodev"
+---
+
+Las bases de datos SQL son el núcleo de muchas aplicaciones modernas. A través de una estructura relacional y un lenguaje estandarizado,
+permiten almacenar, consultar y manipular datos de forma eficiente y coherente. En este artículo, profundizaremos en los 10 conceptos
+más importantes que todo desarrollador debe dominar para trabajar con bases de datos SQL, con ejemplos prácticos y explicaciones claras.
+
+## 1. SQL: Lenguaje de Consulta Estructurado
+
+SQL (Structured Query Language) es el lenguaje estándar para interactuar con bases de datos relacionales. Permite realizar operaciones como
+insertar, actualizar, eliminar y consultar datos mediante comandos bien definidos como `SELECT`, `INSERT`, `UPDATE` y `DELETE`.
+
+La sintáxis del lenguaje para realizar un consulta básica se compone por la instrucción `SELECT` para indicar los campos que se quieren obtener
+y la instrucción `FROM` para indicar la tabla en donde se ubican dichos campos.
+
+Ejemplo:
+
+```sql
+-- SELECT campo1, campo2, campo3 FROM tabla1;
+SELECT name, email, nickname FROM users;
+```
+
+SQL es universal y se adapta a sistemas como PostgreSQL, MySQL, SQL Server, entre otros.
+
+## 2. Modelo Relacional
+
+Las bases de datos SQL están basadas en el modelo relacional, lo que significa que organizan los datos en tablas con filas y columnas. Cada tabla
+representa una entidad (como "usuarios" o "productos") y cada fila es un registro único. Esta estructura permite relaciones entre diferentes
+tablas usando claves primarias y foráneas, lo cual facilita el modelado de datos complejos.
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    total DECIMAL(10, 2)
+);
+```
+
+En el ejemplo anterior se crea la tabla `users` indicando el campo `id` como llave primaria (PK), luego en la segunda sentencia se crea
+una segunda tabla `orders` también con el campo `id` como primario, adicionalmente se crea el campo `user_id` como llave foránea (FK) para crear una
+relación entre users y orders.
+
+## 3. Estructura de una consulta SQL
+
+Las consultas SQL siguen una estructura clara y ordenada. Los componentes más comunes incluyen `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`, `LIMIT`.
+Esta estructura permite construir consultas lógicas y eficientes para obtener los datos deseados.
+
+Ejemplo:
+
+```sql
+SELECT name, email, nickname
+FROM users
+WHERE created_at > '2025-01-01'
+ORDER BY name ASC
+LIMIT 999;
+```
+
+En el ejemplo anterior se busca consultar usuarios donde (`WHERE`) la fecha de creación `created_at` sea después de "2025-01-01", ordenar los resultados (`ORDER BY`) por nombre
+de forma ascendente (`ASC`) y limitando los resultados (`LIMIT`) a 999 filas.
+
+## 4. Tipos de datos
+
+Cada columna en una tabla debe tener un tipo de dato definido, lo que garantiza la integridad de la información.
+
+Tipos comunes:
+
+- INT: Números enteros
+- VARCHAR(n): Cadenas de texto
+- BOOLEAN: Verdadero o falso
+- DATE: Fechas
+
+Ejemplo:
+
+```sql
+CREATE TABLE products (
+    id INT,
+    name VARCHAR(100),
+    price DECIMAL(8, 2),
+    available BOOLEAN
+);
+```
+
+En el ejemplo a cada campo definido se le esta asignado un tipo de dato específico, algunos de ellos reciben parámetros que indican longitud u otros criterios.
+
+## 5. Llave primaria (Primary Key)
+
+Identifica de forma única cada fila de una tabla. Se define en una o más columnas y no puede contener valores nulos.
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100)
+);
+```
+
+Esto asegura que cada registro pueda ser referenciado sin ambigüedad.
+
+## 6. Llave Foránea (Foreign Key)
+
+Establece relaciones entre tablas vinculando una columna con la clave primaria de otra tabla. Garantiza la consistencia entre datos relacionados.
+
+```sql
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    total DECIMAL(10,2)
+);
+```
+
+## 7. JOINS (INNER, LEFT, RIGHT, FULL)
+
+Permiten combinar datos de múltiples tablas con base en una relación. Esencial para extraer información de manera relacional.
+
+```sql
+SELECT users.name, orders.total
+FROM users
+JOIN orders ON users.id = orders.user_id;
+```
+
+- INNER JOIN: Solo datos coincidentes.
+- LEFT JOIN: Todos los datos de la tabla izquierda.
+
+## 8. Funciones Agregadas y Agrupamiento (GROUP BY)
+
+Permiten realizar cálculos como total, promedio o conteo, agrupando los resultados por columnas específicas.
+
+```sql
+SELECT user_id, SUM(total) AS total_gastado
+FROM orders
+GROUP BY user_id;
+```
+
+Otras funciones comunes utilizadas son:
+
+- COUNT(): Permite realizar un conteo de los registros.
+- AVG(): Calcula el promedio de datos numéricos.
+- MAX(): Obtiene el valor máximo de un conjunto de valores numéricos.
+- MIN(): Obtiene el valor mínimo de un conjunto de valores numéricos.
+- SUM(): Realiza la suma de un conjunto de valores numéricos.
+
+## 9. Restricciones de Integridad
+
+Condiciones de campos que permiten controlar la validez de los datos insertados en las tablas, algunos de los más comunes son:
+
+- NOT NULL: No permite que se inserten en el campo valores nulos.
+- UNIQUE: Asegura que la columna que representa el campo no contenga valores duplicados.
+- CHECK: Valida condiciones específicas, por ejemplo que el valor sea mayor a 0.
+
+```sql
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(100) UNIQUE,
+    salary INT CHECK (salary > 0)
+);
+```
+
+## 10. Índices
+
+Los índices mejoran el rendimiento de las consultas en columnas frecuentemente buscadas. Son estructuras de datos que
+permiten acceder rápidamente a los registros sin escanear toda la tabla.
+
+```sql
+CREATE INDEX idx_users_email ON users(email);
+```
+
+Cuidado: los índices mejoran la lectura pero pueden ralentizar las operaciones de escritura.
+
+## Conclusiones
+
+Comprender los conceptos fundamentales de SQL no solo facilita el diseño de bases de datos más robustas y eficientes,
+sino que también mejora la calidad del código y la capacidad de escalar tus aplicaciones. Desde el entendimiento del lenguaje
+SQL y el modelo relacional, hasta el uso correcto de claves, joins y transacciones, dominar estos elementos es clave para
+cualquier desarrollador que trabaje con datos. SQL es mucho más que un lenguaje: es una herramienta poderosa que, bien utilizada,
+transforma completamente la forma en que interactuamos con la información.
+
+## Infografía
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1746151788/posts/ctcawosngoojok5geqyg.svg"
+  alt="Conceptos basicos y fundamentales de las bases de datos SQL"
+/>
+<br />
