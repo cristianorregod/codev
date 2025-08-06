@@ -37,7 +37,7 @@ export const Navbar = () => {
                         </li>
                         <li>
                             <a
-                                href="https://github.com/cristianorregodev"
+                                href="https://github.com/cristianorregod"
                                 target="_blank"
                                 className="text-dark-700 hover:text-dark-500 dark:text-dark-200 dark:hover:text-dark-50 transition-colors duration-300"
                                 aria-label="Visit my Github profile"
@@ -115,7 +115,7 @@ export const Navbar = () => {
                         </li>
                         <li>
                             <a
-                                href="https://github.com/cristianorregodev"
+                                href="https://github.com/cristianorregod"
                                 className="text-dark-700 hover:text-dark-900 dark:text-dark-200 dark:hover:text-dark-50 transition-colors duration-300"
                                 target="_blank"
                             >
