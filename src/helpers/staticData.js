@@ -10,7 +10,7 @@ import HtmlIcon from '@/components/icons/stack/Html'
 import JavaScriptIcon from '@/components/icons/stack/JavaScript'
 import LaravelIcon from '@/components/icons/stack/Laravel'
 import MongoDBIcon from '@/components/icons/stack/MongoDB'
-import MySQLIcon from '@/components/icons/stack/MySQL'
+import PostgreSQLIcon from '@/components/icons/stack/PostgreSQL'
 import NextJSIcon from '@/components/icons/stack/NextJS'
 import NginxIcon from '@/components/icons/stack/Nginx'
 import NodeJSIcon from '@/components/icons/stack/NodeJS'
@@ -23,8 +23,11 @@ import TailwindIcon from '@/components/icons/stack/Tailwind'
 import TerminalIcon from '@/components/icons/stack/Terminal'
 import TypeScriptIcon from '@/components/icons/stack/TypeScript'
 import VSCodeIcon from '@/components/icons/stack/VSCode'
-import WordPressIcon from '@/components/icons/stack/WordPress'
 import MicrosoftAzureIcon from '@/components/icons/stack/Azure'
+import AWSIcon from '@/components/icons/stack/AWS'
+import OpenAIIcon from '@/components/icons/stack/OpenAI'
+import DjangoIcon from '@/components/icons/stack/Django'
+import FastAPIIcon from '@/components/icons/stack/FastAPI'
 export const experienceInfo = [
     {
         role: 'Programador FullStack',
@@ -80,18 +83,17 @@ export const MY_STACK = {
         { name: 'NodeJS', icon: NodeJSIcon },
         { name: 'Laravel', icon: LaravelIcon },
         { name: 'ExpressJS', icon: ExpressIcon },
-        { name: 'MySQL', icon: MySQLIcon },
-        { name: 'MongoDB', icon: MongoDBIcon },
+        { name: 'PostgreSQL', icon: PostgreSQLIcon },
+        {name: 'FastAPI', icon: FastAPIIcon },
         { name: 'Next.js', icon: NextJSIcon },
         { name: 'Nginx', icon: NginxIcon },
-        { name: 'Apache', icon: ApacheIcon },
     ],
     learning: [
         { name: 'Power Automate', icon: PowerAutomateIcon },
         { name: 'Astro', icon: AstroIcon },
         { name: 'Docker', icon: DockerIcon },
         { name: 'TypeScript', icon: TypeScriptIcon },
-        { name: 'Microsoft Azure', icon: MicrosoftAzureIcon },
+        {name: 'Django', icon: DjangoIcon },
     ],
     tools: [
         { name: 'Git', icon: GitIcon },
@@ -99,7 +101,9 @@ export const MY_STACK = {
         { name: 'Terminal', icon: TerminalIcon },
         { name: 'VSCode', icon: VSCodeIcon },
         { name: 'npm', icon: NpmIcon },
-        { name: 'WordPress', icon: WordPressIcon },
+        { name: 'OpenAI', icon: OpenAIIcon },
+        { name: 'Amazon Web Services', icon: AWSIcon },
+        { name: 'Microsoft Azure', icon: MicrosoftAzureIcon }
     ],
 }
 

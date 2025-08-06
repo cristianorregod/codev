@@ -1,0 +1,49 @@
+---
+title: 'Integración bidireccional Salesforce y NetSuite'
+category: 'Backend'
+date: '2025-6-30'
+excerpt: Se desarrolló una solución de integración bidireccional entre el CRM Salesforce y el ERP Netsuite, permitiendo la sincronización automatizada de entidades críticas como Accounts, Opportunities, Quotes y Sales Orders.
+cover: '/images/projects/integracion-salesforce-netsuite.webp'
+stack:
+    - PostgreSQL
+    - Python
+    - FastAPI
+    - Node.js
+---
+
+## Mi rol
+Como desarrollador Fullstack, estuve enfocado en desarrollar las integraciones backend que permitieron que tanto Salesforce como Netsuite puedan enviar y recibir datos de forma 
+segura y orquestada, garantizando consistencia en ambas plataformas.
+
+- **Backend en Python**: Desarrollo de API para recibir solicitudes del middleware y comunicarse con Netsuite mediante sus servicios.
+- **Backend en Node.js (middleware)**: Desarrollo de API para recibir datos desde Salesforce y enviarlos al backend en Python.
+- **SuiteScripts en Netsuite**: Desarrolla de automatizaciones para detectar cambios y enviar datos hacia Salesforce.
+- **Integración de endpoints Salesforce**: Conexiones API para recibir datos provenientes de Netsuite.
+- **Base de datos PostgreSQL**: Implementar una estructura de datos para registro de logs, trazabilidad y reprocesamiento de errores.
+
+## Funcionalidades clave del proyecto
+- Sincronización bidireccional de datos entre Salesforce y Netsuite para entidades clave del negocio.
+- Arquitectura desacoplada con microservicios para mantener independencia entre sistemas.
+- Recepción y envío de datos entre sistemas usando APIs REST con validaciones y control de errores.
+- Registro de logs detallados por operación para trazabilidad y reprocesamiento de fallos.
+- Manejo de errores y reintentos para asegurar la confiabilidad de la integración.
+
+## Impacto logrado
+Se logró una integración bidireccional eficiente y confiable entre Salesforce y Netsuite, automatizando procesos clave y reduciendo errores manuales, mediante una arquitectura 
+desacoplada con trazabilidad completa y capacidad de reprocesamiento ante fallos.
+
+## Tecnologías
+
+| Tecnología | Uso / Implementación                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| Python     | Backend principal para conectar con Netsuite y manejar lógica de negocio.                                       |
+| Node.js | Middleware para recibir solicitudes desde Salesforce y comunicarse con el backend Python.                                              |
+| FastAPI    | Creación de APIs REST que sirvieron como puente de comunicación entre el middleware y Netsuite.                    |
+| SuiteScript       | Scripts del lado de Netsuite que envían datos hacia Salesforce cuando ocurren eventos.           |
+| PostgreSQL        | Base de datos para almacenar logs de cada operación entrante/saliente para monitoreo y reprocesamiento. |
+
+## Flujo del proyecto
+<img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1754481869/projects/b99263c3-4a35-42f4-83cf-1f605ac145c1.png"
+    alt="Flujo de arquitectura integración bidireccional Salesforce y Netsuite"
+/>

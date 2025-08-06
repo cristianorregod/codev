@@ -23,7 +23,7 @@ export const About = () => {
                         <span className="font-bold text-primary-700 dark:text-primary-400">
                             Desarrollador FullStack.
                         </span>{' '}
-                        Inicié en la programación como un hobby hace poco más de 4 años. Hoy estoy{' '}
+                        Inicié en la programación hace más de 4 años. Hoy estoy{' '}
                         <span className=" text-crusta-800 dark:text-crusta-300 font-bold">
                             liderando un equipo de desarrollo en una empresa con mercado internacional.
                         </span>{' '}
@@ -31,17 +31,17 @@ export const About = () => {
                     <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
                         Entre mis logros destaco el{' '}
                         <span className="text-crusta-800 dark:text-crusta-300 font-bold">
-                            desarrollo e implementación de estándares de código y metodologías de desarrollo en{' '}
-                            <a
-                                href="https://colraices.com"
+                         desarrollo de soluciones de integración y automazación de procesos en{' '}
+                            
+                        </span>{' '}
+                        <a
+                                href="https://idico.com"
                                 rel="noopener noreferrer"
                                 target="_blank"
                                 className="underline"
                             >
-                                Colraices
-                            </a>
-                        </span>{' '}
-                        , logrando así garantizar la calidad del código y un flujo de trabajo efectivo en el equipo.
+                                Industrial Distributors International Co.
+                            </a>, logrando impacto operativo en áreas de comercial, administración y operaciones.
                     </p>
                     <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
                         Como proyecto personal comparto{' '}

@@ -60,11 +60,11 @@ export const Stack = () => {
         </SetStack>
 
         <SetStack>
-          <h3 className="text-center mb-8 text-xl font-bold lg:text-4xl lg:break-words bg-gradient-to-t from-[#ffb272] to-[#ee4a08] dark:from-[#ffebd4] dark:to-[#fd6412] bg-clip-text  text-transparent">
-            Aprendiendo
+          <h3 className="text-center mb-8 text-xl font-bold  lg:text-4xl lg:break-words bg-gradient-to-t from-[#75dbff] to-[#0072ab] dark:from-[#def3ff] dark:to-[#00a8e8] bg-clip-text  text-transparent">
+            Herramientas
           </h3>
           <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.learning.map((skill) => (
+            {MY_STACK.tools.map((skill) => (
               <li
                 key={skill.name}
                 className=" rounded-2xl  group flex flex-col fle justify-center items-center"
@@ -77,12 +77,13 @@ export const Stack = () => {
             ))}
           </ul>
         </SetStack>
-        <SetStack>
-          <h3 className="text-center mb-8 text-xl font-bold  lg:text-4xl lg:break-words bg-gradient-to-t from-[#75dbff] to-[#0072ab] dark:from-[#def3ff] dark:to-[#00a8e8] bg-clip-text  text-transparent">
-            Herramientas
+
+        <SetStack reverse={true}>
+          <h3 className="text-center mb-8 text-xl font-bold lg:text-4xl lg:break-words bg-gradient-to-t from-[#ffb272] to-[#ee4a08] dark:from-[#ffebd4] dark:to-[#fd6412] bg-clip-text  text-transparent">
+            Aprendiendo
           </h3>
           <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.tools.map((skill) => (
+            {MY_STACK.learning.map((skill) => (
               <li
                 key={skill.name}
                 className=" rounded-2xl  group flex flex-col fle justify-center items-center"

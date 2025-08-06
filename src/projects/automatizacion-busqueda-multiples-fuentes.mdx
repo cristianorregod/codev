@@ -1,0 +1,50 @@
+---
+title: 'Automatización busquedas multifuente'
+category: 'Backend'
+date: '2025-5-30'
+excerpt: Solución backend en Python para la automatización de búsquedas de ítems a través de múltiples fuentes de información, incluyendo portales de terceros vía API, sitios públicos mediante Web Scraping, servicios de búsqueda OpenAI, y bases de datos internas procesadas con ETL.
+cover: '/images/projects/portal-busquedas-multifuente.webp'
+stack:
+    - PostgreSQL
+    - Python
+    - Pandas
+    - Elasticsearch
+---
+
+## Mi rol
+Como desarrollador backend, fui responsable de construir las integraciones con fuentes externas e internas, desarrollar los procesos ETL y consultas SQL para alimentar los índices de 
+búsqueda en Elasticsearch, y exponer los endpoints necesarios para la comunicación con el frontend web.
+
+- **Consultas a bases de datos**: Desarrollo de consultas SQL para extraer datos históricos relevantes desde fuentes internas.
+- **Extracción, transformación y carga**: Construcción de procesos ETL con Python y Pandas para transformar y cargar datos estructurados en índices de Elasticsearch.
+- **Desarrollo backend**: Implementación de endpoints API para comunicar el backend con el frontend web.
+- **Desarrollo de integraciones**: Integración con portales de terceros vía API y scraping para enriquecer la base de resultados.
+- **Algoritmos de búsqueda**: Automatización de procesos de actualización y refresco de datos almacenados en PostgreSQL y Elasticsearch.
+
+## Funcionalidades clave del proyecto
+- Búsqueda federada e inteligente en múltiples fuentes desde una sola interfaz.
+- Algoritmos de coincidencia y relevancia implementados con Elasticsearch.
+- Refresco automático de fuentes mediante ETL programados.
+- Integración con aliados estratégicos y fuentes públicas mediante scraping/API.
+- Exposición de endpoints REST para la conexión con el frontend web.
+
+## Impacto logrado
+Se logró una solución robusta para realizar búsquedas automatizadas en múltiples fuentes de datos, con alta precisión y velocidad, gracias al uso de Elasticsearch y algoritmos 
+de relevancia. Esto permitió a los usuarios obtener resultados más completos y contextuales desde una sola interfaz, reduciendo tiempos de búsqueda manual, integrando diversas 
+fuentes públicas, privadas y aliadas estratégicas de forma centralizada.
+
+## Tecnologías
+
+| Tecnología | Uso / Implementación                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| Python     | Desarrollo del backend, ETL, scraping y lógica de integración.                                     |
+| SQL | Extracción de datos históricos para alimentar los procesos de búsqueda.                                            |
+| FastAPI    | Creación de APIs REST que sirvieron para comunicar con portales aliados y con la aplicación web.                   |
+| Pandas       | Transformación y limpieza de datos antes de indexarlos.           |
+| PostgreSQL        | Almacenamiento de datos transformados y gestionados por los ETLs. |
+| Elasticsearch        | Indexación y ejecución de algoritmos de búsqueda inteligente. |
+
+## Flujo del proyecto
+<img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1754484910/projects/5aae55ab-9d38-4f1f-a620-608432eb28f8.png"
+    alt="Flujo de arquitectura busqueda multifuente"/>

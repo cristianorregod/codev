@@ -26,17 +26,18 @@ export const Banner = () => {
                         Desarrollador Fullstack
                     </span>
                     <h2 className="lg:text-xl mt-6 md:mt-10 text-dark-700 dark:text-dark-200 text-pretty">
-                        +3 años de experiencia.{' '}
+                        Ingeniero de Sistemas{' '}
                         <span className="text-crusta-800 dark:text-crusta-300 ">
-                            Ingeniero de Sistemas y Desarrollador Web
+                            +4 años de experiencia en desarrollo de software
                         </span>
                         .{' '}
                         <span className=" text-daintree-700 dark:text-daintree-200 ">
-                            Especializado en crear soluciones web robustas
+                            Especializado en soluciones backend, automatización e integraciones
                         </span>
-                        . Enseño programación a estudiantes de último grado de bachiller.
+                        . Enfocado en crear soluciones que conectan datos y optimizan procesos.
                     </h2>
                 </header>
+                
             </div>
             <ul className="mt-10 flex flex-wrap gap-4 justify-start ">
                 <li>
@@ -45,7 +46,7 @@ export const Banner = () => {
                     </Pill>
                 </li>
                 <li>
-                    <Pill url={'https://github.com/cristianorregodev'} externalUrl={true}>
+                    <Pill url={'https://github.com/cristianorregod'} externalUrl={true}>
                         <GitHubIcon className="size-4 md:size-6" /> GitHub
                     </Pill>
                 </li>

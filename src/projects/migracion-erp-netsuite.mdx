@@ -1,0 +1,57 @@
+---
+title: 'Migración ERP Netsuite'
+category: 'Backend'
+date: '2024-12-27'
+excerpt: Se diseñó e implementó una solución backend para la migración de datos estructurados desde un entorno Netsuite Legacy ERP hacia la nueva plataforma Netsuite SuiteTax, abarcando múltiples dominios críticos como entidades, personalizaciones específicas por cliente y saldos iniciales contables y de inventario.
+cover: '/images/projects/migracion-erp-netsuite.webp'
+stack:
+    - SQL
+    - Python
+    - FastAPI
+    - Pandas
+    - Power Automate
+---
+
+## Mi rol
+Como desarrollador Fullstack, tuve un rol central en el diseño y ejecución de la estrategia de migración de datos desde un entorno Netsuite Legacy hacia Netsuite SuiteTax. 
+Mi trabajo se enfocó en construir soluciones integradas, automatizadas y seguras para garantizar la transferencia exitosa de datos críticos.
+Automatización de procesos: Desarrollé scripts en Python y flujos en Power Automate para automatizar la extracción, transformación y carga de información, reduciendo 
+errores manuales y tiempos de ejecución.
+
+- **Integraciones API REST y SOAP**: Implementé integraciones robustas con servicios de Netsuite y otros sistemas relacionados, tanto vía REST como SOAP, asegurando la 
+correcta sincronización entre plataformas.
+- **Consultas SQL optimizadas**: Elaboré consultas SQL complejas para extraer datos de distintas fuentes (bases de datos relacionales y archivos Excel), aplicando filtros, 
+joins y transformaciones necesarias según los requerimientos funcionales.
+- **Desarrollo backend**: Construí APIs con FastAPI que sirvieron como puente para que los bots de Power Automate interactuaran con el nuevo sistema de manera segura y eficiente.
+- **Aseguramiento de la calidad de datos**: Implementé validaciones automáticas y controles de consistencia para garantizar la integridad referencial, la conciliación de 
+saldos y la correcta estructura de los registros migrados.
+- **Colaboración transversal**: Trabajé en conjunto con analistas funcionales, especialistas en Netsuite y el equipo de QA para asegurar que cada etapa de la migración 
+cumpliera con los estándares de calidad y plazos definidos.
+
+## Funcionalidades clave del proyecto:
+
+- Extracción de datos desde múltiples orígenes (Excel, bases de datos relacionales).
+- Normalización y transformación de estructuras según el esquema requerido por SuiteTax.
+- Generación de APIs intermedias seguras y consumibles por bots de Power Automate.
+- Validación de integridad referencial y conciliación de saldos contables post migración.
+- Registro de logs y errores para trazabilidad y auditoría del proceso.
+
+## Impacto logrado
+Mi participación permitió una migración fluida y automatizada de grandes volúmenes de datos entre plataformas ERP, reduciendo tiempos operativos y asegurando la continuidad del 
+negocio con cero pérdidas de información crítica.
+
+## Tecnologías
+
+| Tecnología | Uso / Implementación                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| Python     | Desarrollo de scripts de automatización para extracción y transformación de datos.                                       |
+| SQL | Consultas complejas para extraer datos desde bases de datos y realizar validaciones.                                              |
+| FastAPI    | Creación de APIs REST que sirvieron como puente entre el backend y los bots de automatización.                    |
+| Pandas       | Procesamiento de archivos Excel y estructuración de datos antes de la carga.            |
+| Power Automate        | Orquestación de flujos automáticos que consumían APIs y ejecutaban tareas de integración. |
+
+## Flujo del proyecto
+<img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1754481856/projects/cc906ded-c378-47f5-94f4-31760e04a8ff.png"
+    alt="Flujo de arquitectura de migración ERP Netsuite"
+/>
