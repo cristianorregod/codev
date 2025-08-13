@@ -1,0 +1,83 @@
+---
+title: 'Entendiendo cómo funcionan los LLMs 🤖'
+date: '2025-08-11'
+description: >-
+    Descubre cómo los modelos de lenguaje (LLMs) usan vectores y embeddings para comprender y generar texto. Aprende qué son, cómo funcionan y por qué cada palabra en tu prompt importa.
+toc: true
+tags:
+    - AI
+cover: '/images/posts/comprendiendo-los-llms.webp'
+author: '@cristianorregodev'
+---
+
+Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) como ChatGPT han revolucionado la forma en que interactuamos con la inteligencia artificial. 
+Su capacidad para comprender y generar texto de forma coherente está profundamente ligada a dos conceptos clave: vectores y embeddings.
+Si comprendemos estos fundamentos, podremos formular mejores prompts, optimizar resultados y aprovechar al máximo el potencial de estas herramientas.
+
+## ¿Qué son los vectores y cómo se relacionan con los LLMs?
+
+Un vector es, en esencia, una lista ordenada de números que describe la posición o características de algo en un espacio definido por dimensiones. En física, solemos 
+imaginarlos en coordenadas X y Y, y con una tercera dimensión obtenemos mayor precisión: X, Y, Z.
+
+En el caso de los LLMs, los vectores no se limitan a 2 o 3 dimensiones:
+
+> - Pueden tener cientos o miles de dimensiones.
+- Cada dimensión representa una característica abstracta de la palabra, como su contexto, categoría gramatical o matiz emocional.
+
+<br/>
+En vez de ubicar un punto en un plano o en un cubo, un LLM ubica las palabras en un espacio multidimensional donde las distancias y direcciones representan relaciones de significado.
+
+## ¿Qué rol juegan los embeddings en la comprensión del lenguaje?
+
+Un embedding es un vector de muchas dimensiones que describe el significado de una palabra o frase. 
+No solo se fija en su definición literal, sino también en:
+
+> - Contextos en los que aparece.
+- Emociones asociadas.
+- Categorías y relaciones con otras palabras.
+
+<br/>
+**Ejemplo intuitivo:**<br/>
+Cuando evaluamos un restaurante, no nos quedamos con un único criterio. Consideramos:
+
+> - Calidad de la comida
+- Ambiente
+- Servicio
+- Frescura de los ingredientes
+- Música
+
+
+<br/>
+De forma similar, un embedding evalúa una palabra en múltiples dimensiones, permitiendo que un modelo entienda su significado con más precisión.
+
+## Cómo los embeddings conectan palabras en distintos idiomas
+Uno de los poderes de los embeddings es que mapean significados, no solo palabras.
+Por ejemplo:
+
+> - Aguacate (español)
+- Avocado (inglés)
+
+<br/>
+Ambas comparten atributos: fruta, color verde, textura cremosa. El modelo puede reconocer que se refieren a la misma cosa incluso sin traducir la palabra explícitamente. 
+Esto se debe a que en el espacio vectorial ambas están muy próximas.
+
+## Por qué cada palabra en un prompt es crucial
+Cuando escribimos un prompt para un LLM, cada palabra seleccionada mueve la conversación hacia una zona diferente del espacio vectorial.
+
+> - Cambiar una palabra puede acercar o alejar el significado esperado.
+- Esto modifica el conjunto de relaciones semánticas que el modelo explorará para responder.
+
+<br/>
+En otras palabras: la precisión de tu prompt determina la precisión de la respuesta.
+
+## Conclusiones
+Entender cómo los LLMs representan el lenguaje mediante vectores y embeddings nos da una ventaja clave como usuarios.
+No se trata solo de “escribir una pregunta”, sino de construir una ruta precisa en el espacio semántico del modelo para obtener el resultado que queremos.
+
+## Infografía
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1755053211/posts/Programando_con_AI_b5pdey.svg"
+  alt="Infografia de entendiendo los LLMs"
+/>
+<br />
