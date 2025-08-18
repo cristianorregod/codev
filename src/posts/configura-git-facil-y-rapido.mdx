@@ -1,13 +1,13 @@
 ---
-title: 'Configuración de git: instalación y configuración'
-date: '2024-05-01'
+title: "Configuración de git: instalación y configuración"
+date: "2024-05-01"
 description: >-
-    Aprende lo básico y necesario para configurar GIT y manten el control de versiones de tu código ordenado y actualizado.
+  Aprende lo básico y necesario para configurar GIT y manten el control de versiones de tu código ordenado y actualizado.
 toc: true
 tags:
-    - git
-cover: '/images/posts/git-configuracion-basica.webp'
-author: '@cristianorregodev'
+  - git
+cover: "/images/posts/git-configuracion-basica.webp"
+author: "@cristianorregodev"
 ---
 
 Como desarrolladores de software, es importante utilizar un sistema de control de versiones para administrar nuestro código y trabajar junto a un equipo. Git es la herramienta de control de versiones más popular en la actualidad. 👨‍💻
@@ -41,13 +41,13 @@ git config --global user.email "tu@correo.com"
 
 Estos son sólo dos ejemplos simples de lo que puedes configurar. Git ofrece muchas formas de personalizar su configuración según cómo te guste trabajar. ¡No dudes en explorar las posibilidades!
 
--   Configura el color de salida de la consola con:
+- Configura el color de salida de la consola con:
 
 ```bash
 git config --global color.ui auto
 ```
 
--   Configura el editor de texto predeterminado para mensajes de confirmación (reemplaza "your_editor" con tu editor preferido):
+- Configura el editor de texto predeterminado para mensajes de confirmación (reemplaza "your_editor" con tu editor preferido):
 
 ```bash
 git config --global core.editor "your_editor"
@@ -57,26 +57,26 @@ git config --global core.editor "your_editor"
 
 El siguiente paso es encontrar un lugar para mantener tu código seguro o porque no, un lugar en donde puedas manipular el código en companía de un grupo de desarrolladores. Para ello hay alternativas como GitHub, GitLab, entre otros.
 
--   Crea tu cuenta de **<a href="https://github.com/" target="_blank">GitHub</a>**
--   Crea un repositorio:
-    <img
-        src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1714658179/posts/oqc9snjp3wyv2j2e0uzb.gif"
-        alt="Ilustración UI creación nuevo repositorio"
-    />
--   Sigue los pasos del respositorio para subir tu proyecto a GitHub:
+- Crea tu cuenta de **<a href="https://github.com/" target="_blank">GitHub</a>**
+- Crea un repositorio:
+  <img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1714658179/posts/oqc9snjp3wyv2j2e0uzb.gif"
+    alt="Ilustración UI creación nuevo repositorio"
+  />
+- Sigue los pasos del respositorio para subir tu proyecto a GitHub:
 
-    ```bash
-    # Abre la carpeta raíz de tu proyecto en la terminal
-    cd "ruta-del-proyecto"
-    ```
+  ```bash
+  # Abre la carpeta raíz de tu proyecto en la terminal
+  cd "ruta-del-proyecto"
+  ```
 
--   Una vez dentro del proyecto ejecutamos los siguientes comandos:
+- Una vez dentro del proyecto ejecutamos los siguientes comandos:
 
-    ```bash
-    git init #Inicializa el repositorio de git
-    git add . #Agrega los archivos al stage area
-    git commit -m "first commit" #Confirma los cambios
-    git branch -M main #Cambia el nombre de la rama
-    git remote add origin <URL del repositorio> #Agrega el respositorio remoto (el que creaste en GitHub)
-    git push -u origin main #Envía los cambios al repositorio remoto
-    ```
+  ```bash
+  git init #Inicializa el repositorio de git
+  git add . #Agrega los archivos al stage area
+  git commit -m "first commit" #Confirma los cambios
+  git branch -M main #Cambia el nombre de la rama
+  git remote add origin <URL del repositorio> #Agrega el respositorio remoto (el que creaste en GitHub)
+  git push -u origin main #Envía los cambios al repositorio remoto
+  ```

@@ -1,13 +1,13 @@
 ---
-title: 'Cómo crear un spinner loader con CSS 🌀'
-date: '2022-04-15'
+title: "Cómo crear un spinner loader con CSS 🌀"
+date: "2022-04-15"
 description: >-
-    Aprende a crear un donut spinner 🍩 sólo usando CSS y en menos de un minuto. Perfecto para frontenders impacientes ⏲️.
+  Aprende a crear un donut spinner 🍩 sólo usando CSS y en menos de un minuto. Perfecto para frontenders impacientes ⏲️.
 toc: true
 tags:
-    - css
-cover: '/images/posts/como-crear-un-spínner-con-css.svg'
-author: '@midudev'
+  - css
+cover: "/images/posts/como-crear-un-spínner-con-css.svg"
+author: "@midudev"
 ---
 
 > **Nota:** _Este artículo de blog es copia fiel del original redactado y publicado por _ **<a href="https://midu.dev" target="_blank">@midudev</a>**
@@ -30,9 +30,9 @@ Primero le añadimos un borde, con **4 píxeles de borde** y lo hacemos con un c
 
 ```css
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: transparent;
-    border-radius: 50%;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  border-radius: 50%;
 }
 ```
 
@@ -40,10 +40,10 @@ Para las medidas, usamos una forma cuadrada con un **alto y ancho de 36px.**
 
 ```css
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: transparent;
-    width: 36px;
-    height: 36px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
 }
 ```
 
@@ -53,11 +53,11 @@ Lo importante es que pongas que se tiene que hacer de forma `infinite`, para que
 
 ```css
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: transparent;
-    width: 36px;
-    height: 36px;
-    animation: spin 1s linear infinite;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
 }
 ```
 
@@ -65,13 +65,13 @@ Ahora creamos la animación usando `@keyframes` de forma que empezamos en un pun
 
 ```css
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 ```
 

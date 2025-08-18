@@ -14,7 +14,7 @@ export const ArticleBody = ({ content, frontmatter }) => {
     hljs.addPlugin(
       new CopyButtonPlugin({
         autohide: false,
-      })
+      }),
     );
   }, []);
   const timeReading = Math.ceil(content.split(" ").length / 200);

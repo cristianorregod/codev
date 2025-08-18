@@ -1,13 +1,13 @@
 ---
 title: 'Conditional Render en ReactJS - Deja de usar "&&"'
-date: '2023-12-12'
+date: "2023-12-12"
 description: >-
-    Aprende la mejor forma de manipular el renderizado condicional y deja ya de usar el operador && y controla el comportamiento de tu aplicación.
+  Aprende la mejor forma de manipular el renderizado condicional y deja ya de usar el operador && y controla el comportamiento de tu aplicación.
 toc: true
 tags:
-    - reactjs
-cover: '/images/posts/renderizado-condicional-en-react-js.webp'
-author: '@cristianorregodev'
+  - reactjs
+cover: "/images/posts/renderizado-condicional-en-react-js.webp"
+author: "@cristianorregodev"
 ---
 
 ¡Hola, desarrolladores de React! Es hora de dar un paso hacia adelalnte y dejar atrás los viejos hábitos.
@@ -28,14 +28,14 @@ Por ejemplo, escribiríamos un código como este:
 
 ```javascript
 function MyComponent({ isLoggedIn }) {
-    return <div>{isLoggedIn && <p>Welcome back, User!</p>}</div>
+  return <div>{isLoggedIn && <p>Welcome back, User!</p>}</div>;
 }
 ```
 
 Veamos un resumen del código anterior:
 
--   Si la condición es un valor verdadero, se renderizará el párrafo.
--   Si la condición es un valor falso, no se renderizará el párrafo.
+- Si la condición es un valor verdadero, se renderizará el párrafo.
+- Si la condición es un valor falso, no se renderizará el párrafo.
 
 ## ¿Por qué pasa esto?
 
@@ -83,7 +83,7 @@ El operador ternario nos permite escribir expresiones condicionales concisas, ha
 
 ```javascript
 function MyComponent({ isLoggedIn }) {
-    return <div>{isLoggedIn ? <p>Welcome back, User!</p> : null}</div>
+  return <div>{isLoggedIn ? <p>Welcome back, User!</p> : null}</div>;
 }
 ```
 
@@ -107,11 +107,11 @@ Nos permite especificar un valor predeterminado cuando la condición es falsa. H
 
 ```javascript
 function MyComponent({ username }) {
-    return (
-        <div>
-            <p>Welcome, {username || 'Guest'}!</p>
-        </div>
-    )
+  return (
+    <div>
+      <p>Welcome, {username || "Guest"}!</p>
+    </div>
+  );
 }
 ```
 
@@ -121,9 +121,9 @@ En este código, si se proporciona el atributo "nombre de usuario", se represent
 
 Al utilizar el operador ternario o el operador lógico OR, obtenemos varios beneficios sobre el antiguo "&&":
 
--   **Legibilidad**: El código se vuelve más expresivo y más fácil de entender, especialmente cuando se trata de condiciones más complejas o múltiples opciones de renderizado.
--   **Flexibilidad**: Con el operador ternario, podemos manejar condiciones verdaderas y falsas permitiendo controlar manualmente el comportamiento de nuestro renderizado y evitar renderizados inesperados.
--   **Valores predeterminados**: El operador lógico OR proporciona una manera conveniente de especificar valores predeterminados cuando la condición es falsa, lo que reduce la necesidad de lógica adicional.
+- **Legibilidad**: El código se vuelve más expresivo y más fácil de entender, especialmente cuando se trata de condiciones más complejas o múltiples opciones de renderizado.
+- **Flexibilidad**: Con el operador ternario, podemos manejar condiciones verdaderas y falsas permitiendo controlar manualmente el comportamiento de nuestro renderizado y evitar renderizados inesperados.
+- **Valores predeterminados**: El operador lógico OR proporciona una manera conveniente de especificar valores predeterminados cuando la condición es falsa, lo que reduce la necesidad de lógica adicional.
 
 ## Conclusiones
 

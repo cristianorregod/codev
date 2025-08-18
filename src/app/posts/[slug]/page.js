@@ -33,7 +33,7 @@ export async function generateMetadata({ params }, parent) {
 export default async function PostPage({ params }) {
   const { content, frontmatter } = await getPostBySlug(
     params.slug,
-    process.env.ARTICLES_PATH
+    process.env.ARTICLES_PATH,
   );
   return (
     <>

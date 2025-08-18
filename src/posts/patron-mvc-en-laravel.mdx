@@ -1,12 +1,12 @@
 ---
 title: Aprende a dominar el patrón MVC en Laravel
-date: '2023-10-19'
+date: "2023-10-19"
 description: Descubre como implementar el conocido patrón modelo vista controlador en tus aplicaciones PHP con Laravel y convierte en un experto codeando.
 toc: true
 tags:
-    - php
-cover: '/images/posts/domina-el-patron-mvc.svg'
-author: '@cristianorregodev'
+  - php
+cover: "/images/posts/domina-el-patron-mvc.svg"
+author: "@cristianorregodev"
 ---
 
 Cuando se trata de desarrollo web, la organización de tu código es esencial para mantener tu aplicación sostenible y escalable. Laravel, un popular framework de PHP, está diseñado en torno al patrón de diseño Modelo-Vista-Controlador (MVC). En este artículo, exploraremos qué es el patrón MVC y cómo se implementa en Laravel.
@@ -15,17 +15,17 @@ Cuando se trata de desarrollo web, la organización de tu código es esencial pa
 
 El patrón Modelo-Vista-Controlador (MVC) es una forma de organizar el código de una aplicación para separar las preocupaciones y mejorar la mantenibilidad. En MVC, tu aplicación se divide en tres componentes principales:
 
--   **Modelo**: Representa la lógica de negocio y la interacción con la base de datos. En Laravel, los modelos son representados como clases PHP que interactúan con tablas de base de datos.
+- **Modelo**: Representa la lógica de negocio y la interacción con la base de datos. En Laravel, los modelos son representados como clases PHP que interactúan con tablas de base de datos.
 
--   **Vista**: Se encarga de la presentación y la interfaz de usuario. En Laravel, las vistas son plantillas que generan la salida HTML que se envía al navegador del usuario.
+- **Vista**: Se encarga de la presentación y la interfaz de usuario. En Laravel, las vistas son plantillas que generan la salida HTML que se envía al navegador del usuario.
 
--   **Controlador**: Actúa como intermediario entre el Modelo y la Vista. En Laravel, los controladores son clases que manejan las solicitudes HTTP, procesan la lógica y devuelven las vistas apropiadas.
+- **Controlador**: Actúa como intermediario entre el Modelo y la Vista. En Laravel, los controladores son clases que manejan las solicitudes HTTP, procesan la lógica y devuelven las vistas apropiadas.
 
 ## Implementación en Laravel
 
 Laravel hace que la implementación del patrón MVC sea sencilla y efectiva. Aquí hay un ejemplo de cómo funciona:
 
--   **Modelo**: Creamos un modelo llamado `Task` que representa una tarea en una lista de tareas. Laravel nos permite definir fácilmente modelos Eloquent, como se muestra a continuación:
+- **Modelo**: Creamos un modelo llamado `Task` que representa una tarea en una lista de tareas. Laravel nos permite definir fácilmente modelos Eloquent, como se muestra a continuación:
 
 ```php
 <?php
@@ -41,7 +41,7 @@ class Task extends Model
 }
 ```
 
--   **Vista**: Creamos una vista que muestra la lista de tareas. Las vistas en Laravel suelen ser archivos Blade, que combinan HTML con código PHP. Aquí hay un fragmento de un archivo Blade que muestra una lista de tareas:
+- **Vista**: Creamos una vista que muestra la lista de tareas. Las vistas en Laravel suelen ser archivos Blade, que combinan HTML con código PHP. Aquí hay un fragmento de un archivo Blade que muestra una lista de tareas:
 
 ```php
 @foreach ($tasks as $task)
@@ -49,7 +49,7 @@ class Task extends Model
 @endforeach
 ```
 
--   **Controlador**: Creamos un controlador llamado `TaskController` que maneje la lógica relacionada con las tareas y muestre la vista correspondiente:
+- **Controlador**: Creamos un controlador llamado `TaskController` que maneje la lógica relacionada con las tareas y muestre la vista correspondiente:
 
 ```php
 <?php
@@ -75,13 +75,13 @@ En este ejemplo, el controlador recupera todas las tareas del modelo `Task` y pa
 
 El patrón MVC en Laravel proporciona varios beneficios:
 
--   **Separación de preocupaciones**: Divide tu código en capas distintas para una mejor organización y mantenibilidad.
+- **Separación de preocupaciones**: Divide tu código en capas distintas para una mejor organización y mantenibilidad.
 
--   **Reutilización de código**: Puedes reutilizar modelos, vistas y controladores en diferentes partes de tu aplicación.
+- **Reutilización de código**: Puedes reutilizar modelos, vistas y controladores en diferentes partes de tu aplicación.
 
--   **Facilidad de colaboración**: Varios desarrolladores pueden trabajar en diferentes partes del MVC sin interferir en el trabajo de los demás.
+- **Facilidad de colaboración**: Varios desarrolladores pueden trabajar en diferentes partes del MVC sin interferir en el trabajo de los demás.
 
--   **Pruebas unitarias**: Los componentes individuales (modelos, controladores) se pueden probar de manera aislada, lo que facilita las pruebas unitarias.
+- **Pruebas unitarias**: Los componentes individuales (modelos, controladores) se pueden probar de manera aislada, lo que facilita las pruebas unitarias.
 
 Como vemos, el patrón Modelo-Vista-Controlador es una parte fundamental del desarrollo de software en Laravel. Permite una organización efectiva del código y facilita la construcción de aplicaciones web robustas y mantenibles. Con Laravel, implementar este patrón es sencillo y efectivo, lo que lo convierte en una elección sólida para el desarrollo web moderno.
 

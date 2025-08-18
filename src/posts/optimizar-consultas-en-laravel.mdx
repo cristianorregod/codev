@@ -1,12 +1,12 @@
 ---
 title: Optimiza las consultas en Laravel como un experto
-date: '2023-10-21'
+date: "2023-10-21"
 description: Descubre los secretos para llevar las consultas al siguiente nivel. Convertirte en un maestro de la optimización aumentando la eficiencia y el rendimiento de las consultas en Laravel.
 toc: true
 tags:
-    - laravel
-cover: '/images/posts/optimizar-consultas-en-laravel.png'
-author: '@cristianorregodev'
+  - laravel
+cover: "/images/posts/optimizar-consultas-en-laravel.png"
+author: "@cristianorregodev"
 ---
 
 Érase una vez, un joven desarrollador luchaba con consultas lentas a la base de datos. Cada vez que intentaba obtener datos, la rueda giraba y giraba hasta que finalmente aparecían los resultados. Intentó todos los trucos del libro, pero nada pareció funcionar.
@@ -43,7 +43,7 @@ $users = DB::table('users')
 
 ## Eager loading
 
-Utilice la [Eager loading](httphttps://laravel.com/docs/10.x/eloquent-relationships#eager-loading:// 'Eager loading') de relaciones para reducir la cantidad de consultas.
+Utilice la [Eager loading](httphttps://laravel.com/docs/10.x/eloquent-relationships#eager-loading:// "Eager loading") de relaciones para reducir la cantidad de consultas.
 
 ```php
 $users = User::with('posts')->get();
