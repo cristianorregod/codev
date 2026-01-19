@@ -1,12 +1,14 @@
 import { AiOutlineFileProtect } from "react-icons/ai";
 import { Container } from "../Container";
 import { SectionTitle } from "../SectionTitle";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
-export const About = () => {
+export const About = async () => {
+  const t = await getTranslations("HomePage.About");
   return (
-    <Container id="sobre-mi">
-      <SectionTitle>Sobre mí</SectionTitle>
+    <Container id="about">
+      <SectionTitle>{t("title")}</SectionTitle>
       <div className="pt-12 md:pt-2">
         <div className="w-full">
           <img
@@ -17,53 +19,16 @@ export const About = () => {
           />
 
           <p className="mt-8 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
-            Hola 👋, soy Cristian Orrego,{" "}
-            <span className="font-bold text-primary-700 dark:text-primary-400">
-              Ingeniero en Sistemas
-            </span>{" "}
-            y{" "}
-            <span className="font-bold text-primary-700 dark:text-primary-400">
-              Desarrollador FullStack.
-            </span>{" "}
-            Inicié en la programación hace más de 4 años. Hoy estoy{" "}
-            <span className=" text-crusta-800 dark:text-crusta-300 font-bold">
-              liderando un equipo de desarrollo en una empresa con mercado
-              internacional.
-            </span>{" "}
+            {t("p1")}
           </p>
           <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
-            Entre mis logros destaco el{" "}
-            <span className="text-crusta-800 dark:text-crusta-300 font-bold">
-              desarrollo de soluciones de integración y automazación de procesos
-              en{" "}
-            </span>{" "}
-            <a
-              href="https://idico.com"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="underline"
-            >
-              Industrial Distributors International Co.
-            </a>
-            , logrando impacto operativo en áreas de comercial, administración y
-            operaciones.
+            {t("p2")}
           </p>
           <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
-            Como proyecto personal comparto{" "}
-            <Link
-              href={"/posts"}
-              className="text-crusta-800 dark:text-crusta-300 font-bold underline"
-            >
-              artículos de blog sobre programación
-            </Link>
-            . Cuando compartes tu conocimiento es cuando más aprendes y mi
-            objetivo además de seguir mejorando mis habilidades es ayudar a
-            otros con mis experiencias, guías y tutoriales.
+            {t("p3")}
           </p>
           <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
-            Por último, comparto mi hoja de vida actualizada, donde de manera
-            más detallada específico mi experiencia laboral, logros y formación
-            académica.
+            {t("p4")}
           </p>
         </div>
       </div>
@@ -74,7 +39,7 @@ export const About = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Curriculum <AiOutlineFileProtect />
+          {t("cv")} <AiOutlineFileProtect />
         </a>
       </div>
     </Container>

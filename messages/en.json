@@ -1,0 +1,76 @@
+{
+    "HomePage": {
+        "Banner": {
+            "greeting": "Hi,",
+            "name": "I'm Cristian",
+            "role": "Fullstack Developer",
+            "title": "Systems Engineer",
+            "experience": "+4 years of experience in software development",
+            "specialization": "Specializing in backend solutions, automation, and integrations. Focused on creating solutions that connect data and optimize processes."
+        },
+        "Nav": {
+            "experience": "Experience",
+            "projects": "Projects",
+            "about": "About me",
+            "articles": "Articles",
+            "stack": "Stack"
+        },
+        "Experience": {
+            "title": "Experience",
+            "items": [
+                {
+                    "role": "FullStack Developer",
+                    "date": "May 2024 - Present",
+                    "company": "Industrial Distributions International Co.",
+                    "description": "Leading the automation process implementing RPA solutions. Developing ERP integrations with custom solutions. Performing customizations in the ERP according to the company's business logic."
+                },
+                {
+                    "role": "FullStack Developer",
+                    "date": "January 2022 - Present",
+                    "company": "Colraices",
+                    "description": "Responsible for developing web solutions in the financial and real estate sector. Developing internal code conventions according to best programming practices. Leading the Backend development team."
+                },
+                {
+                    "role": "Web master",
+                    "date": "February 2020 - November 2021",
+                    "company": "Diocesano Santa María",
+                    "description": "Redesign and maintenance of white and web application in the educational sector. Teaching programming classes to senior students. Leading the Science and Technology committee of the institution."
+                },
+                {
+                    "role": "Support Technician",
+                    "date": "December 2018 - December 2019",
+                    "company": "La Sucursal",
+                    "description": "Developed cost simulation application for construction materials. Managed and provided technical support to accounting and billing software. Implemented communication management and teamwork tools."
+                }
+            ]
+        },
+        "Projects": {
+            "title": "Projects",
+            "description": "My most exciting and creative projects. Each project is the result of my dedication and passion for programming, and I'm delighted to share them with you. Discover how I transform ideas into digital realities. Explore, inspire and create with my software projects!",
+            "more": "More projects"
+        },
+        "About": {
+            "title": "About me",
+            "p1": "Hi 👋, I'm Cristian Orrego, Systems Engineer and FullStack Developer. I started programming more than 4 years ago. Today I am leading a development team in a company with an international market.",
+            "p2": "Among my achievements, I highlight the development of integration solutions and process automation at Industrial Distributors International Co., achieving operational impact in commercial, administration and operations areas.",
+            "p3": "As a personal project, I share blog articles about programming. When you share your knowledge is when you learn the most and my goal, besides continuing to improve my skills, is to help others with my experiences, guides and tutorials.",
+            "p4": "Finally, I share my updated resume, where I specify my work experience, achievements and academic background in more detail.",
+            "cv": "Resume"
+        },
+        "Articles": {
+            "title": "Articles",
+            "more": "View all"
+        },
+        "Stack": {
+            "title": "Technologies",
+            "description": "In my journey through the world of web development, I have cultivated experience and skills in a variety of technologies. My technology stack includes:",
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Tools",
+            "learning": "Learning"
+        },
+        "Footer": {
+            "rights": "All rights reserved."
+        }
+    }
+}

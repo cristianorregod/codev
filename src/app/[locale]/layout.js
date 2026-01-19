@@ -1,9 +1,13 @@
 import "@fontsource-variable/onest";
 import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/components/Navbar";
-import { DarkModeProvider } from "./providers/DarkModeProvider";
-import "./globals.css";
+import { DarkModeProvider } from "../providers/DarkModeProvider";
+import "../globals.css";
 import { Footer } from "@/components/Footer";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 export const metadata = {
   metadataBase: new URL("https://cristianorrego.dev"),
@@ -25,15 +29,31 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html suppressHydrationWarning lang="en" className="scroll-smooth">
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      className="scroll-smooth"
+    >
       <body className="bg-dark-50 dark:bg-dark-950 ">
-        <DarkModeProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </DarkModeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <DarkModeProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </DarkModeProvider>
+        </NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

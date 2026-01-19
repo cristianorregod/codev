@@ -4,7 +4,12 @@ import CodeIcon from "../icons/Code";
 import EmailIcon from "../icons/Email";
 import GitHubIcon from "../icons/GitHub";
 import LinkedInIcon from "../icons/LinkedIn";
-export const Banner = () => {
+import { getTranslations } from "next-intl/server";
+
+export const Banner = async () => {
+  const t = await getTranslations("HomePage.Banner");
+  const navT = await getTranslations("HomePage.Nav");
+
   return (
     <section className="relative mx-auto container px-2 pt-44 lg:h-screen overflow-hidden lg:pt-0 lg:w-[740px] lg:flex lg:flex-col lg:justify-center">
       <div className="text-left lg:flex lg:flex-row-reverse lg:justify-center lg:items-center md:gap-x-4">
@@ -20,26 +25,23 @@ export const Banner = () => {
         </div>
         <header className="lg:w-4/5">
           <h1 className="text-3xl font-bold lg:text-5xl  text-dark-700 dark:text-dark-200">
-            Hola,{" "}
+            {t("greeting")}{" "}
             <span className=" text-primary-600 dark:text-primary-400">
-              soy Cristian
+              {t("name")}
             </span>
           </h1>
           <span className=" font-semibold inline-flex animate-background-shine bg-[linear-gradient(110deg,#64748b,45%,#0f172a,55%,#64748b)] dark:bg-[linear-gradient(110deg,#b6eaff,45%,#065074,55%,#b6eaff)] bg-[length:250%_100%] bg-clip-text text-xl text-transparent">
-            Desarrollador Fullstack
+            {t("role")}
           </span>
           <h2 className="lg:text-xl mt-6 md:mt-10 text-dark-700 dark:text-dark-200 text-pretty">
-            Ingeniero de Sistemas{" "}
+            {t("title")}{" "}
             <span className="text-crusta-800 dark:text-crusta-300 ">
-              +4 años de experiencia en desarrollo de software
+              {t("experience")}
             </span>
             .{" "}
             <span className=" text-daintree-700 dark:text-daintree-200 ">
-              Especializado en soluciones backend, automatización e
-              integraciones
+              {t("specialization")}
             </span>
-            . Enfocado en crear soluciones que conectan datos y optimizan
-            procesos.
           </h2>
         </header>
       </div>
@@ -62,23 +64,13 @@ export const Banner = () => {
             <EmailIcon className="size-4 md:size-6" /> cristian.duquew@gmail.com
           </Pill>
         </li>
-        {/* <li>
-                    <Pill url={'#projects'}>
-                        <CodeIcon className="size-4 md:size-6" /> Proyectos
-                    </Pill>
-                </li> */}
-        {/* <li>
-                    <Pill url={'#articles'}>
-                        <ArticleIcon className="size-4 md:size-6" /> Artículos
-                    </Pill>
-                </li> */}
       </ul>
       <div className="absolute hidden md:flex bottom-4 w-full justify-center">
         <a
           href="#experience"
           className="md:flex gap-2 animate-bounce text-primary-500 dark:text-primary-400 font-bold"
         >
-          Experiencia{" "}
+          {navT("experience")}{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
