@@ -3,10 +3,11 @@
         "Banner": {
             "greeting": "Hi,",
             "name": "I'm Cristian",
-            "role": "Fullstack Developer",
-            "title": "Systems Engineer",
-            "experience": "+4 years of experience in software development",
-            "specialization": "Specializing in backend solutions, automation, and integrations. Focused on creating solutions that connect data and optimize processes."
+            "role": "Software Engineer",
+            "title": "I transform complex operations through",
+            "experience": "intelligent ecosystems using Software Engineering and Automation",
+            "specialization": "Expert in integrating Data, AI, and Enterprise Platforms.",
+            "finale": "I don't just write code, I build solutions."
         },
         "Nav": {
             "experience": "Experience",
@@ -51,10 +52,9 @@
         },
         "About": {
             "title": "About me",
-            "p1": "Hi 👋, I'm Cristian Orrego, Systems Engineer and FullStack Developer. I started programming more than 4 years ago. Today I am leading a development team in a company with an international market.",
-            "p2": "Among my achievements, I highlight the development of integration solutions and process automation at Industrial Distributors International Co., achieving operational impact in commercial, administration and operations areas.",
-            "p3": "As a personal project, I share blog articles about programming. When you share your knowledge is when you learn the most and my goal, besides continuing to improve my skills, is to help others with my experiences, guides and tutorials.",
-            "p4": "Finally, I share my updated resume, where I specify my work experience, achievements and academic background in more detail.",
+            "p1": "I am passionate about solving problems, whether it's building applications from scratch or uncovering the hidden logic behind data.",
+            "p2": "Attention to detail, research, and curiosity allow me to see what others might miss.",
+            "p3": "I believe technology is only useful if it makes people's lives easier; that’s why I put as much enthusiasm into writing clean code as I do into collaborating and communicating effectively with my team.",
             "cv": "Resume"
         },
         "Articles": {

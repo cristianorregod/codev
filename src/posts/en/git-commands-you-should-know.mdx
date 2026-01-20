@@ -1,0 +1,198 @@
+---
+title: 15 Git commands every developer should know
+date: "2024-11-23"
+description: Using Git in the CLI for a smoother, faster, and more flexible workflow.
+toc: true
+tags:
+  - git
+cover: "/images/posts/comandos-de-git-que-debes-conocer.webp"
+author: "@cristianorregodev"
+---
+
+While the command-line interface can seem intimidating at first, it is actually a very useful tool that provides control over code in ways GUIs often do not. With familiarity in a few Git commands, productivity increases.
+
+This guide covers 15 Git command-line tips that help make a workflow smoother, faster, and more flexible, whether working solo or with a team.
+
+## `git init`: Initialize a repository
+
+`git init` is where everything begins. This command initializes a new Git repository in the current directory, preparing it for version control. It is fundamental and used every time a new project is started locally. To use it, run the following command in the terminal:
+
+```bash
+git init
+```
+
+In practice, running `git init` is useful even for smaller or personal projects, because having version control from the beginning keeps things organized regardless of project size.
+
+## `git clone`: Copy (clone) a repository
+
+When joining an existing project or working on something hosted remotely, `git clone` is the command used to bring a copy of the repository into the local environment. This command immediately connects to the project history and files.
+
+```bash
+git clone https://github.com/user/repo.git
+```
+
+`git clone` saves time by simplifying the setup process. It is a simple way to start collaborating, letting the focus stay on coding instead of configuration.
+
+## `git add`: Stage work
+
+Adding files to the staging area is one of the first steps before committing changes. `git add <file>` stages specific files, while `git add -A` stages all modified changes. Knowing how to stage changes correctly is a habit that keeps commits clear and manageable.
+
+```bash
+# Add a specific file
+git add index.js
+```
+
+```bash
+# Add all modified files
+git add -A
+```
+
+## `git commit`: Commit changes
+
+Every Git user needs to be comfortable with `git commit -m`. This command creates a snapshot of the current changes along with a message, making the project history easier to understand.
+
+```bash
+git commit -m "Implement user login feature"
+```
+
+A clear commit message saves time in the long run. Being precise here can prevent future headaches when trying to locate issues.
+
+## `git add [-p]`: Stage changes in parts
+
+Sometimes only specific changes from a file should be committed. `git add -p` (patch) allows reviewing and adding individual changes in chunks, which makes it easier to keep each commit focused on a single task.
+
+```bash
+git add -p
+```
+
+This command improves workflows by keeping commits tidy. It is invaluable when working on multiple fixes or features at the same time.
+
+## `git status`: Check workspace state
+
+`git status` provides a quick look at the working directory. It shows what is staged, what has been modified, and what is untracked. This command is essential for avoiding unintended commits.
+
+```bash
+git status
+```
+
+This command is used frequently because it always provides a clear snapshot before making more commits or staging changes. It is the best way to avoid accidental changes.
+
+## `git log`: Show project history
+
+`git log` provides a detailed commit history showing commits, authors, and timestamps. `git log --oneline` is also useful for a more concise history view, with each commit condensed into a single line.
+
+```bash
+# Full commit history
+git log
+
+# Condensed commit history
+git log --oneline
+```
+
+This command helps track project history, and `--oneline` is ideal for quickly reviewing recent work. It is great for following progress and is there when a deeper review is needed.
+
+## `git diff`: Changes between two points
+
+This is very useful for viewing changes between the working directory and the last commit. It helps check modifications before committing them, ensuring everything is in order.
+
+```bash
+git diff
+```
+
+This is often used before committing. It helps avoid including incomplete code, especially in larger tasks.
+
+## `git branch`: List, create, and delete branches
+
+Branching is essential for working on independent features or tasks. `git branch` helps list existing branches, create new branches, and delete old ones. Proper branch management keeps projects organized and prevents issues with parallel work.
+
+```bash
+# List all branches
+git branch
+
+# Create a new branch
+git branch feature-login
+
+# Delete a branch
+git branch -d feature-login
+```
+
+## `git checkout`: Switch or create new branches
+
+Switching branches is another daily task in Git. `git checkout <branch>` allows moving between branches, while `git checkout -b <new-branch>` creates a new branch and switches to it immediately.
+
+```bash
+# Switch to an existing branch
+git checkout feature-login
+
+# Create and switch to a new branch
+git checkout -b feature-signup
+```
+
+## `git remote add <alias>`: Link remote repositories
+
+When setting up a new repository, linking it to a remote is usually one of the first tasks.
+`git remote add origin` connects the local repository to a remote one, preparing it for collaborative work.
+
+```bash
+git remote add origin https://github.com/user/repo.git
+```
+
+This command may seem trivial, but when done correctly from the start, the rest of the remote operations are simplified. It is worth double-checking the URL to avoid future push and pull errors.
+
+## `git pull/push`: Sync changes
+
+These are fundamental for any Git workflow involving a remote repository.
+`git pull` brings changes from the remote into the local branch, while `git push` sends local commits to the remote branch.
+
+```bash
+# Pull changes from remote
+git pull origin main
+
+# Push changes to remote
+git push origin main
+```
+
+Mastering pull and push techniques is essential for collaboration. Knowing when and how to use each is key, especially in larger projects where synchronization matters.
+
+## `git reset <commit>`: Undo changes
+
+Whether due to mistakes or updates, there are times when a rollback is needed. `git reset` helps undo commits by moving the HEAD pointer to a specific commit. It is a simple command that is useful when mistakes need to be corrected.
+
+```bash
+# Undo changes in the last commit
+git reset HEAD~1
+```
+
+The reset command is useful for removing commits that are considered incorrect. However, it must be used carefully because it rewrites commit history.
+
+## `git stash`: Save changes temporarily
+
+In fast-paced work environments, switching tasks quickly is common. `git stash` allows saving current work without committing, making it easier to return and continue later.
+
+```bash
+git stash
+```
+
+For more flexibility, if there are untracked files that also need to be saved, use:
+
+```bash
+git stash -u
+```
+
+The `git stash` command is practical in real-world situations and is useful for temporarily clearing the workspace, especially when juggling multiple responsibilities.
+
+## `git reflog`: Access lost changes
+
+Often overlooked, but very useful for accessing the full history of Git commands. It can be a lifesaver when trying to recover lost work or troubleshoot complex problems.
+
+```bash
+git reflog
+```
+
+If something goes wrong, `git reflog` can provide a trail to recover lost changes, so it is worth knowing even if it is not used daily.
+
+## Conclusions
+
+These 15 Git command-line tips provide a solid foundation for both individual projects and team workflows. Mastering these basics ensures efficient work, minimizes errors, and keeps a clean project history. Over time, as each command becomes familiar, confidence in code management grows.
+
+The power of Git lies in its flexibility, and learning to use the command line makes it possible to take full advantage of it. With consistent use, these commands become second nature and contribute to a smoother development experience.

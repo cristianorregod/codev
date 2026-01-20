@@ -1,0 +1,82 @@
+---
+title: "Git setup: installation and configuration"
+date: "2024-05-01"
+description: >-
+  The basics needed to configure Git and keep version control organized and up to date.
+toc: true
+tags:
+  - git
+cover: "/images/posts/git-configuracion-basica.webp"
+author: "@cristianorregodev"
+---
+
+As software developers, it is important to use a version control system to manage code and work with a team. Git is the most popular version control tool today. 👨‍💻
+
+🚀 This guide walks through the steps to install and configure Git on a computer so its benefits can be used immediately.
+
+## Step 1: Download and install ✅
+
+1. Visit the **<a href="https://git-scm.com/" target="_blank">official Git website</a>**
+2. Download the version for the operating system (Windows, macOS, Linux).
+3. Run the downloaded installer and follow the on-screen instructions to complete the installation.
+
+## Step 2: Identity configuration 🔐
+
+All available configuration options can be found in **<a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration" target="_blank">Git Configuration</a>**
+
+1. Open the terminal (CMD or Windows Command Prompt)
+2. Configure the user name with the following command:
+
+```bash
+git config --global user.name "User Name"
+```
+
+3. Configure the email address with the command:
+
+```bash
+git config --global user.email "user@email.com"
+```
+
+## Step 3: Settings configuration
+
+These are just two simple examples of what can be configured. Git offers many ways to customize settings based on how work is preferred. Exploring the possibilities is encouraged.
+
+- Configure console output color with:
+
+```bash
+git config --global color.ui auto
+```
+
+- Configure the default text editor for commit messages (replace "your_editor" with the preferred editor):
+
+```bash
+git config --global core.editor "your_editor"
+```
+
+## Bonus 🎁
+
+The next step is to find a place to keep code safe or to collaborate with a team. Alternatives include GitHub, GitLab, and others.
+
+- Create a **<a href="https://github.com/" target="_blank">GitHub</a>** account
+- Create a repository:
+  <img
+    src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1714658179/posts/oqc9snjp3wyv2j2e0uzb.gif"
+    alt="UI illustration of new repository creation"
+  />
+- Follow the repository steps to upload the project to GitHub:
+
+  ```bash
+  # Open the root folder of the project in the terminal
+  cd "project-path"
+  ```
+
+- Once inside the project, run the following commands:
+
+  ```bash
+  git init #Initialize the git repository
+  git add . #Add files to the staging area
+  git commit -m "first commit" #Commit changes
+  git branch -M main #Rename the branch
+  git remote add origin <Repository URL> #Add the remote repository (created in GitHub)
+  git push -u origin main #Push changes to the remote repository
+  ```

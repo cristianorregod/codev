@@ -1,0 +1,200 @@
+---
+title: How to clone an array in JavaScript correctly and without issues
+date: "2023-06-25"
+description: Copying an array in JavaScript may seem simple, but this data type hides a few traps that must be handled.
+tags:
+  - javascript
+cover: "/images/posts/como-clonar-un-array-en-javascript.svg"
+toc: true
+author: "@midudev"
+---
+
+> **Note:** _This blog post is a faithful copy of the original written and published by_ **<a href="https://midu.dev" target="_blank">@midudev</a>**
+
+When **copying an Array in JavaScript**, several details must be considered to avoid problems. The sections below explain **why assignment cannot be used, how to make shallow copies, and how to make deep copies of arrays**. 👇
+
+## Why not just use assignment = to copy an Array? 😱
+
+In JavaScript there are primitive data types (`String, Boolean, Number, null...`) and `Object` types (objects, arrays, maps, sets...).
+
+**Primitive data is immutable.** The value of the string `Hello world` cannot be changed. To _modify_ it, a new value must be created.
+
+In contrast, data structures based on `Object` are mutable. The value of these references can be changed. For example:
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const fakeCopyDynos = dynos;
+// change the first element value in fakeCopyDynos
+fakeCopyDynos[0] = "🐓";
+
+// show fakeCopyDynos and see the change
+console.log(fakeCopyDynos); // -> [ '🐓', '🦕', '🐉' ]
+
+// but if dynos is also inspected...
+console.log(dynos); // -> [ '🐓', '🦕', '🐉' ]
+// surprise! 🐓 got in
+```
+
+As shown, changing element 0 in `fakeCopyDynos` also changes `dynos`. That happens because the variable stores a reference to the same array, not a copy.
+
+This also appears when checking equality between two arrays, which can lead to surprises:
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const fakeCopyDynos = dynos;
+
+console.log(dynos === fakeCopyDynos); // -> true
+
+const arrayWithSameDynos = ["🦖", "🦕", "🐉"];
+console.log(dynos === arrayWithSameDynos); // -> false
+```
+
+The `===` comparison checks the reference between arrays, not their values, so this also requires caution.
+
+## How to copy an Array in JavaScript? 🤔
+
+To avoid the previous problem, a copy of the original array must be made. There are different techniques for this and some challenges to consider.
+
+For now, the simplest way is to use JavaScript's `.concat` method:
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const copyOfDynos = [].concat(dynos);
+// change the first element value in fakeCopyDynos
+copyOfDynos[0] = "🐓";
+
+// show fakeCopyDynos and see the change
+console.log(copyOfDynos); // -> [ '🐓', '🦕', '🐉' ]
+
+// now dynos still has the t-rex
+console.log(dynos); // -> [ '🦖', '🦕', '🐉' ]
+```
+
+`concat` is an `Array` method that concatenates one array to another. This makes all elements of `dynos` get concatenated into an empty array.
+
+Another way is to use `.slice`. This method is usually used to retrieve a copy of part of an array, but when used without parameters it returns a copy of all elements.
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const copyOfDynos = dynos.slice();
+```
+
+### The most modern way to copy an Array 🚀
+
+Nowadays, the `spread` operator can be used to expand elements of an iterable in another place. In this case, the elements can be expanded into a new Array.
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const copyOfDynos = [...dynos];
+```
+
+Another, even more modern, way is to use the `.from` method of Array, which also allows creating arrays from iterable data structures:
+
+```javascript
+const dynos = ["🦖", "🦕", "🐉"];
+const copyOfDynos = Array.from(dynos);
+```
+
+## Shallow copies vs. deep copies 🆚
+
+What has been seen so far works correctly but has a problem. **These are shallow copies**. This means only the first level of the iterable elements is copied.
+
+To see the problem more clearly, the array can be nested within another array.
+
+```javascript
+const dynosAndFriends = ["🦖", "🦕", ["🦎", "🐊"]];
+const copy = [...dynosAndFriends];
+
+// In the first element of the nested array, place a 🐓
+copy[2][0] = "🐓";
+
+// In the copy everything looks fine
+console.log(copy); // -> [ '🦖', '🦕', [ '🐓', '🐊' ] ]
+
+// But the original array has also changed!
+console.log(dynosAndFriends); // -> [ '🦖', '🦕', [ '🐓', '🐊' ] ]
+```
+
+**Big problem 😱!** This does not only happen with the `spread` operator. It also happens with `.slice`, `.from`, and `.concat`: **a shallow copy of the Array.** In other words, if there are data structures like objects or nested arrays, they keep the reference instead of creating a copy.
+
+## How to make a deep copy of an Array in JavaScript? 🕵️‍♂️
+
+There is a simple trick to make a deep copy of an Array as long as non-serializable data is not copied (a class instance, a function, a date...). For that, the `parse` and `stringify` methods of `JSON` can be used:
+
+```javascript
+const dynosAndFriends = ["🦖", "🦕", ["🦎", "🐊"]];
+const dynosAndFriendsString = JSON.stringify(dynosAndFriends);
+const copyOfDynosAndFriends = JSON.parse(dynosAndFriendsString);
+
+// for one-liner-lovers 💛
+const copyOfDynosAndFriends = JSON.parse(JSON.stringify(dynosAndFriends));
+```
+
+The trick is to convert the array to a string first and then parse that string to JSON. Because the Array is a JSON-compatible data structure, **the copy is created.**
+
+Things to keep in mind:
+
+- `undefined` values are converted to `null`.
+- Functions, class instances, DOM nodes... cannot be stored. Be careful with this.
+- Many instances will try to execute the `.toString` method, for example an instance of `new Date()` becomes a string with the ISODate.
+
+### Another option with better performance using recursion
+
+If better performance is needed (cloning with JSON.parse is not free...) and a few lines of code are preferred, recursion is an option.
+
+With it, a method can be written to traverse an Array and copy its elements. If one of those elements is an Array, the method calls itself to repeat the operation. This continues until it finds an element that is not an array and extracts that value.
+
+Keep in mind this version **is only intended to handle Arrays, so it does not account for deep copies when the array contains objects**, but with a few changes that can be achieved.
+
+```javascript
+const dynosAndFriends = ["🦖", "🦕", ["🦎", "🐊"]];
+
+const cloneArray = (items) =>
+  items.map((item) => (Array.isArray(item) ? cloneArray(item) : item));
+
+const copyOfDynosAndFriends = cloneArray(dynosAndFriends);
+```
+
+### Using dependencies like just or lodash 🔽
+
+If these solutions are insufficient, **a small dependency** can help. It is called [`just-clone` and it only takes a few hundred bytes.](https://www.npmjs.com/package/just-clone)
+
+```javascript
+import clone from "just-clone";
+
+let arr = [1, 2, 3];
+let subObj = { aa: 1 };
+let obj = { a: 3, b: 5, c: arr, d: subObj };
+let objClone = clone(obj);
+
+arr.push(4);
+objClone.d.bb = 2;
+obj; // {a: 3, b: 5, c: [1, 2, 3, 4], d: {aa: 1}}
+objClone; // {a: 3, b: 5, c: [1, 2, 3], d: {aa: 1, bb: 2}}
+```
+
+**If recursive arrays need to be cloned or the arrays are VERY large** (hundreds of thousands of elements), it is best to use [lodash.cloneDeep](https://lodash.com/docs/#cloneDeep). It is not the lightest dependency, but it is the most optimized and handles _corner cases_ better.
+
+### `structuredClone`, the native method for making a deep copy of an Array
+
+In the latest versions of browsers and JavaScript runtimes like _Deno_ or _Node_, it is possible to use the `structuredClone` method.
+
+This method creates a deep copy using an [algorithm that is specified](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which solves the previous issues. It can be used like this:
+
+```javascript
+const dynosAndFriends = ["🦖", "🦕", ["🦎", "🐊"]];
+const clone = structuredClone(dynosAndFriends);
+
+// In the first element of the nested array, place a 🐓
+clone[2][0] = "🐓";
+
+// In the clone everything is fine...
+console.log(clone); // -> [ '🦖', '🦕', [ '🐓', '🐊' ] ]
+
+// And the original remains unchanged!
+console.log(dynosAndFriends); // -> [ '🦖', '🦕', [ '🦎', '🐊' ] ]
+```
+
+> This method can also be used to deeply clone objects and it respects `Date` values and `Regexp` as well. Keep in mind that this method is NOT part of JavaScript, but part of the Web API.
+
+So... considering it makes deep copies, does not take extra space, and is the fastest and most native option... **why not always use it?** [Browser support for `structuredClone`](https://caniuse.com/mdn-api_structuredclone), at the time of writing, is 83%. That is not bad, but recent browsers like Chrome 97 or Safari 15.3 still did not support it. It is recommended to load a _polyfill_ if it is used.

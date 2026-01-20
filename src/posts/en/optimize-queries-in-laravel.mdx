@@ -1,0 +1,91 @@
+---
+title: Optimizing Laravel queries like an expert
+date: "2023-10-21"
+description: Keys to take queries to the next level by increasing efficiency and performance in Laravel.
+toc: true
+tags:
+  - laravel
+cover: "/images/posts/optimizar-consultas-en-laravel.png"
+author: "@cristianorregodev"
+---
+
+Once upon a time, a young developer struggled with slow database queries. Every time data was requested, the wheel kept spinning until results finally appeared. Many tricks were tried, but nothing seemed to work.
+
+While browsing the Laravel documentation, a chapter on query optimization appeared. That was the turning point. The details of how to optimize database queries were learned, making web applications ultra fast.
+
+Laravel developers can achieve the same success by following these simple query optimization best practices.
+
+## Indexing
+
+Use indexing for columns frequently used in `WHERE` and `JOIN` clauses. This drastically improves query performance.
+
+```php
+public function up()
+{
+    Schema::table('posts', function (Blueprint $table) {
+        $table->index('title');
+        $table->index('created_at');
+    });
+}
+```
+
+## Avoid subqueries and unions
+
+Instead of using subqueries and `UNION`, use `JOIN` whenever possible. `JOIN`s are faster and more efficient.
+
+```php
+$users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+```
+
+## Eager loading
+
+Use [eager loading](https://laravel.com/docs/10.x/eloquent-relationships#eager-loading "Eager loading") for relationships to reduce the number of queries.
+
+```php
+$users = User::with('posts')->get();
+```
+
+## Cache
+
+Use caching for repetitive queries to save time and resources.
+
+```php
+// The second parameter is the number of seconds to remember
+$value = Cache::remember('users', $seconds, function () {
+    return DB::table('users')->get();
+});
+```
+
+## Pagination
+
+Use pagination to limit the number of rows returned.
+
+```php
+$users = DB::table('users')->paginate(15);
+```
+
+## Specific queries
+
+Avoid using SELECT *; instead, select specific columns as needed.
+
+```php
+$users = DB::table('users')->select('name', 'email')->get();
+```
+
+## Raw SQL
+
+Use raw `SQL` when necessary, especially for complex queries.
+
+```php
+$users = DB::select('select * from users where name = ?', [$name]);
+```
+
+By following these query optimization best practices, a noticeable improvement in Laravel application performance can be achieved. With optimized queries, data is fetched faster and a better user experience is delivered.
+
+## Conclusion
+
+Laravel is a robust framework that makes it easier to build fast and efficient web applications. With the right query optimization techniques, Laravel applications can be taken to the next level. Whether a developer is experienced with Laravel or just starting out, it is never too late to learn how to optimize database queries.

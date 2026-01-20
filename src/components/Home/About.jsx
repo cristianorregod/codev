@@ -9,26 +9,23 @@ export const About = async () => {
   return (
     <Container id="about">
       <SectionTitle>{t("title")}</SectionTitle>
-      <div className="pt-12 md:pt-2">
-        <div className="w-full">
-          <img
-            src="/images/cristian_orrego.webp"
-            alt="Programador mirando a la cámara con escritorio atrás"
-            className=" object-cover rounded-full size-72 shadow-lg shadow-dark-900/20 dark:shadow-dark-50/10  mx-auto"
-            loading="lazy"
-          />
+      <div className="pt-12 md:pt-8 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+        <img
+          src="/images/me.JPG"
+          alt="Programador mirando a la cámara con escritorio atrás"
+          className="object-cover rounded-full size-64 md:size-48 shadow-lg shadow-dark-900/20 dark:shadow-dark-50/10 shrink-0 lg:-rotate-3 hover:rotate-0 transition-transform duration-300"
+          loading="lazy"
+        />
 
-          <p className="mt-8 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
+        <div className="flex flex-col gap-4">
+          <p className="text-dark-700 dark:text-dark-200 text-pretty">
             {t("p1")}
           </p>
-          <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
+          <p className="text-dark-700 dark:text-dark-200 text-pretty">
             {t("p2")}
           </p>
-          <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
+          <p className="text-dark-700 dark:text-dark-200 text-pretty">
             {t("p3")}
-          </p>
-          <p className="mt-4 text-dark-700 dark:text-dark-200 md:w-11/12 text-pretty text-base">
-            {t("p4")}
           </p>
         </div>
       </div>

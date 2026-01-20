@@ -1,0 +1,187 @@
+---
+title: "Top 5 design patterns in Node.js"
+date: "2025-04-18"
+description: >-
+  Five essential design patterns in Node.js for building scalable and maintainable applications.
+toc: true
+tags:
+  - node.js
+cover: "/images/posts/5-patrones-de-diseno-nodejs.webp"
+author: "@cristianorregodev"
+---
+
+Node.js has positioned itself as one of the favorite technologies for building fast, scalable, event-driven applications. Its asynchronous, non-blocking architecture makes it an excellent option for handling large volumes of simultaneous operations.
+
+But choosing Node.js is not enough on its own to guarantee a scalable and maintainable application. That is where design patterns come in: reusable solutions that help solve common problems in a structured and efficient way. Applying them correctly can make a big difference in the quality, organization, and growth of a project.
+
+This article highlights five of the most important design patterns in Node.js, what each one is for, how it is implemented, and why they can be key to keeping applications robust and well organized.
+
+## 1. Singleton design pattern
+
+The Singleton pattern is a solution for creating objects that must be shared across multiple parts of an application. It is used to create a single instance of an object that can be accessed from anywhere in the application.
+
+Example:
+
+```javascript
+class DatabaseConnection {
+  constructor() {
+    if (!DatabaseConnection.instance) {
+      this.connection = this.createConnection();
+      DatabaseConnection.instance = this;
+    }
+    return DatabaseConnection.instance;
+  }
+
+  createConnection() {
+    console.log("New database connection created");
+    return {}; // Simulate connection object
+  }
+}
+
+const db1 = new DatabaseConnection();
+const db2 = new DatabaseConnection();
+
+console.log(db1 === db2); // true
+```
+
+By guaranteeing a single instance, resources are saved and unnecessary reinitializations are avoided.
+
+## 2. Factory design pattern
+
+The Factory pattern is a solution for creating objects that can be instantiated differently based on the parameters provided. It is used to create objects that need specific configuration or parameters to function.
+
+Example:
+
+```javascript
+class Logger {
+  static createLogger(type) {
+    if (type === "console") {
+      return new ConsoleLogger();
+    } else if (type === "file") {
+      return new FileLogger();
+    }
+    throw new Error("Invalid logger type");
+  }
+}
+
+class ConsoleLogger {
+  log(message) {
+    console.log(`Console: ${message}`);
+  }
+}
+
+class FileLogger {
+  log(message) {
+    console.log(`File: ${message}`); // Simulate file logging
+  }
+}
+
+const logger = Logger.createLogger("console");
+logger.log("This is a log message");
+```
+
+## 3. Observer design pattern
+
+The Observer pattern is a solution for creating objects that interact with each other. It is used to create objects that can observe and modify the state of other objects.
+
+Example:
+
+```javascript
+const EventEmitter = require("events");
+
+class NotificationService extends EventEmitter {}
+
+const notifier = new NotificationService();
+
+notifier.on("event", (data) => {
+  console.log(`Event received: ${data}`);
+});
+
+notifier.emit("event", "New notification");
+```
+
+## 4. Middleware design pattern
+
+The middleware pattern is widely used in frameworks like Express.js. It allows functions that process a request in sequence to be chained, making the application modular and manageable. This pattern is used to create functions that can modify or manipulate the request or response before or after it is received.
+
+Example:
+
+```javascript
+const express = require("express");
+const app = express();
+
+const middleware1 = (req, res, next) => {
+  console.log("Middleware 1");
+  next();
+};
+
+const middleware2 = (req, res, next) => {
+  console.log("Middleware 2");
+  next();
+};
+
+app.use(middleware1);
+app.use(middleware2);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
+```
+
+## 5. Proxy design pattern
+
+The Proxy pattern provides a substitute or placeholder to control access to another object. It is useful for lazy initialization, access control, and logging. It acts as an intermediary between the client and the real object being accessed. It is like a "doorman" that decides whether someone can enter, should wait, or whether extra steps are needed before letting them in.
+
+Example:
+
+```javascript
+class APIProxy {
+  constructor(api) {
+    this.api = api;
+    this.cache = {};
+  }
+
+  fetchData(endpoint) {
+    if (this.cache[endpoint]) {
+      console.log("Returning cached data");
+      return this.cache[endpoint];
+    }
+    console.log("Fetching data from API");
+    const data = this.api.fetchData(endpoint);
+    this.cache[endpoint] = data;
+    return data;
+  }
+}
+
+class API {
+  fetchData(endpoint) {
+    return `Data from ${endpoint}`;
+  }
+}
+
+const api = new API();
+const proxy = new APIProxy(api);
+
+console.log(proxy.fetchData("/users"));
+console.log(proxy.fetchData("/users"));
+```
+
+## Conclusions
+
+Adopting these design patterns in Node.js can significantly improve scalability, maintainability, and application performance. These patterns provide best practices and reduce the likelihood of common software development errors.
+
+## Infographic
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1744988751/posts/bp5jchkezl2msanzxhuy.svg"
+  alt="Infographic: Node.js design patterns"
+/>
+<br />
+
+> **Note:** _Inspired by the original written and published by_ **
+<a href="https://medium.com/@chirag.dave" target="_blank">
+  @chirag.dave
+</a>
+**

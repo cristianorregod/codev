@@ -3,10 +3,11 @@
         "Banner": {
             "greeting": "Hola,",
             "name": "soy Cristian",
-            "role": "Desarrollador Fullstack",
-            "title": "Ingeniero de Sistemas",
-            "experience": "+4 años de experiencia en desarrollo de software",
-            "specialization": "Especializado en soluciones backend, automatización e integraciones. Enfocado en crear soluciones que conectan datos y optimizan procesos."
+            "role": "Ingeniero de Software",
+            "title": "Transformo operaciones complejas en",
+            "experience": "ecosistemas inteligentes con Ingeniería de Software y Automatización",
+            "specialization": "Experto en integrar Datos, IA y Plataformas Empresariales.",
+            "finale": "No solo escribo código, construyo soluciones."
         },
         "Nav": {
             "experience": "Experiencia",
@@ -51,11 +52,10 @@
         },
         "About": {
             "title": "Sobre mí",
-            "p1": "Hola 👋, soy Cristian Orrego, Ingeniero en Sistemas y Desarrollador FullStack. Inicié en la programación hace más de 4 años. Hoy estoy liderando un equipo de desarrollo en una empresa con mercado internacional.",
-            "p2": "Entre mis logros destaco el desarrollo de soluciones de integración y automazación de procesos en Industrial Distributors International Co., logrando impacto operativo en áreas de comercial, administración y operaciones.",
-            "p3": "Como proyecto personal comparto artículos de blog sobre programación. Cuando compartes tu conocimiento es cuando más aprendes y mi objetivo además de seguir mejorando mis habilidades es ayudar a otros con mis experiencias, guías y tutoriales.",
-            "p4": "Por último, comparto mi hoja de vida actualizada, donde de manera más detallada específico mi experiencia laboral, logros y formación académica.",
-            "cv": "Curriculum"
+            "p1": "Me apasiona resolver problemas, ya sea construyendo aplicaciones desde cero o encontrando la lógica oculta tras los datos.",
+            "p2": "La atención al detalle, la investigación y la curiosidad hacen que vea lo que otros no ven.",
+            "p3": "Creo que la tecnología solo es útil si hace la vida más fácil a las personas; por eso, pongo el mismo entusiasmo en escribir código limpio que en colaborar y comunicarme bien con mi equipo.",
+            "cv": "Ver CV"
         },
         "Articles": {
             "title": "Artículos",

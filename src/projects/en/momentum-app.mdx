@@ -1,0 +1,57 @@
+---
+title: "Momentum Generative App"
+category: "Fullstack"
+date: "2023-02-17"
+excerpt: Momentum Agency provides digital marketing solutions, and as part of its innovation process it decided to build a web application whose main goal is to optimize the creative process for copy and illustration generation by integrating AI tools like GPT-3, Dall-E-2, and Codex.
+cover: "/images/momentum/cover.webp"
+stack:
+  - NodeJS
+  - Express.js
+  - ReactJS
+  - SASS
+  - MongoDB
+---
+
+The app is designed so users can generate copy text, illustrations, and code snippets using artificial intelligence tools. To support that, an interface was designed and built that provides the three tools in one place and keeps a history of user queries.
+
+The project is built on the MERN stack, using ReactJS for the interface and NodeJS for the backend. It uses core ReactJS tools such as Context API, hooks, and routing via React Router. It includes sections like user profile, history, text generation, and image generation. Backend communication happens through an API.
+
+## Features
+
+This application uses a simple login that grants access to the main features that allow users to query AI models.
+
+- **Authentication**: Allows users to create an account or sign in with an existing one. User validation is done with JWT tokens that last 12 hours per agency policy.
+- **Generate text**: Provides a simple interface for text generation. The user enters a single prompt for copy ideas and the GPT-3.5 model returns recommendations.
+- **Generate images**: With a similar interface, this UI connects to Dall-E-2 so users can provide instructions via text and generate images.
+
+## Preview (Screenshots)
+
+<div class="mdx-gallery">
+  <img
+    src="/images/momentum/responsive.webp"
+    alt="Interface preview"
+    loading="lazy"
+  />
+  <br />
+  <img
+    src="/images/momentum/screenshot.webp"
+    alt="Interface preview"
+    loading="lazy"
+  />
+  <br />
+  <img
+    src="/images/momentum/mockup.webp"
+    alt="Interface preview"
+    loading="lazy"
+  />
+</div>
+
+## Technologies
+
+| Technology | Use / Implementation                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| NodeJS     | Runtime environment for server-side JavaScript                                                   |
+| Express.js | Framework for fast API development with NodeJS                                                   |
+| ReactJS    | For building dynamic components and reusing them.                                                |
+| SASS       | Used to extend CSS functionality and enable code modularization                                   |
+| API        | Consumption of external service APIs for dynamic content visualization, such as the blog content |

@@ -1,0 +1,107 @@
+---
+title: "Real estate portal API and CMS"
+category: "Fullstack"
+date: "2022-03-30"
+excerpt: Using backend technologies, an API service was built to allow resource consumption across different services through GET endpoints.
+cover: "/images/cms-vc/cover.webp"
+stack:
+  - Laravel
+  - MySQL
+  - PHP
+  - JavaScript
+---
+
+The backend project is built in Laravel and is mainly composed of two parts: a real estate management system where the user can perform all property management tasks (CREATE, EDIT, DELETE), and the API service used by different clients to show property information in custom interfaces.
+
+## Features
+
+Since the project includes both the API and the content manager, it provides the following general features.
+
+- **Real estate REST API**: Includes an API that lets users filter properties by different attributes, mark properties as favorites, list properties by region, and view detailed property information.
+- **Real estate CMS**: A custom content management system built with Laravel that offers a simple interface to manage CREATE, EDIT, and DELETE operations. In addition to properties, other resources such as cities, attributes, or categories can also be managed.
+- **MySQL database**: Data integrity is ensured by a robust database design with the relationships required for proper system operation.
+- **Authentication and security**: The CMS includes authentication and user role validation so unauthorized users are blocked from accessing or modifying sensitive information.
+
+## CMS preview
+
+<div class="mdx-gallery">
+  <img
+    src="/images/cms-vc/screenshot.webp"
+    alt="Admin panel"
+    loading="lazy"
+  />
+  <br />
+  <img
+    src="/images/cms-vc/responsive.webp"
+    alt="Admin panel"
+    loading="lazy"
+  />
+  <br />
+  <img
+    src="/images/cms-vc/mockup.webp"
+    alt="Admin panel"
+    loading="lazy"
+  />
+</div>
+
+## API documentation
+
+Basic description of the API specification developed to consume the resources available in the Real Estate Portal. It details the specification for the available endpoints and methods.
+
+#### Get property list
+
+<details>
+ <summary><code>GET</code> <code><b>/api/v1/properties</b></code> <code>(Returns property list with basic data)</code></summary>
+
+##### Parameters
+
+> No parameters
+
+##### Responses
+
+| http code | content-type       | response                                 |
+| --------- | ------------------ | ---------------------------------------- |
+| `200`     | `application/json` | `{"data": [...]}`                        |
+| `400`     | `application/json` | `{"code":"400","message":"Bad Request"}` |
+
+##### Example with fetch
+
+```javascript
+fetch("/api/v1/properties")
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
+```
+
+</details>
+
+---
+
+#### Get property detail
+
+<details>
+ <summary><code>GET</code> <code><b>/api/v1/properties/{slug}</b></code> <code>(Detailed property specification)</code></summary>
+
+##### Parameters
+
+| name   | type     | data-type | description                |
+| ------ | -------- | --------- | -------------------------- |
+| `slug` | required | string    | Unique slug attribute for the property |
+
+##### Responses
+
+| http code | content-type       | response                                 |
+| --------- | ------------------ | ---------------------------------------- |
+| `200`     | `application/json` | `{"data": {...}}`                        |
+| `400`     | `application/json` | `{"code":"400","message":"Bad Request"}` |
+
+##### Example with fetch
+
+```javascript
+fetch("/api/v1/properties/{slug}")
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
+```
+
+</details>

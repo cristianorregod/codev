@@ -1,0 +1,103 @@
+---
+title: "How to use the Optional Chaining access operator"
+date: "2023-11-07"
+description: >-
+  Optional Chaining in JavaScript: how it is used, when it is convenient, and its pros and cons. Avoid errors and improve code readability.
+toc: true
+tags:
+  - javascript
+cover: "/images/posts/optional-chaining.svg"
+author: "@cristianorregodev"
+---
+
+JavaScript developers often deal with "TypeError" issues due to missing properties or methods on nested objects. Optional Chaining provides an ideal solution.
+
+## What is Optional Chaining?
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining" target="_blank">Optional Chaining</a> is a newer operator in JavaScript that allows access to properties on nested objects without manually checking each level. In essence, it acts as a safety net that prevents code from breaking when trying to access properties that do not exist.
+
+## How is Optional Chaining used?
+
+The usual way to access a property is with the `dot notation` operator **(.)**, but that operator throws an error immediately if an attempt is made to access a property that does not exist. To solve this, Optional Chaining is used by adding a question mark **(?)** after the property or method and then the usual **(.)**. Example:
+
+```javascript
+const person = {
+  name: "Juan",
+  work: {
+    title: "Developer",
+  },
+};
+
+const occupation = person.work?.title;
+console.log(occupation); // 'Developer'
+```
+
+If `person.work` did not exist, the result would be `undefined` instead of an error.
+
+## When to use Optional Chaining
+
+Optional Chaining is especially useful when working with data from APIs or databases where object structures can vary. It is also useful for safely accessing nested properties without writing complex verification logic.
+
+Consider user data coming from an API, where the object structure can vary. Sometimes users have a secondary email address, and other times they do not. Optional Chaining makes it easy to access the secondary email without causing errors:
+
+```javascript
+// Simulated API response
+const API_RESPONSE = {
+  name: "Ana",
+  mainEmail: {
+    mailAddress: "ana@email.com",
+  },
+  // The 'secondaryEmail' property may not exist for some users.
+};
+
+const secondaryEmail = API_RESPONSE.secondaryEmail?.mailAddress;
+console.log(secondaryEmail); // If 'secondaryEmail' exists, it prints; otherwise, it returns 'undefined'.
+```
+
+In this case, Optional Chaining prevents an error if the `secondaryEmail` property is not present in the `API_RESPONSE` object.
+
+## Caution, it is not always the best option... 😟
+
+When working with objects where all properties are expected to exist and should not be optional, using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#dot_notation" target="_blank">dot notation</a> is preferable because it indicates the property is required and its absence is an error to fix. For example, in a configuration object:
+
+```javascript
+const config = {
+  lang: "es",
+  theme: "claro",
+  results_limit: 10,
+};
+
+// Accessing properties with dot notation
+const lang = config.lang;
+const limit = config.results_limit;
+console.log(lang, limit); // 'es' 10
+```
+
+Another scenario is when a specific property must pass a validation:
+
+```javascript
+const user = {
+  name: "Cristian Orrego",
+  email: "cristian@email.com",
+};
+
+const emailValidation = isEmail(user.email);
+console.log(emailValidation); // true or false
+```
+
+In both cases, the properties being accessed must exist for normal application execution. Since they must exist, additional validations should be included as needed.
+
+## Advantages
+
+- Prevents "TypeError" issues when accessing missing properties.
+- Simplifies code by removing verbose checks.
+- Improves readability by clearly expressing developer intent.
+
+## Disadvantages
+
+- Not compatible with older browsers, so compatibility should be checked before using it.
+- Can allow errors to go unnoticed if not handled properly.
+
+## Conclusions
+
+Optional Chaining is a valuable addition to JavaScript that makes code more robust and readable by preventing errors when accessing missing properties. However, like any feature, it should be used with care and browser compatibility should be considered. It is also important to decide when it is a good idea to use it and when it is not, since it is not always the best choice and depends on the specific use case.

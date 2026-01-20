@@ -1,0 +1,212 @@
+---
+title: "5 keys to build efficient and scalable APIs"
+date: "2025-04-22"
+description: >-
+  Best practices for building RESTful APIs while ensuring scalability and efficiency.
+toc: true
+tags:
+  - API REST
+cover: "/images/posts/restful-api-practicas.webp"
+author: "@cristianorregodev"
+---
+
+A RESTful API is a design style for communication between applications over the network, based on architectural principles rather than rigid standards. Its goal is to offer efficient, reliable, and scalable services. Each request must contain all the necessary information without depending on server state. In addition, a RESTful architecture can be composed of multiple layers, making it easier to build complex and robust applications.
+
+## URI design
+
+In RESTful API design, URLs usually represent resources (objects), while HTTP methods (such as GET, POST, PUT, DELETE, etc.) represent operations on those resources (verbs). This design style emphasizes the state and representation of resources rather than actions.
+
+### Verb + Object
+
+In RESTful APIs, verbs are usually the five HTTP methods that correspond to CRUD operations:
+
+- **GET**: Read
+- **POST**: Create
+- **PUT**: Update
+- **PATCH**: Update (usually for partial updates)
+- **DELETE**: Delete
+
+<br />
+According to the HTTP specification, verbs should always be uppercase.
+
+**The object should be a noun**
+
+When designing an API, the URL (Uniform Resource Locator) usually represents a resource that acts as the object of an HTTP verb. According to RESTful design principles, URLs should be nouns rather than verbs because they represent a collection of resources or a single instance, not an action.
+
+**Incorrect examples**:
+
+- `/getAllCars`
+- `/createNewCar`
+- `/deleteAllRedCars`
+
+<br />
+
+These URLs include verbs (get, create, delete) that describe actions rather than resources. This design does not match RESTful semantics.
+
+**Correct approach**:
+URLs should focus on resource descriptions rather than operations. Examples of compliant URL designs are:
+
+- `/users`: Represents a collection of users
+- `/users/123`: Represents a single user with a specific ID (123)
+
+<br />
+In the examples above, both are nouns, representing a collection of users and a specific user resource. This URL design makes APIs easier to understand and aligns with resource-oriented RESTful principles.
+
+Following this naming convention ensures API routes are clear, consistent, and easy to understand and maintain.
+
+## Plural URLs
+
+In general, using plural forms in URLs is recommended for consistency and clarity, since they typically represent collections of resources.
+
+When the URL points to a collection of resources, use plural nouns. For example, use `/users` instead of `/user` to represent a collection of all users.
+
+Even when pointing to a single resource, the plural form is recommended. For example, represent the user with ID 123 as `/users/123`. This approach keeps URLs consistent.
+
+When resources have hierarchical relationships, the URL should reflect this structure. For example, the collection of posts for user 123 can be represented as `/users/123/posts`.
+
+## Avoid deeply nested URLs
+
+A common scenario is when resources require multiple levels of categorization, leading to deeply nested URLs such as retrieving a specific category of articles from a specific author:
+
+```bash
+GET /authors/12/categories/2
+```
+
+These URLs are hard to scale and their semantics are not clear, so extra effort is often required to understand them. A better approach is to use query parameters beyond the first level:
+
+```bash
+GET /authors/12?categories=2
+```
+
+## Status codes
+
+For each client request, the server should respond with an HTTP status code and data.
+
+An HTTP status code is a three-digit number divided into five categories:
+
+- 1xx: Informational
+- 2xx: Success
+- 3xx: Redirection
+- 4xx: Client errors
+- 5xx: Server errors
+
+<br />
+
+These five categories contain more than 100 status codes that cover most possible situations. Each status code has a standard (or conventionally accepted) meaning, allowing the client to determine what happened by checking the status code. Therefore, the server should return the most precise status code possible. **<a href="https://http.cat/" target="_blank">More about HTTP status codes here.</a>**
+
+APIs do not need 1xx status codes. Below is an explanation of the other four categories.
+
+## Server responses
+
+API responses should not be plain text, but structured JSON objects to ensure a standard format. The server Content-Type header should be set to application/json.
+
+The client should also specify that it accepts JSON responses by setting the Accept header in its request:
+
+```bash
+GET /orders/2 HTTP/1.1
+Accept: application/json
+```
+
+**Do not return status code 200 for errors**
+
+An incorrect approach is to always return 200 OK, even when an error occurs, and include error details in the response body. This forces the client to parse the response body to determine whether an error occurred, which defeats the purpose of status codes.
+
+Incorrect:
+
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "status": "failure",
+  "data": {
+    "error": "Expected at least two items in list."
+  }
+}
+```
+
+Correct:
+
+The status code should indicate the result of the request. Errors should be conveyed through appropriate status codes, while the response body provides more details.
+
+For example, if the request is invalid, the server should return 400 Bad Request with error details in JSON format:
+
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+{
+  "error": "Invalid payload.",
+  "detail": {
+    "surname": "This field is required."
+  }
+}
+```
+
+## Provide links
+
+In RESTful APIs, including links in responses is common. This follows the hypermedia as the engine of application state (HATEOAS) principle, which improves API discoverability and self-descriptiveness.
+
+Two common ways to include links are:
+
+- **HAL**: A popular hypermedia format that represents relationships between resources. It uses the `_links` field in JSON responses:
+
+```json
+{
+  "id": 1,
+  "name": "Example",
+  "_links": {
+    "self": {
+      "href": "http://api.example.com/resource/1"
+    },
+    "related": {
+      "href": "http://api.example.com/resource/2"
+    }
+  }
+}
+```
+
+- **Directly in JSON**:
+
+```json
+{
+  "id": 1,
+  "name": "Example",
+  "links": {
+    "self": "http://api.example.com/resource/1",
+    "related": "http://api.example.com/resource/2"
+  }
+}
+```
+
+## Return content
+
+In RESTful API design, POST requests are used to create new resources. Whether the response includes the newly created resource depends on implementation needs. Two common approaches are:
+
+- **Return the created resource**: This approach includes a 201 Created status code and the full details of the new resource in the response. It also includes a Location header pointing to the resource URI.
+
+```bash
+HTTP/1.1 201 Created
+Location: /resources/123
+Content-Type: application/json
+{
+  "id": 123,
+  "name": "New Resource"
+}
+```
+
+- **Return no content**: Alternatively, the server may return only a 201 Created or 204 No Content response with a Location header, omitting resource details. This minimizes data transfer and allows the client to decide whether to fetch the resource later.
+
+```bash
+HTTP/1.1 201 Created
+Location: /resources/123
+```
+
+## Conclusions
+
+RESTful APIs follow the HTTP protocol, emphasizing resource representation and stateless interactions. By using standard HTTP methods (GET, POST, PUT, DELETE) and precise status codes, RESTful architectures provide a **simple, efficient, and maintainable** way to build web applications. This approach improves **scalability, flexibility, and maintainability** of web services.
+
+## Infographic
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1745462685/posts/zf80dccbmzk2umxcrciq.svg"
+  alt="Keys to designing efficient and scalable REST APIs"
+/>

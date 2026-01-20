@@ -1,0 +1,51 @@
+---
+title: "Bidirectional Salesforce and NetSuite integration"
+category: "Backend"
+date: "2025-6-30"
+excerpt: A bidirectional integration solution was built between the Salesforce CRM and the NetSuite ERP, enabling automated synchronization of critical entities such as Accounts, Opportunities, Quotes, and Sales Orders.
+cover: "/images/projects/integracion-salesforce-netsuite.webp"
+stack:
+  - PostgreSQL
+  - Python
+  - FastAPI
+  - Node.js
+---
+
+## My role
+
+As a fullstack developer, I focused on building the backend integrations that allowed both Salesforce and NetSuite to send and receive data securely and in a coordinated way, ensuring consistency across platforms.
+
+- **Backend in Python**: Built APIs to receive requests from the middleware and communicate with NetSuite through its services.
+- **Backend in Node.js (middleware)**: Built APIs to receive data from Salesforce and forward it to the Python backend.
+- **SuiteScripts in NetSuite**: Developed automations to detect changes and send data to Salesforce.
+- **Salesforce endpoint integration**: API connections to receive data coming from NetSuite.
+- **PostgreSQL database**: Implemented a data structure for logs, traceability, and error reprocessing.
+
+## Key project features
+
+- Bidirectional data synchronization between Salesforce and NetSuite for core business entities.
+- Decoupled microservice architecture to keep systems independent.
+- Data exchange via REST APIs with validation and error control.
+- Detailed operation logs for traceability and reprocessing.
+- Error handling and retries to ensure reliable integration.
+
+## Impact achieved
+
+A reliable and efficient bidirectional integration was delivered between Salesforce and NetSuite, automating key processes and reducing manual errors through a decoupled architecture with full traceability and reprocessing capabilities.
+
+## Technologies
+
+| Technology  | Use / Implementation                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------- |
+| Python      | Main backend to connect with NetSuite and handle business logic.                                        |
+| Node.js     | Middleware to receive requests from Salesforce and communicate with the Python backend.                 |
+| FastAPI     | Creation of REST APIs that served as the communication bridge between the middleware and NetSuite.      |
+| SuiteScript | NetSuite-side scripts that send data to Salesforce when events occur.                                   |
+| PostgreSQL  | Database to store logs of each incoming/outgoing operation for monitoring and reprocessing.            |
+
+## Project flow
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1754481869/projects/b99263c3-4a35-42f4-83cf-1f605ac145c1.png"
+  alt="Bidirectional Salesforce and NetSuite integration architecture flow"
+/>

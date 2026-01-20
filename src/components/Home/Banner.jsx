@@ -4,6 +4,7 @@ import CodeIcon from "../icons/Code";
 import EmailIcon from "../icons/Email";
 import GitHubIcon from "../icons/GitHub";
 import LinkedInIcon from "../icons/LinkedIn";
+import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
 export const Banner = async () => {
@@ -15,7 +16,7 @@ export const Banner = async () => {
       <div className="text-left lg:flex lg:flex-row-reverse lg:justify-center lg:items-center md:gap-x-4">
         <div className="Hero-image flex justify-center mb-6 w-16 lg:w-1/5 ">
           <img
-            src="/images/profile-new.svg"
+            src="/images/me.JPG"
             alt="Cristian Orrego Dev"
             width={200}
             height={200}
@@ -42,6 +43,7 @@ export const Banner = async () => {
             <span className=" text-daintree-700 dark:text-daintree-200 ">
               {t("specialization")}
             </span>
+            {" "}{t("finale")}
           </h2>
         </header>
       </div>
@@ -66,8 +68,8 @@ export const Banner = async () => {
         </li>
       </ul>
       <div className="absolute hidden md:flex bottom-4 w-full justify-center">
-        <a
-          href="#experience"
+        <Link
+          href="/#experience"
           className="md:flex gap-2 animate-bounce text-primary-500 dark:text-primary-400 font-bold"
         >
           {navT("experience")}{" "}
@@ -85,7 +87,7 @@ export const Banner = async () => {
               d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"
             />
           </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );
