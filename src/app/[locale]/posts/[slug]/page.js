@@ -2,19 +2,30 @@ import { getPostBySlug, getPosts } from "@/lib/mdx";
 import { ArticleBody } from "@/components/ArticleBody";
 import "highlight.js/styles/atom-one-dark.css";
 import "highlightjs-copy/styles/highlightjs-copy.css";
-import TableOfContents from "@/components/TableOfContent";
+import { routing } from "@/i18n/routing";
 
 export async function generateStaticParams() {
-  const posts = getPosts(process.env.ARTICLES_PATH);
-  const paths = posts.map((post) => ({
-    slug: post.replace(/\.mdx?$/, ""),
-  }));
+  const locales = routing.locales;
+  const paths = [];
+
+  for (const locale of locales) {
+    const posts = getPosts(process.env.ARTICLES_PATH, locale);
+    posts.forEach((post) => {
+      paths.push({
+        locale,
+        slug: post.replace(/\.mdx?$/, ""),
+      });
+    });
+  }
 
   return paths;
 }
+
 export async function generateMetadata({ params }, parent) {
-  const { slug } = params;
-  const { frontmatter } = await getPostBySlug(slug, process.env.ARTICLES_PATH);
+  const { slug, locale } = await params;
+  const post = await getPostBySlug(slug, process.env.ARTICLES_PATH, locale);
+  if (!post) return {};
+  const { frontmatter } = post;
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -31,15 +42,16 @@ export async function generateMetadata({ params }, parent) {
 }
 
 export default async function PostPage({ params }) {
-  const { content, frontmatter } = await getPostBySlug(
-    params.slug,
-    process.env.ARTICLES_PATH,
-  );
+  const { slug, locale } = await params;
+  const post = await getPostBySlug(slug, process.env.ARTICLES_PATH, locale);
+
+  if (!post) return <div>Post not found</div>;
+
+  const { content, frontmatter } = post;
+
   return (
     <>
-      {/* <Banner image={frontmatter?.cover} title={frontmatter?.title} /> */}
       <ArticleBody content={content} frontmatter={frontmatter} />
-      {/* <TableOfContents /> */}
     </>
   );
 }

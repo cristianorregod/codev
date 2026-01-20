@@ -1,0 +1,87 @@
+---
+title: Master the art of writing semantic HTML
+date: "2023-09-19"
+description: How semantic HTML can improve accessibility, SEO, and readability of a website, and how to structure content effectively for a better web experience.
+toc: true
+tags:
+  - html
+cover: "/images/posts/html-semantico.png"
+author: "@cristianorregodev"
+---
+
+When it comes to creating content on the web, structure is fundamental. A well-organized document is not only easier for developers to understand, it also improves accessibility and search engine optimization. This is where semantic HTML comes in.
+
+## What is semantic HTML?
+
+HTML (Hypertext Markup Language) is the markup language used to structure content on the web. Semantic HTML means giving specific meaning to parts of a document instead of only formatting visually. In other words, it uses HTML tags that describe the type of content they contain.
+
+## Example of non-semantic HTML
+
+```html
+<div id="container">
+  <div id="header">
+    <h1>My Website</h1>
+  </div>
+  <div id="content">
+    <p>Welcome to my website!</p>
+    <div class="article">
+      <h2>Article Title</h2>
+      <p>This is an interesting article.</p>
+    </div>
+  </div>
+  <div id="footer">
+    <p>Contact: example@email.com</p>
+  </div>
+</div>
+```
+
+In this example, the `<div>` tag is used to wrap each section of the page. Although the layout can be styled however desired, there is no coherent structure because the tags used do not describe the content.
+
+## Example of semantic HTML
+
+```html
+<header>
+  <h1>My Website</h1>
+</header>
+<main>
+  <p>Welcome to my website!</p>
+  <article>
+    <h2>Article Title</h2>
+    <p>This is an interesting article.</p>
+  </article>
+</main>
+<footer>
+  <p>Contact: example@email.com</p>
+</footer>
+```
+
+In this second example, the same content is used, but each section has a specific tag that describes the type of content being shown.
+
+<img
+  src="https://res.cloudinary.com/dvjzp6scj/image/upload/v1698165660/posts/qkvfxhxpxzoejnwwgkh1.svg"
+  alt="HTML vs semantic HTML comparison"
+/>
+
+## Benefits of semantic HTML
+
+- **Improves accessibility**: Provides a clear structure that makes navigation easier for people with visual or reading disabilities.
+- **Better SEO**: Search engines use semantic structure to understand and rank content.
+- **Easier maintenance**: Cleaner, more organized code is easier to maintain and update.
+- **Cross-device compatibility**: Helps ensure a site looks and works well across a variety of devices and browsers.
+- **Developer readability**: Facilitates collaboration because semantic code is easier to understand.
+
+## Most common semantic elements
+
+Some common HTML elements used in semantic content creation include:
+
+- **`<header>`**: Document header.
+- **`<nav>`**: Navigation menu.
+- **`<main>`**: Main content.
+- **`<article>`**: An article or independent content.
+- **`<section>`**: A related content section.
+- **`<aside>`**: Related or complementary content.
+- **`<footer>`**: Document footer.
+
+## Conclusions
+
+Semantic HTML is an essential practice for creating more accessible, SEO-friendly, and maintainable websites. By giving clear meaning to each part of the content, user experience and online visibility improve. Remember to think in terms of meaning when creating the next web page.

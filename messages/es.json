@@ -1,0 +1,76 @@
+{
+    "HomePage": {
+        "Banner": {
+            "greeting": "Hola,",
+            "name": "soy Cristian",
+            "role": "Ingeniero de Software",
+            "title": "Transformo operaciones complejas en",
+            "experience": "ecosistemas inteligentes con Ingeniería de Software y Automatización",
+            "specialization": "Experto en integrar Datos, IA y Plataformas Empresariales.",
+            "finale": "No solo escribo código, construyo soluciones."
+        },
+        "Nav": {
+            "experience": "Experiencia",
+            "projects": "Proyectos",
+            "about": "Sobre mí",
+            "articles": "Artículos",
+            "stack": "Stack"
+        },
+        "Experience": {
+            "title": "Experiencia",
+            "items": [
+                {
+                    "role": "Programador FullStack",
+                    "date": "Mayo 2024 - Presente",
+                    "company": "Industrial Distributions International Co.",
+                    "description": "Líderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa."
+                },
+                {
+                    "role": "Programador FullStack",
+                    "date": "Enero 2022 - Presente",
+                    "company": "Colraices",
+                    "description": "Encargado de desarrollar soluciones web en empresa del sector financiero e inmobiliario. Desarrollo de convenciones de código internas de acuerdo a buenas prácticas de programación. Liderar el equipo de desarrollo Backend."
+                },
+                {
+                    "role": "Web master",
+                    "date": "Febrero 2020 - Noviembre 2021",
+                    "company": "Diocesano Santa María",
+                    "description": "Rediseño y mantenimiento de sitio y aplicación web en institución del sector educativo. Dar clases de programación a cursos de ultimo grado. Liderar el comité de Ciencia y Tecnología de la institución."
+                },
+                {
+                    "role": "Técnico de soporte",
+                    "date": "Diciembre 2018 - Diciembre 2019",
+                    "company": "La Sucursal",
+                    "description": "Desarrollar aplicación de simulación de costos para materiales de construcción. Administrar y dar soporte técnico al software contable y de facturación. Implementar herramientas de gestión de la comunicación y trabajo en equipo."
+                }
+            ]
+        },
+        "Projects": {
+            "title": "Proyectos",
+            "description": "Mis proyectos más emocionantes y creativos. Cada proyecto es el resultado de mi dedicación y pasión por la programación, y estoy encantado de compartirlos contigo. Descubre cómo transformo ideas en realidades digitales. ¡Explora, inspira y crea con mis proyectos de software!",
+            "more": "Más proyectos"
+        },
+        "About": {
+            "title": "Sobre mí",
+            "p1": "Me apasiona resolver problemas, ya sea construyendo aplicaciones desde cero o encontrando la lógica oculta tras los datos.",
+            "p2": "La atención al detalle, la investigación y la curiosidad hacen que vea lo que otros no ven.",
+            "p3": "Creo que la tecnología solo es útil si hace la vida más fácil a las personas; por eso, pongo el mismo entusiasmo en escribir código limpio que en colaborar y comunicarme bien con mi equipo.",
+            "cv": "Ver CV"
+        },
+        "Articles": {
+            "title": "Artículos",
+            "more": "Ver todos"
+        },
+        "Stack": {
+            "title": "Tecnologías",
+            "description": "En mi viaje por el mundo del desarrollo web, he cultivado experiencia y habilidades en una variedad de tecnologías. Mi stack tecnológico incluye:",
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Herramientas",
+            "learning": "Aprendiendo"
+        },
+        "Footer": {
+            "rights": "Todos los derechos reservados."
+        }
+    }
+}

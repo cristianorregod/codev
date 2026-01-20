@@ -1,0 +1,132 @@
+---
+title: 'Conditional render in ReactJS - Stop using "&&"'
+date: "2023-12-12"
+description: >-
+  The best way to handle conditional rendering: stop using the && operator and control application behavior more precisely.
+toc: true
+tags:
+  - reactjs
+cover: "/images/posts/renderizado-condicional-en-react-js.webp"
+author: "@cristianorregodev"
+---
+
+React developers can move forward and leave old habits behind.
+
+As 2024 approaches, there is a better way to handle conditional rendering in React than using the "&&" operator.
+
+This article presents a more elegant and expressive approach to conditional rendering that keeps code cleaner and easier to read.
+
+So, it is time to say goodbye to "&&" and adopt a more modern way of conditional rendering in React.
+
+## The old reliable: Conditional rendering with "&&"
+
+In the past, many developers used the "&&" operator to conditionally render components or elements based on a condition.
+
+For example, code like this would be written:
+
+```javascript
+function MyComponent({ isLoggedIn }) {
+  return <div>{isLoggedIn && <p>Welcome back, User!</p>}</div>;
+}
+```
+
+Summary of the previous code:
+
+- If the condition is truthy, the paragraph is rendered.
+- If the condition is falsy, the paragraph is not rendered.
+
+## Why does this happen?
+
+This is not specific to React. It is JavaScript behavior and other languages call it "short-circuit evaluation". If the first operand is false, the AND operator (&&) stops and does not evaluate the second operand.
+
+The short syntax (&&) works and is preferred by many. But that alone does not mean it should always be used.
+
+In the previous case where the condition evaluates to `true` or `false`, the result is as expected. However, when the condition does not evaluate to boolean values, problems appear.
+
+Consider the following example:
+
+```javascript
+/* This will render nothing ✅ */
+<>{false && <div>👋</div>}</>
+
+/* This will render 0 😡 */
+<>{0 && <div>👋</div>}</>
+
+/* This will render nothing ✅ */
+<>{""  && <div>👋</div>}</>
+
+/* This will render nothing ✅ */
+<>{null && <div>👋</div>}</>
+
+/* This will render nothing ✅ */
+<>{undefined && <div>👋</div>}</>
+
+/* This will render NaN 😡 */
+<>{NaN && <div>👋</div>}</>
+```
+
+To solve this, other approaches can be used to determine what should be rendered in certain cases.
+
+## The modern way: conditional rendering with ternary or logical OR operator
+
+There are a few ways to solve this problem. The first (and best) way is to use the ternary operator. The ternary operator checks whether a condition is true or false. If it is true, it returns the first operand. If it is false, it returns the second operand.
+
+Instead of relying only on the "&&" operator, the ternary operator can be used for conditional rendering.
+
+Both options are explored below.
+
+### 1. Conditional rendering with the ternary operator
+
+The ternary operator allows concise conditional expressions, making code more expressive. Example:
+
+```javascript
+function MyComponent({ isLoggedIn }) {
+  return <div>{isLoggedIn ? <p>Welcome back, User!</p> : null}</div>;
+}
+```
+
+In this code, if the `isLoggedIn` prop is true, the `<p>` element with the welcome message is rendered. Otherwise, `null` is rendered, effectively hiding the element.
+
+Two more examples:
+
+```javascript
+/* This will render nothing ✅ */
+<>{0 ? <div>👋</div> : null}</>
+
+/* This will render nothing ✅ */
+<>{NaN ? <div>👋</div> : null}</>
+```
+
+### 2. Conditional rendering with the logical OR operator (||)
+
+The logical OR operator (||) provides another approach to conditional rendering.
+
+It allows a default value to be specified when the condition is false. Example:
+
+```javascript
+function MyComponent({ username }) {
+  return (
+    <div>
+      <p>Welcome, {username || "Guest"}!</p>
+    </div>
+  );
+}
+```
+
+In this code, if the "username" prop is provided, it will be rendered in the `<p>` element. If the "username" prop is falsy (for example, an empty string or undefined), the logical OR operator returns the default value "Guest".
+
+## Benefits of the modern approach
+
+By using the ternary operator or the logical OR operator, several benefits are gained over the old "&&":
+
+- **Readability**: The code becomes more expressive and easier to understand, especially for more complex conditions or multiple rendering options.
+- **Flexibility**: With the ternary operator, true and false conditions can be handled explicitly, enabling more control over rendering behavior and avoiding unexpected renders.
+- **Default values**: The logical OR operator provides a convenient way to specify default values when the condition is false, reducing the need for additional logic.
+
+## Conclusions
+
+Conditional rendering is a React technique that allows certain parts of the user interface to be shown or hidden based on conditions. This is useful when different content or components need to be displayed depending on what is happening in an application.
+
+However, using the "&&" operator with falsy values like 0 and NaN can cause unexpected rendering.
+
+To solve this, the ternary operator or the OR operator (||) can be used, and falsy values can even be coerced to booleans. These techniques help ensure React components render exactly what is expected.

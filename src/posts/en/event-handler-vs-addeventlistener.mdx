@@ -1,0 +1,106 @@
+---
+title: "Event Handlers vs addEventListener in JavaScript"
+date: "2023-11-14"
+description: >-
+  A guide to web interactions and event handling, comparing two alternatives, their differences, and how to apply them based on the use case.
+toc: true
+tags:
+  - javascript
+cover: "/images/posts/event-handler-vs-addeventlistener.webp"
+author: "@cristianorregodev"
+---
+
+JavaScript is the engine behind the interactivity of modern web pages. One of its fundamental features is event handling, which allows web applications to respond to user interactions such as clicks, key presses, mouse movements, and more.
+
+Two common ways to handle events in JavaScript are event handlers and the addEventListener method.
+
+## Event Handlers, a classic approach 📌
+
+Consider a button on a web page where something should happen when a user clicks it.
+
+This is how it can be done using an event handler:
+
+```html
+<button id="myButton">Click me!</button>
+
+<script>
+  // Get the button element by its ID
+  const button = document.getElementById("myButton");
+
+  // Define a function to run when the button is clicked
+  function handleClick() {
+    alert("Button clicked!");
+  }
+
+  // Assign the function to the button's click event
+  button.onclick = handleClick;
+</script>
+```
+
+In this example ⬆️⬆️⬆️
+
+1. The button is selected using `getElementById`.
+2. A function called `handleClick` is created, which runs when the button is clicked. In this case it shows an alert.
+3. The `handleClick` function is assigned to the button's `onclick` property. This is the event handler in action. When the button is clicked, the `handleClick` function is called.
+
+## addEventListener, a modern approach 😎
+
+While event handlers work well, they have some limitations, especially when multiple functions need to be assigned to the same event.
+
+This is where the `addEventListener` method shines:
+
+```html
+<button id="myButton">Click me!</button>
+
+<script>
+  // Get the button element by its ID
+  const button = document.getElementById("myButton");
+
+  // Define the first function to run on click
+  function firstFunction() {
+    alert("First function");
+  }
+
+  // Define the second function to run on click
+  function secondFunction() {
+    alert("Second function");
+  }
+
+  // Use addEventListener to attach the functions to the button click event
+  button.addEventListener("click", firstFunction);
+  button.addEventListener("click", secondFunction);
+</script>
+```
+
+In this example ⬆️⬆️⬆️
+
+1. The button element is selected as in the previous case.
+2. Two functions, `firstFunction` and `secondFunction`, are defined to run when the button is clicked.
+3. `addEventListener` is used to attach both functions to the button click event. Now, when the button is clicked, both functions run in the order they were added.
+
+## Key differences
+
+The main differences between Event Handlers and `addEventListener` are:
+
+### 1. Multiple event listeners
+
+- **Event Handlers**: Only one event handler per event type can be attached to an element. Assigning a new function replaces the previous one.
+- **addEventListener**: Multiple listeners can be attached to the same event type on an element. All will run in the order they were added.
+
+### 2. Clearer separation of concerns
+
+- **Event Handler**: Functions and event handling logic are combined, which can make code less organized as a project grows.
+- **addEventListener**: Encourages a clearer separation of concerns by allowing event handling logic to be defined separately from the element and event type.
+
+### 3. Removing events
+
+- **Event Handler**: Removing handlers can be tricky and may require setting the handler to `null`.
+- **addEventListener**: Provides a simple `removeEventListener` method to remove specific listeners when they are no longer needed.
+
+## Conclusions
+
+Both event handling approaches have their place in JavaScript, and the choice depends on the specific use case.
+
+For simple solutions with a single handler, Event Handlers work well.
+
+However, for more complex interactions, multiple listeners, or a cleaner code structure, `addEventListener` is the modern option that offers greater flexibility and control over event handling.

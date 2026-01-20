@@ -1,0 +1,78 @@
+---
+title: "How to create a spinner loader with CSS 🌀"
+date: "2022-04-15"
+description: >-
+  How to create a donut spinner 🍩 using only CSS in less than a minute. Perfect for impatient frontenders ⏲️.
+toc: true
+tags:
+  - css
+cover: "/images/posts/como-crear-un-spínner-con-css.svg"
+author: "@midudev"
+---
+
+> **Note:** _This blog post is a faithful copy of the original written and published by_ **<a href="https://midu.dev" target="_blank">@midudev</a>**
+
+A spinner loader, or donut spinner, is a common element in applications because it **indicates to the user that content is loading.**
+
+Below is **how to create one with HTML and CSS** in just a few lines of code.
+
+## Creating the spinner with HTML and CSS from scratch
+
+First, create the spinner HTML:
+
+```html
+<div class="spinner"></div>
+```
+
+Then style this class with CSS.
+
+First, add a border with **4 pixels** and use a black color with high transparency. Make one side of the border transparent, and apply `border-radius` to curve the border.
+
+```css
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+```
+
+For the size, use a square with a **36px height and width.**
+
+```css
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+}
+```
+
+Finally, add the animation. Name this animation `spin`, set it to one second, and use a `linear` timing function. Any timing function can be used at this point.
+
+The important part is setting it to `infinite` so the animation repeats.
+
+```css
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+}
+```
+
+Now create the animation with `@keyframes`, starting at 0% and ending at 100% after a full rotation:
+
+```css
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+```
+
+That is it. With these lines of CSS, a basic loader can be implemented in interfaces.

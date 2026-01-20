@@ -1,0 +1,88 @@
+---
+title: Mastering the MVC pattern in Laravel
+date: "2023-10-19"
+description: How the Model-View-Controller pattern is implemented in PHP applications with Laravel for expert-level structure.
+toc: true
+tags:
+  - php
+cover: "/images/posts/domina-el-patron-mvc.svg"
+author: "@cristianorregodev"
+---
+
+When it comes to web development, code organization is essential to keep applications sustainable and scalable. Laravel, a popular PHP framework, is designed around the Model-View-Controller (MVC) design pattern. This article explores what the MVC pattern is and how it is implemented in Laravel.
+
+## What is the MVC pattern?
+
+The Model-View-Controller (MVC) pattern is a way to organize application code to separate concerns and improve maintainability. In MVC, the application is divided into three main components:
+
+- **Model**: Represents business logic and interaction with the database. In Laravel, models are represented as PHP classes that interact with database tables.
+
+- **View**: Handles presentation and user interface. In Laravel, views are templates that generate the HTML output sent to the user's browser.
+
+- **Controller**: Acts as an intermediary between the Model and the View. In Laravel, controllers are classes that handle HTTP requests, process logic, and return the appropriate views.
+
+## Implementation in Laravel
+
+Laravel makes MVC implementation simple and effective. Here is an example of how it works:
+
+- **Model**: A model called `Task` is created to represent a task in a task list. Laravel makes it easy to define Eloquent models, as shown below:
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    // Define the table associated with this model
+    protected $table = 'tasks';
+}
+```
+
+- **View**: A view is created to display the list of tasks. Views in Laravel are usually Blade files, which combine HTML with PHP code. Here is a snippet of a Blade file that shows a list of tasks:
+
+```php
+@foreach ($tasks as $task)
+    <li>{{ $task->name }}</li>
+@endforeach
+```
+
+- **Controller**: A controller called `TaskController` is created to handle logic related to tasks and show the corresponding view:
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Task;
+use Illuminate\Http\Request;
+
+class TaskController extends Controller
+{
+    public function index()
+    {
+        $tasks = Task::all();
+        return view('tasks.index', ['tasks' => $tasks]);
+    }
+}
+```
+
+In this example, the controller retrieves all tasks from the `Task` model and passes the data to the corresponding view, which displays the task list.
+
+## Benefits of the MVC pattern in Laravel
+
+The MVC pattern in Laravel provides several benefits:
+
+- **Separation of concerns**: Divides code into distinct layers for better organization and maintainability.
+
+- **Code reuse**: Models, views, and controllers can be reused across different parts of the application.
+
+- **Collaboration**: Multiple developers can work on different parts of the MVC without interfering with each other.
+
+- **Unit testing**: Individual components (models, controllers) can be tested in isolation, making unit testing easier.
+
+As shown, the Model-View-Controller pattern is a fundamental part of software development in Laravel. It enables effective code organization and makes it easier to build robust, maintainable web applications. With Laravel, implementing this pattern is straightforward and effective, making it a solid choice for modern web development.
+
+This article provides a solid introduction to the MVC pattern in Laravel and how it is implemented in this framework.

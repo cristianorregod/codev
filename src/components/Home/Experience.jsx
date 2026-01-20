@@ -1,14 +1,17 @@
-import { experienceInfo } from "@/helpers/staticData";
 import { Container } from "../Container";
 import { SectionTitle } from "../SectionTitle";
+import { getTranslations } from "next-intl/server";
 
-export const Experience = () => {
+export const Experience = async () => {
+  const t = await getTranslations("HomePage.Experience");
+  const items = t.raw("items");
+
   return (
     <Container id="experience">
-      <SectionTitle>Experiencia</SectionTitle>
+      <SectionTitle>{t("title")}</SectionTitle>
       <article className="container px-2 mt-10">
         <ul className="relative border-l border-dark-400 dark:border-dark-700">
-          {experienceInfo.map((experience) => (
+          {items.map((experience) => (
             <li key={experience.date} className="mb-8 md:mb-6 ml-6 ">
               <span className="absolute flex items-center justify-center w-6 h-6 bg-dark-600 rounded-full -left-3 ring-8 ring-dark-50 dark:ring-dark-950 dark:bg-dark-600">
                 <svg

@@ -1,0 +1,86 @@
+---
+title: The best ways to center elements in CSS
+date: "2022-08-05"
+description: Ways to center elements in CSS both horizontally and vertically with properties that work in all modern browsers.
+toc: true
+tags:
+  - css
+cover: "/images/posts/centrar-elementos-css.svg"
+author: "@midudev"
+---
+
+> **Note:** _This blog post is a faithful copy of the original written and published by_ **<a href="https://midu.dev" target="_blank">@midudev</a>**
+
+If there is a recurring joke in _CSS_, it has always been **the difficulty of centering an element both horizontally and vertically**. For many years, countless hacks were used to achieve it... but today it is no longer necessary.
+
+Different ways to **center elements on both axes with CSS** are shown below.
+
+## 1. Using grid and place-content
+
+With `grid`, centering elements on both axes is straightforward. It is **easy to remember** and works very well for large layouts.
+
+Almost, because **the contained elements will take the width of the widest element**... a small inconvenience to keep in mind.
+
+```css
+.container {
+  display: grid;
+  place-content: center;
+}
+```
+
+## 2. Flex and margin auto
+
+For small elements, such as icons, there is a simple way to use `flex` together with `margin: auto` to center the elements. It does the job in some tricky situations, **is easy to remember**, but... anything based on selectors with **asterisks** should be treated with care, and it **does not play well with overflows**.
+
+```css
+.container {
+  display: flex;
+}
+
+.container > * {
+  margin-auto: auto;
+}
+```
+
+## 3. Absolute positioning
+
+It is one of the oldest, but if it has stood the test of time... it is for a reason. This solution is based on using `position: absolute` to center the element. It is perfect especially for modals or elements that must overlay to stay visible.
+
+The downside is that it needs a relative container and works well when there is only one... if this starts to fill up the code, which smells like a hack, there will be headaches.
+
+> Note that this _hack_ should be applied directly to the element to be centered, not the container.
+
+```css
+.element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+## 4. The best solution 🏆: Flexcellent
+
+Without a doubt, the most correct solution, and the one designed precisely for this, is to use `flex` with `align-items` and `justify-content` set to center.
+
+- **`align-items`**: Defines the behavior of elements on the cross axis (if `flex-direction` is `column`, then it is the rows).
+
+- **`justify-content`**: Defines alignment and distribution of elements on the main axis (if `flex-direction` is `column`, then it is the columns).
+
+This is achieved as follows:
+
+```css
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+## Conclusions
+
+The last approach stands out as the most robust one. It has no disadvantages, except for potential confusion between `justify-content` and `align-items`, and it does exactly what is expected.
+
+Sometimes the `position: absolute` solution works well for modals, and for very large layouts using `display: grid` is interesting (for example, to center all the content on a page).
+
+From now on, centering elements with CSS should no longer be a problem. ✌️
