@@ -72,5 +72,8 @@
         "Footer": {
             "rights": "Todos los derechos reservados."
         }
+    },
+    "Article": {
+        "readingTime": "Lectura {minutes} min"
     }
 }
