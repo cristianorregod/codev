@@ -7,8 +7,11 @@ import { LocalDate } from "@/lib/local-date";
 import hljs from "highlight.js";
 import TableOfContents from "./TableOfContent";
 import CopyButtonPlugin from "highlightjs-copy";
+import { useLocale, useTranslations } from "next-intl";
 
 export const ArticleBody = ({ content, frontmatter }) => {
+  const locale = useLocale();
+  const t = useTranslations("Article");
   useEffect(() => {
     hljs.highlightAll();
     hljs.addPlugin(
@@ -73,7 +76,7 @@ export const ArticleBody = ({ content, frontmatter }) => {
                   d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
                 />
               </svg>
-              {new LocalDate().relativeTime(frontmatter?.date)}
+              {new LocalDate().relativeTime(frontmatter?.date, locale)}
             </li>
             <li className="flex gap-1 items-center text-sm px-2.5 py-0.5 bg-dark-200 dark:bg-dark-800 rounded">
               <svg
@@ -90,7 +93,7 @@ export const ArticleBody = ({ content, frontmatter }) => {
                   d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Lectura {timeReading} min
+              {t("readingTime", { minutes: timeReading })}
             </li>
           </ul>
         </section>
