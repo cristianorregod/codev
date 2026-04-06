@@ -1,9 +1,7 @@
 import "@fontsource-variable/onest";
 import { Analytics } from "@vercel/analytics/next";
-import { Navbar } from "@/components/Navbar";
 import { DarkModeProvider } from "../providers/DarkModeProvider";
 import "../globals.css";
-import { Footer } from "@/components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -41,18 +39,10 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html
-      suppressHydrationWarning
-      lang={locale}
-      className="scroll-smooth"
-    >
+    <html suppressHydrationWarning lang={locale} className="scroll-smooth">
       <body className="bg-dark-50 dark:bg-dark-950 ">
         <NextIntlClientProvider messages={messages}>
-          <DarkModeProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </DarkModeProvider>
+          <DarkModeProvider>{children}</DarkModeProvider>
         </NextIntlClientProvider>
         <Analytics />
       </body>

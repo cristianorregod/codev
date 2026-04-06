@@ -1,8 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const TableOfContents = () => {
   const [headings, setHeadings] = useState([]);
+  const t = useTranslations("Article");
 
   useEffect(() => {
     // Obtener todas las etiquetas h2 del artículo
@@ -19,7 +21,7 @@ const TableOfContents = () => {
   return (
     <nav className="hidden lg:block lg:sticky lg:top-24 self-auto min-w-80 rounded-lg shadow-sm shadow-slate-500 p-4 text-[15px]">
       <h2 className="text-crusta-800 dark:text-crusta-300 font-bold mb-4">
-        Tabla de Contenidos
+        {t("contentTable")}
       </h2>
       <ol>
         {headings.map((heading) => (
