@@ -11,6 +11,7 @@
     },
     "Nav": {
       "experience": "Experience",
+      "services": "Services",
       "projects": "Projects",
       "about": "About me",
       "articles": "Articles",
@@ -71,6 +72,230 @@
     },
     "Footer": {
       "rights": "All rights reserved."
+    }
+  },
+  "ServicesPage": {
+    "meta": {
+      "title": "Cristian Orrego Dev 👨‍💻 | Digital services focused on business outcomes",
+      "description": "I design and build corporate websites, e-commerce platforms, and custom software to help you generate more opportunities, sell better, and run operations with less friction. AI is integrated only when it adds real value.",
+      "keywords": "web development services, corporate website, landing page, ecommerce development, custom software, AI automation, next.js development"
+    },
+    "hero": {
+      "eyebrow": "Digital services to scale",
+      "title": "Corporate websites, e-commerce, and custom software to sell more and operate better.",
+      "subtitle": "Every project is built around business goals: strategic clarity, user experience, and technical execution. AI is added when it improves conversion, support, or automation—not as a trend.",
+      "primaryCta": "Chat on WhatsApp",
+      "secondaryCta": "View real projects"
+    },
+    "painPoints": {
+      "title": "If this sounds familiar, there is a clear improvement opportunity.",
+      "subtitle": "Before talking about tech, we start with concrete blockers that hurt revenue, trust, or efficiency.",
+      "items": [
+        "Your business does not convey trust online, making it hard to explain what you offer.",
+        "You get traffic, but your website does not convert into leads or sales consistently.",
+        "You are selling, but operations are still manual and dependent on chat apps or spreadsheets.",
+        "Your team loses time on repetitive tasks that could be automated.",
+        "You do not have a solid digital foundation to scale campaigns or add AI with purpose."
+      ]
+    },
+    "services": {
+      "title": "Three service lines, three types of results.",
+      "subtitle": "Each service is built for a specific business context with concrete deliverables.",
+      "labels": {
+        "strategicResult": "Strategic result",
+        "idealFor": "Best fit",
+        "problem": "Problem it solves",
+        "solution": "Proposed solution",
+        "deliverables": "Typical deliverables",
+        "benefits": "Expected benefits",
+        "aiUseCases": "Practical AI use cases",
+        "ctaHint": "Next step"
+      },
+      "items": [
+        {
+          "id": "web",
+          "title": "Corporate website and landing pages",
+          "forWho": "For professionals, personal brands, and service companies",
+          "strategicResult": "Turn your website into a commercial asset that builds authority and generates qualified opportunities.",
+          "problem": "When your digital presence does not reflect your real value, opportunities are lost before the first sales conversation.",
+          "solution": "I design a website focused on authority, clear messaging, and lead generation with a structure built to convert.",
+          "deliverables": [
+            "Content architecture and clear value proposition",
+            "Responsive design focused on conversion",
+            "Baseline technical SEO and optimized performance",
+            "Trackable forms and contact events"
+          ],
+          "benefits": [
+            "Clearer commercial message in under 10 seconds",
+            "Stronger brand trust and perception",
+            "Reliable channel to generate opportunities"
+          ],
+          "aiOptions": [
+            "Lead qualification chat based on intent",
+            "Smart forms with automatic prioritization",
+            "Initial response assistant for frequent inquiries"
+          ],
+          "cta": "Quote my website"
+        },
+        {
+          "id": "ecommerce",
+          "title": "E-commerce",
+          "forWho": "For brands selling physical or digital products",
+          "strategicResult": "Build a reliable, scalable, and more predictable digital sales channel with lower operational friction.",
+          "problem": "Having an online store is not enough when buying journeys are confusing or operations consume too much time.",
+          "solution": "I implement e-commerce systems focused on conversion, clear catalogs, reliable payments, and commercial automation.",
+          "deliverables": [
+            "Optimized checkout and shopping navigation",
+            "Payment integration and logistics flows",
+            "Sales-oriented catalog and category structure",
+            "Baseline automations for marketing and post-sale"
+          ],
+          "benefits": [
+            "Simpler and more trustworthy buying process",
+            "Less operational friction in daily execution",
+            "Foundation ready to scale campaigns and channels"
+          ],
+          "aiOptions": [
+            "Behavior-based product recommender",
+            "Assisted cart recovery messaging",
+            "Automated pre and post-sale support for repetitive questions"
+          ],
+          "cta": "Quote my e-commerce"
+        },
+        {
+          "id": "custom",
+          "title": "Custom software",
+          "forWho": "For companies with manual processes or fragmented systems",
+          "strategicResult": "Regain operational control through connected systems that reduce manual dependency and support sustainable growth.",
+          "problem": "When operations rely on repetitive tasks and disconnected tools, growth becomes expensive and messy.",
+          "solution": "I build internal systems and automations designed around your real operation—not the other way around.",
+          "deliverables": [
+            "Critical process mapping and priorities",
+            "Custom internal dashboards and workflows",
+            "Integrations with APIs, ERP, or existing tools",
+            "Phased evolution to reduce delivery risk"
+          ],
+          "benefits": [
+            "Less manual work in critical workflows",
+            "Higher operational control in one place",
+            "Scalability without improvised spreadsheets"
+          ],
+          "aiOptions": [
+            "Automatic request or ticket classification",
+            "Data extraction from repetitive documents",
+            "Internal assistants for fast information lookup"
+          ],
+          "cta": "Quote custom software"
+        }
+      ]
+    },
+    "ai": {
+      "title": "AI without hype",
+      "subtitle": "First we stabilize your digital foundation. Then we evaluate where AI can save time, improve decisions, or increase conversion with measurable impact.",
+      "noHype": {
+        "yesTitle": "When it makes sense",
+        "yes": [
+          "There are repetitive workflows with enough volume.",
+          "There is minimum reliable information to train or parametrize rules.",
+          "The business objective is clear and measurable."
+        ],
+        "noTitle": "When it does not",
+        "no": [
+          "AI is requested as decoration to appear innovative.",
+          "There is no defined process or internal ownership.",
+          "The digital foundation still has structural issues."
+        ],
+        "requirementsTitle": "What is needed for success",
+        "requirements": [
+          "Reliable minimum data",
+          "Defined operational workflows",
+          "Result tracking and continuous improvement"
+        ]
+      }
+    },
+    "process": {
+      "title": "Work process",
+      "subtitle": "Simple and transparent execution to reduce uncertainty from day one.",
+      "steps": [
+        {
+          "title": "Discovery",
+          "description": "We understand your business, goal, and constraints."
+        },
+        {
+          "title": "Scope",
+          "description": "We define deliverables, priorities, and phased roadmap."
+        },
+        {
+          "title": "Design",
+          "description": "We validate experience, messaging, and key flow."
+        },
+        {
+          "title": "Development",
+          "description": "Iterative implementation focused on quality and performance."
+        },
+        {
+          "title": "Optimization",
+          "description": "We measure, adjust, and evolve according to results."
+        }
+      ]
+    },
+    "proof": {
+      "title": "Real projects to move from promise to evidence",
+      "subtitle": "A few published projects showing different solution types.",
+      "linkLabel": "View project",
+      "items": [
+        {
+          "name": "Colraices",
+          "context": "Corporate website built to communicate services and capture inquiries clearly.",
+          "url": "https://colraices.com"
+        },
+        {
+          "name": "Dotase",
+          "context": "Online store with catalog structure and purchase flow designed for conversion.",
+          "url": "https://dotase.com"
+        },
+        {
+          "name": "BluOne",
+          "context": "Internal platform to centralize operations and digitize specific processes.",
+          "url": "https://one.blubank.co"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions before starting",
+      "items": [
+        {
+          "question": "How long does a project take?",
+          "answer": "It depends on scope. A landing page can be delivered in a few weeks, while custom software requires longer phases. A roadmap with incremental deliveries is defined from day one."
+        },
+        {
+          "question": "How much maintenance is required?",
+          "answer": "The goal is to start from a maintainable base. Then we define a support model according to your needs: one-off improvements, monthly evolution, or ongoing support."
+        },
+        {
+          "question": "Can we start small and scale later?",
+          "answer": "Yes. In fact, that is the recommended path: prioritize critical scope, validate with users, and evolve in stages to reduce risk."
+        },
+        {
+          "question": "Does the client own the code and assets?",
+          "answer": "Yes. Ownership of assets and access is defined in the agreement from the beginning to avoid unnecessary dependency."
+        },
+        {
+          "question": "When does it make sense to add AI?",
+          "answer": "When there is a repetitive, measurable problem with minimum data to operate. If the digital foundation is not ready, we strengthen that first."
+        },
+        {
+          "question": "What information do you need for a quote?",
+          "answer": "Project goal, user type, current process, urgency, and references. That is enough to build a realistic initial scope."
+        }
+      ]
+    },
+    "closing": {
+      "title": "Ready to turn your idea into a solution that moves the business?",
+      "subtitle": "Start with a quick conversation. I will suggest the best path for your current context without unnecessary complexity.",
+      "primaryCta": "Start on WhatsApp",
+      "secondaryCta": "Send project brief by email",
+      "tertiaryCta": "Schedule a discovery call"
     }
   },
   "Article": {

@@ -11,6 +11,7 @@
     },
     "Nav": {
       "experience": "Experiencia",
+      "services": "Servicios",
       "projects": "Proyectos",
       "about": "Sobre mí",
       "articles": "Artículos",
@@ -73,6 +74,230 @@
       "rights": "Todos los derechos reservados."
     }
   },
+  "ServicesPage": {
+    "meta": {
+      "title": "Cristian Orrego Dev 👨‍💻 | Servicios digitales orientados a resultados",
+      "description": "Diseño y desarrollo webs corporativas, e-commerce y software a medida para ayudarte a captar más oportunidades, vender mejor y operar con menos fricción. Integración de IA solo cuando agrega valor real.",
+      "keywords": "servicios desarrollo web, web corporativa, landing page, desarrollo ecommerce, software a medida, automatizacion con ia, desarrollo next.js"
+    },
+    "hero": {
+      "eyebrow": "Servicios digitales para crecer",
+      "title": "Webs corporativas, e-commerce y software a medida para vender más y operar mejor.",
+      "subtitle": "Trabajo cada proyecto con enfoque de negocio: claridad estratégica, experiencia de usuario y ejecución técnica. La IA se integra cuando mejora conversión, atención o automatización, no por moda.",
+      "primaryCta": "Hablar por WhatsApp",
+      "secondaryCta": "Ver proyectos reales"
+    },
+    "painPoints": {
+      "title": "Si te pasa esto, hay una oportunidad clara de mejora.",
+      "subtitle": "Antes de hablar de tecnología, partimos de problemas concretos que frenan ventas, confianza o eficiencia.",
+      "items": [
+        "Tu negocio no transmite confianza online y cuesta explicar qué ofrecés.",
+        "Tenés visitas, pero tu web no convierte consultas o ventas de forma constante.",
+        "Vendés, pero la operación sigue siendo manual y dependiente de WhatsApp o planillas.",
+        "Tu equipo pierde tiempo en tareas repetitivas que se pueden automatizar.",
+        "No tenés una base digital sólida para escalar campañas o incorporar IA con criterio."
+      ]
+    },
+    "services": {
+      "title": "Tres líneas de servicio, tres tipos de resultado.",
+      "subtitle": "Cada servicio está pensado para un contexto de negocio diferente y tiene entregables concretos.",
+      "labels": {
+        "strategicResult": "Resultado estratégico",
+        "idealFor": "Ideal para",
+        "problem": "Problema que resuelve",
+        "solution": "Solución propuesta",
+        "deliverables": "Entregables típicos",
+        "benefits": "Beneficios esperados",
+        "aiUseCases": "AI aplicable",
+        "ctaHint": "Siguiente paso"
+      },
+      "items": [
+        {
+          "id": "web",
+          "title": "Web corporativa y landing pages",
+          "forWho": "Para profesionales, marcas personales y empresas de servicios",
+          "strategicResult": "Transformar tu web en un activo comercial que posiciona autoridad y genera oportunidades calificadas.",
+          "problem": "Cuando tu presencia digital no refleja tu valor, se pierden oportunidades antes de la primera conversación comercial.",
+          "solution": "Diseño una web enfocada en autoridad, mensaje claro y captación de leads con estructura pensada para vender.",
+          "deliverables": [
+            "Arquitectura de contenido y propuesta de valor clara",
+            "Diseño responsive orientado a conversión",
+            "SEO técnico base y performance optimizada",
+            "Formularios y eventos de contacto medibles"
+          ],
+          "benefits": [
+            "Más claridad comercial en menos de 10 segundos",
+            "Mejor percepción de marca y confianza",
+            "Canal estable para generar oportunidades"
+          ],
+          "aiOptions": [
+            "Chat de calificación de leads según tipo de necesidad",
+            "Formularios inteligentes con priorización automática",
+            "Asistente de respuestas iniciales para consultas frecuentes"
+          ],
+          "cta": "Quiero cotizar mi web"
+        },
+        {
+          "id": "ecommerce",
+          "title": "E-commerce",
+          "forWho": "Para marcas que venden productos físicos o digitales",
+          "strategicResult": "Consolidar un canal de ventas digital confiable, escalable y más predecible para crecer con menos fricción.",
+          "problem": "Tener tienda online no alcanza si la experiencia de compra es confusa o la operación consume demasiado tiempo.",
+          "solution": "Implemento e-commerce con foco en conversión, catálogo claro, pagos confiables y automatización comercial.",
+          "deliverables": [
+            "Checkout y navegación de compra optimizados",
+            "Integración de pagos y flujos logísticos",
+            "Estructura de catálogo y categorías orientada a ventas",
+            "Automatizaciones base para marketing y postventa"
+          ],
+          "benefits": [
+            "Proceso de compra más simple y confiable",
+            "Menos fricción operativa en la gestión diaria",
+            "Base preparada para escalar campañas y canales"
+          ],
+          "aiOptions": [
+            "Recomendador de productos por comportamiento",
+            "Recuperación de carrito con mensajes asistidos",
+            "Soporte automático de pre y postventa para preguntas repetidas"
+          ],
+          "cta": "Quiero cotizar mi e-commerce"
+        },
+        {
+          "id": "custom",
+          "title": "Software a medida",
+          "forWho": "Para empresas con procesos manuales o sistemas fragmentados",
+          "strategicResult": "Recuperar control operativo con sistemas conectados que reduzcan dependencia manual y habiliten crecimiento sostenible.",
+          "problem": "Cuando la operación depende de tareas repetitivas y herramientas dispersas, el crecimiento se vuelve caro y desordenado.",
+          "solution": "Desarrollo sistemas internos y automatizaciones diseñadas alrededor de tu operación real, no al revés.",
+          "deliverables": [
+            "Mapeo de procesos críticos y prioridades",
+            "Paneles internos y flujos de trabajo personalizados",
+            "Integraciones con APIs, ERP o herramientas existentes",
+            "Evolución por etapas para reducir riesgo"
+          ],
+          "benefits": [
+            "Reducción de trabajo manual en tareas críticas",
+            "Mayor control operativo en un solo lugar",
+            "Escalabilidad sin depender de planillas improvisadas"
+          ],
+          "aiOptions": [
+            "Clasificación automática de solicitudes o tickets",
+            "Extracción de datos desde documentos repetitivos",
+            "Asistentes internos para consulta rápida de información"
+          ],
+          "cta": "Quiero cotizar software a medida"
+        }
+      ]
+    },
+    "ai": {
+      "title": "AI aplicada",
+      "subtitle": "Primero ordenamos la base digital. Después evaluamos dónde la IA puede ahorrar tiempo, mejorar decisiones o aumentar conversión con impacto real.",
+      "noHype": {
+        "yesTitle": "Cuándo sí conviene",
+        "yes": [
+          "Hay procesos repetitivos con volumen suficiente.",
+          "Existe información mínima para entrenar o parametrizar reglas.",
+          "El objetivo de negocio está claro y se puede medir."
+        ],
+        "noTitle": "Cuándo no conviene",
+        "no": [
+          "Se busca IA como adorno para estar al día.",
+          "No hay proceso definido ni responsables internos.",
+          "La base digital todavía tiene problemas estructurales."
+        ],
+        "requirementsTitle": "Qué se necesita para que funcione",
+        "requirements": [
+          "Datos mínimos confiables",
+          "Flujos operativos definidos",
+          "Seguimiento de resultados y mejora continua"
+        ]
+      }
+    },
+    "process": {
+      "title": "Proceso de trabajo",
+      "subtitle": "Ejecución simple y transparente para reducir incertidumbre desde el inicio.",
+      "steps": [
+        {
+          "title": "Descubrimiento",
+          "description": "Entendemos negocio, objetivo y restricciones reales."
+        },
+        {
+          "title": "Alcance",
+          "description": "Definimos entregables, prioridades y plan por etapas."
+        },
+        {
+          "title": "Diseño",
+          "description": "Validamos experiencia, mensajes y flujo principal."
+        },
+        {
+          "title": "Desarrollo",
+          "description": "Construcción iterativa con foco en calidad y performance."
+        },
+        {
+          "title": "Optimización",
+          "description": "Medimos, ajustamos y evolucionamos según resultados."
+        }
+      ]
+    },
+    "proof": {
+      "title": "Casos reales para pasar de promesa a evidencia",
+      "subtitle": "Algunos proyectos publicados que muestran distintos tipos de solución.",
+      "linkLabel": "Ver proyecto",
+      "items": [
+        {
+          "name": "Colraices",
+          "context": "Sitio corporativo orientado a comunicar servicios y generar consultas de forma clara.",
+          "url": "https://colraices.com"
+        },
+        {
+          "name": "Dotase",
+          "context": "Tienda online con estructura de catálogo y experiencia de compra pensada para conversión.",
+          "url": "https://dotase.com"
+        },
+        {
+          "name": "BluOne",
+          "context": "Plataforma interna para centralizar operación y digitalizar procesos específicos.",
+          "url": "https://one.blubank.co"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Preguntas frecuentes antes de empezar",
+      "items": [
+        {
+          "question": "¿Cuánto tarda un proyecto?",
+          "answer": "Depende del alcance. Una landing puede resolverse en pocas semanas y un software a medida requiere etapas más largas. Se define un plan con entregas parciales desde el inicio."
+        },
+        {
+          "question": "¿Cuánto mantenimiento requiere?",
+          "answer": "La idea es que el proyecto nazca con una base mantenible. Luego se acuerda un esquema de soporte según necesidad: mejoras puntuales, evolutivo mensual o acompañamiento continuo."
+        },
+        {
+          "question": "¿Se puede empezar simple y escalar después?",
+          "answer": "Sí. De hecho, es la forma recomendada: priorizar lo crítico, validar con usuarios y evolucionar por etapas para reducir riesgo."
+        },
+        {
+          "question": "¿El cliente queda dueño del código y los activos?",
+          "answer": "Sí. La propiedad de activos y accesos se define en el acuerdo desde el comienzo para evitar dependencia innecesaria."
+        },
+        {
+          "question": "¿Cuándo tiene sentido sumar IA?",
+          "answer": "Cuando existe un problema repetitivo, medible y con datos mínimos para operar. Si no hay base digital ordenada, primero se fortalece eso."
+        },
+        {
+          "question": "¿Qué información necesitás para cotizar?",
+          "answer": "Objetivo del proyecto, tipo de usuario, proceso actual, urgencia y referencias. Con eso se puede armar un alcance inicial realista."
+        }
+      ]
+    },
+    "closing": {
+      "title": "¿Listo para convertir tu idea en una solución que mueva el negocio?",
+      "subtitle": "Podés empezar con una conversación rápida. Te propongo el mejor camino según tu contexto actual, sin complejidad innecesaria.",
+      "primaryCta": "Iniciar conversación por WhatsApp",
+      "secondaryCta": "Enviar brief por email",
+      "tertiaryCta": "Agendar llamada de descubrimiento"
+    }
+  },
   "Article": {
     "readingTime": "Lectura {minutes} min",
     "contentTable": "Tabla de Contenidos"
@@ -123,7 +348,7 @@
       "active-teams": {
         "title": "Mantén Teams en Verde",
         "description": "Mantén tu Microsoft Teams activo y evita ser eliminado por inactividad con este simple script de PowerShell."
-       }
+      }
     }
   }
 }

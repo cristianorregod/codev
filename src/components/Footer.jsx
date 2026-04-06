@@ -13,6 +13,11 @@ export const Footer = () => {
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
+            <Link href="/services" className="mr-4 hover:underline md:mr-6">
+              {t("services")}
+            </Link>
+          </li>
+          <li>
             <Link href="/projects" className="mr-4 hover:underline md:mr-6">
               {t("projects")}
             </Link>
