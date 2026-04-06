@@ -46,21 +46,29 @@ export const PERSONAL_LINKS_DATA = {
       descriptionKey: "sections.learning-sql.description",
       items: [
         {
-          id: "contact-email",
+          id: "sql-bolt",
           labelKey: "sections.learning-sql.items.sql-bolt",
           url: "https://sqlbolt.com/",
         },
         {
-          id: "contact-linkedin",
+          id: "sql-side-quest",
           labelKey: "sections.learning-sql.items.sql-side-quest",
           url: "https://www.sqlsidequest.com/",
         },
         {
-          id: "contact-schedule",
+          id: "aprende-sql",
           labelKey: "sections.learning-sql.items.aprende-sql",
           url: "https://aprendesql.dev/",
         },
       ],
+    },
+    {
+      id: "active-teams",
+      type: "simple",
+      icon: "💻",
+      titleKey: "sections.active-teams.title",
+      descriptionKey: "sections.active-teams.description",
+      url: "https://gist.github.com/cristianorregod/6f71ff128e92e989911332bf92af0bd5",
     },
   ],
 };

@@ -119,7 +119,11 @@
           "sql-side-quest": "SQL Side Quest",
           "aprende-sql": "Aprende SQL"
         }
-      }
+      },
+      "active-teams": {
+        "title": "Mantén Teams en Verde",
+        "description": "Mantén tu Microsoft Teams activo y evita ser eliminado por inactividad con este simple script de PowerShell."
+       }
     }
   }
 }
