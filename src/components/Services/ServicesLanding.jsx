@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import WhatsAppIcon from "@/components/icons/WhatsApp";
 import { getTranslations } from "next-intl/server";
@@ -22,31 +23,28 @@ const SERVICE_CTA_URL = {
 
 const SERVICE_STYLES = {
   web: {
-    accent:
-      "from-primary-500/20 to-primary-100/30 dark:from-primary-800/40 dark:to-primary-950/10",
+    accent: "bg-primary-600 dark:bg-primary-500",
     badge:
-      "border-primary-300/60 bg-primary-100/70 text-primary-800 dark:border-primary-900/50 dark:bg-primary-950/40 dark:text-primary-200",
-    panel:
-      "border-primary-200/70 bg-primary-50/70 dark:border-primary-900/30 dark:bg-primary-950/20",
-    icon: "border-primary-300/60 bg-primary-100/80 text-primary-800 dark:border-primary-900/60 dark:bg-primary-950/50 dark:text-primary-200",
+      "border-primary-200 bg-primary-50 text-primary-700 dark:border-primary-800 dark:bg-primary-950/50 dark:text-primary-300",
+    icon: "bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300",
+    ctaBg: "bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600",
+    ctaBorder: "border-primary-500 dark:border-primary-600",
   },
   ecommerce: {
-    accent:
-      "from-crusta-500/20 to-crusta-100/30 dark:from-crusta-800/40 dark:to-crusta-950/10",
+    accent: "bg-crusta-600 dark:bg-crusta-500",
     badge:
-      "border-crusta-300/60 bg-crusta-100/70 text-crusta-800 dark:border-crusta-900/50 dark:bg-crusta-950/40 dark:text-crusta-200",
-    panel:
-      "border-crusta-200/70 bg-crusta-50/70 dark:border-crusta-900/30 dark:bg-crusta-950/20",
-    icon: "border-crusta-300/60 bg-crusta-100/80 text-crusta-800 dark:border-crusta-900/60 dark:bg-crusta-950/50 dark:text-crusta-200",
+      "border-crusta-200 bg-crusta-50 text-crusta-700 dark:border-crusta-800 dark:bg-crusta-950/50 dark:text-crusta-300",
+    icon: "bg-crusta-100 text-crusta-700 dark:bg-crusta-900/50 dark:text-crusta-300",
+    ctaBg: "bg-crusta-600 hover:bg-crusta-700 dark:bg-crusta-500 dark:hover:bg-crusta-600",
+    ctaBorder: "border-crusta-500 dark:border-crusta-600",
   },
   custom: {
-    accent:
-      "from-emerald-500/20 to-emerald-100/30 dark:from-emerald-800/40 dark:to-emerald-950/10",
+    accent: "bg-emerald-600 dark:bg-emerald-500",
     badge:
-      "border-emerald-300/60 bg-emerald-100/70 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-200",
-    panel:
-      "border-emerald-200/70 bg-emerald-50/70 dark:border-emerald-900/30 dark:bg-emerald-950/20",
-    icon: "border-emerald-300/60 bg-emerald-100/80 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/50 dark:text-emerald-200",
+      "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300",
+    icon: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300",
+    ctaBg: "bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600",
+    ctaBorder: "border-emerald-500 dark:border-emerald-600",
   },
 };
 
@@ -157,6 +155,12 @@ const SERVICE_ICONS = {
   custom: WorkflowIcon,
 };
 
+const SERVICE_ILLUSTRATIONS = {
+  web: "/illustrations/corporate_service.webp",
+  ecommerce: "/illustrations/e-commer_service.webp",
+  custom: "/illustrations/custom-software_service.webp",
+};
+
 const BLOCK_ICONS = {
   strategicResult: ArrowUpIcon,
   problem: AlertIcon,
@@ -174,12 +178,34 @@ const PAIN_POINT_LAYOUT = [
   "lg:col-span-4",
 ];
 
-const LabelWithIcon = ({ icon: Icon, label }) => (
-  <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-dark-600 dark:border-dark-700 dark:bg-dark-900/60 dark:text-dark-300 w-fit">
-    <Icon className="size-3.5" />
-    <span>{label}</span>
-  </div>
-);
+const BLOCK_SEMANTIC_STYLES = {
+  problem: {
+    label: "text-amber-600 dark:text-amber-400",
+    bg: "bg-amber-50/60 dark:bg-amber-950/20 border-amber-200/60 dark:border-amber-800/40",
+  },
+  solution: {
+    label: "text-emerald-600 dark:text-emerald-400",
+    bg: "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200/60 dark:border-emerald-800/40",
+  },
+  deliverables: {
+    label: "text-primary-600 dark:text-primary-400",
+    bg: "bg-primary-50/50 dark:bg-primary-950/20 border-primary-200/60 dark:border-primary-800/40",
+  },
+  ai: {
+    label: "text-violet-600 dark:text-violet-400",
+    bg: "bg-violet-50/50 dark:bg-violet-950/20 border-violet-200/60 dark:border-violet-800/40",
+  },
+};
+
+const LabelWithIcon = ({ icon: Icon, label, semantic }) => {
+  const colorClass = BLOCK_SEMANTIC_STYLES[semantic]?.label ?? "text-dark-600 dark:text-dark-400";
+  return (
+    <div className={`inline-flex items-center gap-2 text-sm font-semibold w-fit ${colorClass}`}>
+      <Icon className="size-4" />
+      <span>{label}</span>
+    </div>
+  );
+};
 
 const splitServiceTitle = (title) => {
   if (!title) return { base: "", accent: "" };
@@ -280,7 +306,7 @@ export const ServicesLanding = async ({ locale }) => {
 
       <section
         aria-labelledby="services-pain-points"
-        className="container mx-auto px-2 py-14 lg:max-w-[1114px] lg:px-0"
+        className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0"
       >
         <h2
           id="services-pain-points"
@@ -288,21 +314,20 @@ export const ServicesLanding = async ({ locale }) => {
         >
           {t("painPoints.title")}
         </h2>
-        <p className="mt-3 max-w-3xl text-dark-700 dark:text-dark-200">
+        <p className="mt-4 max-w-3xl text-base text-dark-600 dark:text-dark-300 leading-relaxed">
           {t("painPoints.subtitle")}
         </p>
-        <ul className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-12">
+        <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-12">
           {painPoints.slice(0, 5).map((painPoint, index) => (
             <li
               key={painPoint}
-              className={`group relative overflow-hidden rounded-2xl border border-dark-100 bg-white/90 p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-dark-800 dark:bg-dark-900/45 ${PAIN_POINT_LAYOUT[index]}`}
+              className={`group relative overflow-hidden rounded-2xl border border-dark-200/60 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:border-primary-300 dark:border-dark-800/60 dark:bg-dark-900 dark:hover:border-primary-700 ${PAIN_POINT_LAYOUT[index]}`}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,168,232,0.12),transparent_58%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative flex items-start gap-3">
-                <span className="mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-dark-200/70 bg-dark-50 text-[11px] font-bold text-dark-700 dark:border-dark-700 dark:bg-dark-800 dark:text-dark-100">
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-dark-100 text-xs font-bold text-dark-600 dark:bg-dark-800 dark:text-dark-300">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="text-sm leading-relaxed text-dark-700 dark:text-dark-200 md:text-[15px]">
+                <p className="text-sm leading-relaxed text-dark-700 dark:text-dark-200">
                   {painPoint}
                 </p>
               </div>
@@ -314,7 +339,7 @@ export const ServicesLanding = async ({ locale }) => {
       <section
         id="services-cards"
         aria-labelledby="services-main-offer"
-        className="container mx-auto px-2 py-6 lg:max-w-[1114px] lg:px-0"
+        className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0"
       >
         <h2
           id="services-main-offer"
@@ -322,10 +347,10 @@ export const ServicesLanding = async ({ locale }) => {
         >
           {t("services.title")}
         </h2>
-        <p className="mt-3 max-w-3xl text-dark-700 dark:text-dark-200">
+        <p className="mt-4 max-w-3xl text-base text-dark-600 dark:text-dark-300 leading-relaxed">
           {t("services.subtitle")}
         </p>
-        <div className="mt-8 space-y-7">
+        <div className="mt-10 space-y-8">
           {services.map((service, index) => {
             const serviceStyles =
               SERVICE_STYLES[service.id] ?? SERVICE_STYLES.web;
@@ -341,166 +366,130 @@ export const ServicesLanding = async ({ locale }) => {
               <article
                 key={service.id}
                 id={service.id}
-                className="relative overflow-hidden rounded-[2rem] border border-dark-100 bg-white p-6 text-dark-800 shadow-[0_20px_60px_-35px_rgba(15,23,42,0.18)] dark:border-dark-800/90 dark:bg-dark-950 dark:text-dark-100 dark:shadow-[0_20px_60px_-35px_rgba(0,0,0,0.85)] md:p-8"
+                className="relative overflow-hidden rounded-3xl border border-dark-200/60 bg-white text-dark-800 shadow-sm hover:shadow-lg transition-shadow dark:border-dark-800/60 dark:bg-dark-900 dark:text-dark-100"
               >
-                <div
-                  className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${serviceStyles.accent} opacity-90`}
-                />
-                <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,168,232,0.14),transparent_52%),radial-gradient(circle_at_10%_100%,rgba(255,114,47,0.11),transparent_45%)]" />
+                {/* Accent bar - subtle top border */}
+                <div className={`absolute inset-x-0 top-0 h-0.5 ${serviceStyles.accent}`} />
 
-                <header className="flex flex-wrap items-start justify-between gap-4">
-                  <div className="max-w-3xl">
+                {/* Header Section */}
+                <header className="p-6 md:p-8">
+                  <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-dark-500 dark:text-dark-400">
+                      <span className="text-sm font-bold text-dark-400 dark:text-dark-500">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span
-                        className={`inline-flex size-10 items-center justify-center rounded-xl border ${serviceStyles.icon}`}
-                      >
-                        <ServiceIcon className="size-4.5" />
+                      <span className={`inline-flex size-11 items-center justify-center rounded-xl ${serviceStyles.icon}`}>
+                        <ServiceIcon className="size-5" />
                       </span>
                     </div>
-                    <h3 className="mt-4 text-3xl font-black leading-tight md:text-[2.05rem]">
-                      {(() => {
-                        const { base, accent } = splitServiceTitle(
-                          service.title,
-                        );
-                        return (
-                          <>
-                            <span>{base} </span>
-                            {accent ? (
-                              <span className="bg-primary-600 bg-clip-text text-transparent">
-                                {accent}
-                              </span>
-                            ) : null}
-                          </>
-                        );
-                      })()}
-                    </h3>
+                    <span className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold ${serviceStyles.badge}`}>
+                      {service.forWho}
+                    </span>
                   </div>
 
-                  <span
-                    className={`rounded-full border px-4 py-1.5 text-xs font-semibold md:text-[13px] ${serviceStyles.badge}`}
-                  >
-                    {service.forWho}
-                  </span>
+                  <h3 className="mt-5 text-2xl font-bold leading-tight md:text-3xl">
+                    {(() => {
+                      const { base, accent } = splitServiceTitle(service.title);
+                      return (
+                        <>
+                          <span>{base} </span>
+                          {accent && <span className="text-dark-600 dark:text-dark-300">{accent}</span>}
+                        </>
+                      );
+                    })()}
+                  </h3>
+
+                  {service.solution && (
+                    <p className="mt-3 text-base text-dark-600 dark:text-dark-400 leading-relaxed">
+                      {service.solution}
+                    </p>
+                  )}
                 </header>
 
-                <div className="mt-7 grid gap-4 xl:grid-cols-12">
-                  <div className="h-full xl:col-span-7">
-                    <div className="flex h-full flex-col rounded-2xl  p-5 md:p-6 bg-amber-400/60 dark:bg-amber-950/70">
-                      <LabelWithIcon
-                        icon={ProblemIcon}
-                        label={t("services.labels.problem")}
-                      />
-                      <p className="mt-4 text-lg font-bold leading-snug text-amber-900 dark:text-white md:text-xl">
-                        {service.problem}
-                      </p>
+                <div className="border-t border-dark-100 dark:border-dark-800" />
 
-                      <div className="mt-5 rounded-xl border border-dark-200/80 bg-amber-100 p-4 dark:border-dark-600/90 dark:bg-dark-950/60">
-                        <LabelWithIcon
-                          icon={SolutionIcon}
-                          label={t("services.labels.solution")}
-                        />
-                        <p className="mt-3 text-sm leading-relaxed text-amber-900 dark:text-dark-200 md:text-[15px]">
+                {/* Problem + Solution + Illustration */}
+                <div className="p-6 md:p-8">
+                  <div className="grid gap-5 lg:grid-cols-2">
+                    {/* Left: Problem + Solution stacked */}
+                    <div className="flex flex-col gap-5">
+                      <div className={`rounded-2xl p-5 border ${BLOCK_SEMANTIC_STYLES.problem.bg}`}>
+                        <LabelWithIcon icon={ProblemIcon} label={t("services.labels.problem")} semantic="problem" />
+                        <p className="mt-3 text-base font-medium leading-relaxed text-dark-700 dark:text-dark-200">
+                          {service.problem}
+                        </p>
+                      </div>
+                      <div className={`rounded-2xl p-5 border ${BLOCK_SEMANTIC_STYLES.solution.bg}`}>
+                        <LabelWithIcon icon={SolutionIcon} label={t("services.labels.solution")} semantic="solution" />
+                        <p className="mt-3 text-sm leading-relaxed text-dark-600 dark:text-dark-300">
                           {service.solution}
                         </p>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="h-full rounded-2xl bg-teal-50/70 p-5  dark:bg-teal-900 xl:col-span-5">
-                    <LabelWithIcon
-                      icon={DeliverablesIcon}
-                      label={t("services.labels.deliverables")}
-                    />
-                    <ul className="mt-4 grid gap-2.5">
-                      {service.deliverables.map((deliverable) => (
-                        <li
-                          key={deliverable}
-                          className="rounded-xl border border-teal-200/80 bg-white px-3 py-3 text-sm text-teal-900 dark:border-teal-700 dark:bg-teal-950/60 dark:text-dark-100"
-                        >
-                          <div className="flex items-start gap-2.5">
-                            <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-teal-500/10 text-teal-700 dark:bg-teal-500/15 dark:text-teal-200">
-                              <CheckIcon className="size-3.5" />
-                            </span>
-                            <span className="leading-relaxed">
-                              {deliverable}
-                            </span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid gap-4 xl:grid-cols-12">
-                  <div className="rounded-2xl bg-primary-50 p-5 dark:border-dark-700/80 dark:bg-dark-900 xl:col-span-5">
-                    <LabelWithIcon
-                      icon={BenefitsIcon}
-                      label={t("services.labels.benefits")}
-                    />
-                    <ul className="mt-4 space-y-2">
-                      {service.benefits.map((benefit) => (
-                        <li
-                          key={benefit}
-                          className="rounded-xl border border-primary-200/80 bg-white px-3 py-2 text-sm leading-relaxed text-dark-700  dark:bg-primary-950/60 dark:text-dark-100"
-                        >
-                          <div className="flex items-center gap-2 ">
-                            <span className="inline-block size-2 rounded-full bg-primary-500" />
-                            <span>{benefit}</span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="rounded-2xl  bg-indigo-100 p-5  dark:bg-indigo-950/25 xl:col-span-7">
-                    <div className="">
-                      <div className="mb-4">
-                        <LabelWithIcon
-                          icon={AiIcon}
-                          label={t("services.labels.aiUseCases")}
+                    {/* Right: Illustration */}
+                    {SERVICE_ILLUSTRATIONS[service.id] && (
+                      <div className="hidden lg:flex items-stretch">
+                        <Image
+                          src={SERVICE_ILLUSTRATIONS[service.id]}
+                          alt={service.title}
+                          width={540}
+                          height={400}
+                          className="rounded-2xl object-cover w-full h-full"
                         />
                       </div>
+                    )}
+                  </div>
 
-                      <ul className="grid gap-2 sm:grid-cols-2">
-                        {service.aiOptions.map((option) => (
-                          <li
-                            key={option}
-                            className="rounded-xl border border-indigo-200/70 bg-white/90 px-3 py-3 text-sm text-dark-700 dark:border-indigo-900/60 dark:bg-dark-950/45 dark:text-dark-100"
-                          >
-                            <div className="flex items-start gap-2">
-                              <span className="mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-lg bg-indigo-100 text-indigo-700 dark:bg-indigo-900/70 dark:text-primary-200">
-                                <AiIcon className="size-3.5" />
-                              </span>
-                              <span className="leading-relaxed">{option}</span>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* Deliverables — full width below */}
+                  <div className={`mt-5 rounded-2xl p-5 border ${BLOCK_SEMANTIC_STYLES.deliverables.bg}`}>
+                    <LabelWithIcon icon={DeliverablesIcon} label={t("services.labels.deliverables")} semantic="deliverables" />
+                    <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                      {service.deliverables.slice(0, 4).map((deliverable) => (
+                        <li key={deliverable} className="flex items-start gap-2 text-sm text-dark-600 dark:text-dark-300">
+                          <CheckIcon className="size-4 mt-0.5 shrink-0 text-primary-500 dark:text-primary-400" />
+                          <span className="leading-relaxed">{deliverable}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                <div className="mt-6 flex justify-center">
+                {/* AI Use Cases - Expandable/Optional */}
+                {service.aiOptions && service.aiOptions.length > 0 && (
+                  <>
+                    <div className="border-t border-dark-100 dark:border-dark-800" />
+                    <div className="p-6 md:p-8">
+                      <div className={`rounded-2xl p-5 border ${BLOCK_SEMANTIC_STYLES.ai.bg}`}>
+                        <LabelWithIcon icon={AiIcon} label={t("services.labels.aiUseCases")} semantic="ai" />
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {service.aiOptions.slice(0, 3).map((option) => (
+                            <span
+                              key={option}
+                              className="inline-flex items-center gap-1.5 rounded-lg bg-violet-100/70 px-3 py-2 text-sm text-violet-800 dark:bg-violet-900/30 dark:text-violet-300"
+                            >
+                              <span className="inline-block size-1.5 rounded-full bg-violet-400 dark:bg-violet-500" />
+                              {option}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                <div className="border-t border-dark-100 dark:border-dark-800" />
+
+                {/* CTA Section */}
+                <div className="p-6 md:p-8">
                   <a
                     href={SERVICE_CTA_URL[service.id]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-2/4 max-w-2xl items-center justify-between gap-4 overflow-hidden rounded-2xl border border-primary-300 bg-primary-600 px-5 py-3.5 md:px-6 md:py-4 shadow-[0_18px_40px_-25px_rgba(37,99,235,0.55)] transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-[0_26px_55px_-24px_rgba(37,99,235,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    className={`group flex items-center justify-center gap-3 rounded-xl ${serviceStyles.ctaBg} px-6 py-4 text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${serviceStyles.ctaBorder}`}
                   >
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-100/80">
-                        {t("services.labels.ctaHint")}
-                      </p>
-                      <p className="mt-1.5 text-base font-bold leading-snug text-white md:text-lg">
-                        {service.cta}
-                      </p>
-                    </div>
-                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-white/15 text-base font-bold text-white transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
+                    <span className="text-base font-semibold">{service.cta}</span>
+                    <ArrowUpIcon className="size-5 transition-transform group-hover:translate-x-1" />
                   </a>
                 </div>
               </article>
@@ -511,47 +500,56 @@ export const ServicesLanding = async ({ locale }) => {
 
       <section
         aria-labelledby="services-ai-without-hype"
-        className="container mx-auto px-2 py-14 lg:max-w-[1114px] lg:px-0"
+        className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0"
       >
-        <div className="rounded-3xl border border-primary-200/60 bg-primary-50/70 p-6 dark:border-primary-900/40 dark:bg-primary-950/20 md:p-8">
+        <div className="rounded-3xl border border-dark-200/60 bg-dark-50/50 p-8 dark:border-dark-800/60 dark:bg-dark-800/30 md:p-10">
           <h2
             id="services-ai-without-hype"
             className="text-2xl font-bold text-dark-800 dark:text-dark-100 md:text-3xl"
           >
             {t("ai.title")}
           </h2>
-          <p className="mt-3 max-w-3xl text-dark-700 dark:text-dark-200">
+          <p className="mt-4 max-w-3xl text-base text-dark-600 dark:text-dark-300 leading-relaxed">
             {t("ai.subtitle")}
           </p>
 
-          <div className="mt-7 grid gap-4 md:grid-cols-3">
-            <article className="rounded-2xl bg-white p-4 dark:bg-dark-900/70">
-              <h3 className="font-semibold text-dark-800 dark:text-dark-100">
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <article className="rounded-2xl border border-dark-200/60 bg-white p-5 dark:border-dark-700/50 dark:bg-dark-900">
+              <h3 className="text-base font-semibold text-dark-800 dark:text-dark-100">
                 {aiFit.yesTitle}
               </h3>
-              <ul className="mt-3 space-y-2 text-sm text-dark-700 dark:text-dark-200">
+              <ul className="mt-4 space-y-2.5 text-sm text-dark-600 dark:text-dark-300 leading-relaxed">
                 {aiFit.yes.map((item) => (
-                  <li key={item}>• {item}</li>
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-primary-500" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </article>
-            <article className="rounded-2xl bg-white p-4 dark:bg-dark-900/70">
-              <h3 className="font-semibold text-dark-800 dark:text-dark-100">
+            <article className="rounded-2xl border border-dark-200/60 bg-white p-5 dark:border-dark-700/50 dark:bg-dark-900">
+              <h3 className="text-base font-semibold text-dark-800 dark:text-dark-100">
                 {aiFit.noTitle}
               </h3>
-              <ul className="mt-3 space-y-2 text-sm text-dark-700 dark:text-dark-200">
+              <ul className="mt-4 space-y-2.5 text-sm text-dark-600 dark:text-dark-300 leading-relaxed">
                 {aiFit.no.map((item) => (
-                  <li key={item}>• {item}</li>
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-dark-400" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </article>
-            <article className="rounded-2xl bg-white p-4 dark:bg-dark-900/70">
-              <h3 className="font-semibold text-dark-800 dark:text-dark-100">
+            <article className="rounded-2xl border border-dark-200/60 bg-white p-5 dark:border-dark-700/50 dark:bg-dark-900">
+              <h3 className="text-base font-semibold text-dark-800 dark:text-dark-100">
                 {aiFit.requirementsTitle}
               </h3>
-              <ul className="mt-3 space-y-2 text-sm text-dark-700 dark:text-dark-200">
+              <ul className="mt-4 space-y-2.5 text-sm text-dark-600 dark:text-dark-300 leading-relaxed">
                 {aiFit.requirements.map((item) => (
-                  <li key={item}>• {item}</li>
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-emerald-500" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </article>
@@ -561,7 +559,7 @@ export const ServicesLanding = async ({ locale }) => {
 
       <section
         aria-labelledby="services-process"
-        className="container mx-auto px-2 py-6 lg:max-w-[1114px] lg:px-0"
+        className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0"
       >
         <h2
           id="services-process"
@@ -569,22 +567,22 @@ export const ServicesLanding = async ({ locale }) => {
         >
           {t("process.title")}
         </h2>
-        <p className="mt-3 max-w-3xl text-dark-700 dark:text-dark-200">
+        <p className="mt-4 max-w-3xl text-base text-dark-600 dark:text-dark-300 leading-relaxed">
           {t("process.subtitle")}
         </p>
-        <div className="relative mt-8">
-          <div className="pointer-events-none absolute left-[15px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary-400 via-primary-300 to-primary-200 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 lg:left-0 lg:right-0 lg:top-5 lg:h-px lg:w-full" />
-          <ol className="relative grid gap-4 lg:grid-cols-5 lg:gap-5">
+        <div className="relative mt-10">
+          <div className="pointer-events-none absolute left-[15px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary-500 via-primary-400 to-transparent dark:from-primary-600 dark:via-primary-700 dark:to-transparent lg:left-0 lg:right-0 lg:top-5 lg:h-px lg:w-full lg:bg-gradient-to-r" />
+          <ol className="relative grid gap-5 lg:grid-cols-5">
             {processSteps.map((step, index) => (
               <li key={step.title} className="relative pl-10 lg:pl-0 lg:pt-10">
-                <span className="absolute left-0 top-0 inline-flex size-8 items-center justify-center rounded-full border border-primary-300 bg-white text-xs font-bold text-primary-800 shadow-sm dark:border-primary-900 dark:bg-dark-900 dark:text-primary-200 lg:left-1/2 lg:-translate-x-1/2">
+                <span className="absolute left-0 top-0 inline-flex size-9 items-center justify-center rounded-full border-2 border-primary-500 bg-white text-xs font-bold text-primary-700 shadow-sm dark:border-primary-600 dark:bg-dark-900 dark:text-primary-300 lg:left-1/2 lg:-translate-x-1/2">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <article className="rounded-2xl border border-dark-100 bg-white p-4 dark:border-dark-800 dark:bg-dark-900/40">
-                  <h3 className="font-semibold text-dark-800 dark:text-dark-100">
+                <article className="rounded-2xl border border-dark-200/60 bg-white p-5 shadow-sm dark:border-dark-800/60 dark:bg-dark-900">
+                  <h3 className="text-base font-semibold text-dark-800 dark:text-dark-100">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm text-dark-700 dark:text-dark-200">
+                  <p className="mt-3 text-sm text-dark-600 dark:text-dark-300 leading-relaxed">
                     {step.description}
                   </p>
                 </article>
@@ -634,7 +632,7 @@ export const ServicesLanding = async ({ locale }) => {
 
       <section
         aria-labelledby="services-faq"
-        className="container mx-auto px-2 py-6 lg:max-w-[1114px] lg:px-0"
+        className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0"
       >
         <h2
           id="services-faq"
@@ -642,16 +640,19 @@ export const ServicesLanding = async ({ locale }) => {
         >
           {t("faq.title")}
         </h2>
-        <div className="mt-8 space-y-3">
+        <div className="mt-10 space-y-4">
           {faqItems.map((item) => (
             <details
               key={item.question}
-              className="group rounded-2xl border border-dark-100 bg-white p-5 dark:border-dark-800 dark:bg-dark-900/40"
+              className="group rounded-2xl border border-dark-200/60 bg-white p-6 shadow-sm hover:shadow-md transition-shadow dark:border-dark-800/60 dark:bg-dark-900"
             >
-              <summary className="mt-0 cursor-pointer list-none font-semibold text-dark-800 dark:text-dark-100">
-                {item.question}
+              <summary className="cursor-pointer list-none text-base font-semibold text-dark-800 dark:text-dark-100 marker:content-none">
+                <div className="flex items-center justify-between">
+                  <span>{item.question}</span>
+                  <span className="ml-4 text-dark-400 transition-transform group-open:rotate-180">▼</span>
+                </div>
               </summary>
-              <p className="mt-3 text-sm text-dark-700 dark:text-dark-200">
+              <p className="mt-4 text-sm text-dark-600 dark:text-dark-300 leading-relaxed">
                 {item.answer}
               </p>
             </details>
@@ -659,12 +660,12 @@ export const ServicesLanding = async ({ locale }) => {
         </div>
       </section>
 
-      <section className="container mx-auto px-2 py-14 lg:max-w-[1114px] lg:px-0">
-        <div className="rounded-3xl bg-dark-900 p-7 text-dark-50 dark:bg-dark-950 md:p-10">
+      <section className="container mx-auto px-2 py-16 lg:max-w-[1114px] lg:px-0">
+        <div className="rounded-3xl bg-dark-900 p-8 text-dark-50 dark:bg-dark-950 md:p-12">
           <h2 className="text-2xl font-bold md:text-3xl">
             {t("closing.title")}
           </h2>
-          <p className="mt-3 max-w-3xl text-dark-200">
+          <p className="mt-4 max-w-3xl text-base text-dark-200 leading-relaxed">
             {t("closing.subtitle")}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -672,14 +673,14 @@ export const ServicesLanding = async ({ locale }) => {
               href={WHATSAPP_LINKS.general}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-crusta-600 px-6 py-3 text-sm font-bold text-dark-100 transition-colors hover:bg-crusta-700"
+              className="inline-flex items-center gap-2 rounded-xl bg-crusta-600 px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-crusta-700 hover:shadow-lg hover:-translate-y-0.5"
             >
               {t("closing.primaryCta")}
               <WhatsAppIcon className="size-5" />
             </a>
             <a
               href="mailto:cristian.duquew@gmail.com?subject=Brief%20de%20proyecto%20digital"
-              className="inline-flex items-center rounded-full border border-dark-400 px-6 py-3 text-sm font-semibold text-dark-100 transition-colors hover:bg-dark-800"
+              className="inline-flex items-center rounded-xl border border-dark-500 bg-dark-800/50 px-6 py-3.5 text-sm font-semibold text-dark-100 transition-all hover:bg-dark-800 hover:border-dark-400"
             >
               {t("closing.secondaryCta")}
             </a>
@@ -687,7 +688,7 @@ export const ServicesLanding = async ({ locale }) => {
               href={WHATSAPP_LINKS.discovery}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full border border-dark-400 px-6 py-3 text-sm font-semibold text-dark-100 transition-colors hover:bg-dark-800"
+              className="inline-flex items-center rounded-xl border border-dark-500 bg-dark-800/50 px-6 py-3.5 text-sm font-semibold text-dark-100 transition-all hover:bg-dark-800 hover:border-dark-400"
             >
               {t("closing.tertiaryCta")}
             </a>
