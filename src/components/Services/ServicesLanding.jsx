@@ -646,7 +646,7 @@ export const ServicesLanding = async ({ locale }) => {
               key={item.question}
               className="group rounded-2xl border border-dark-200/60 bg-white p-6 shadow-sm hover:shadow-md transition-shadow dark:border-dark-800/60 dark:bg-dark-900"
             >
-              <summary className="cursor-pointer list-none text-base font-semibold text-dark-800 dark:text-dark-100 marker:content-none">
+              <summary className="cursor-pointer list-none text-base font-semibold text-dark-800 dark:text-dark-100 marker:content-none mt-0">
                 <div className="flex items-center justify-between">
                   <span>{item.question}</span>
                   <span className="ml-4 text-dark-400 transition-transform group-open:rotate-180">▼</span>
