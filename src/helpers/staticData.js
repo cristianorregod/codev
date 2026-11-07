@@ -28,46 +28,6 @@ import AWSIcon from "@/components/icons/stack/AWS";
 import OpenAIIcon from "@/components/icons/stack/OpenAI";
 import DjangoIcon from "@/components/icons/stack/Django";
 import FastAPIIcon from "@/components/icons/stack/FastAPI";
-export const experienceInfo = [
-  {
-    role: "Programador FullStack",
-    date: "Mayo 2024 - Presente",
-    company: "Industrial Distributions International Co.",
-    description:
-      "Liderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa.",
-  },
-  {
-    role: "Programador FullStack",
-    date: "Enero 2022 - Presente",
-    company: "Colraices",
-    description:
-      "Encargado de desarrollar soluciones web en empresa del sector financiero e inmobiliario. Desarrollo de convenciones de código internas de acuerdo a buenas prácticas de programación. Liderar el equipo de desarrollo Backend.",
-  },
-  {
-    role: "Web master",
-    date: "Febrero 2020 - Noviembre 2021",
-    company: "Diocesano Santa María",
-    description:
-      "Rediseño y mantenimiento de sitio y aplicación web en institución del sector educativo. Dar clases de programación a cursos de ultimo grado. Liderar el comité de Ciencia y Tecnología de la institución.",
-  },
-
-  {
-    role: "Técnico de soporte",
-    date: "Diciembre 2018 - Diciembre 2019",
-    company: "La Sucursal",
-    description:
-      "Desarrollar aplicación de simulación de costos para materiales de construcción. Administrar y dar soporte técnico al software contable y de facturación. Implementar herramientas de gestión de la comunicación y trabajo en equipo.",
-  },
-
-  // {
-  //     role: 'Aprendizaje autónomo',
-  //     date: '2018 - 2019',
-  //     company: 'Autónomo',
-  //     description:
-  //         'Primeros pasos en el desarrollo web aprendiendo en mis clases de ingeniería y de forma autodidacta con cursos virtuales, donde creé algunos proyectos personales los cuáles me abrieron las puertas al mundo laboral dentro de la insdustria TI.',
-  // },
-];
-
 export const MY_STACK = {
   frontend: [
     { name: "HTML", icon: HtmlIcon },

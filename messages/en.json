@@ -21,28 +21,22 @@
       "title": "Experience",
       "items": [
         {
-          "role": "FullStack Developer",
+          "role": "Applications Lead (previously Software Engineer)",
           "date": "May 2024 - Present",
-          "company": "Industrial Distributions International Co.",
-          "description": "Leading the automation process implementing RPA solutions. Developing ERP integrations with custom solutions. Performing customizations in the ERP according to the company's business logic."
+          "company": "Industrial Distributors International Co.",
+          "description": "I define the architecture of the company's AI and integration solutions and lead the team that builds and deploys them, integrating LLMs with enterprise systems (ERP - CRM) and Microsoft 365 with authentication, auditing and traceability."
         },
         {
-          "role": "FullStack Developer",
-          "date": "January 2022 - Present",
+          "role": "Software Consultant / Technical Advisor",
+          "date": "June 2024 - Present",
           "company": "Colraices",
-          "description": "Responsible for developing web solutions in the financial and real estate sector. Developing internal code conventions according to best programming practices. Leading the Backend development team."
+          "description": "I advise on software and AI architecture and coordinate the development team, ensuring operational continuity and security of the critical credit systems. I designed and built a multi-agent assistant that analyzes credit policies, properties, client data and credit reports, doubling the client capacity of the sales advisors."
         },
         {
-          "role": "Web master",
-          "date": "February 2020 - November 2021",
-          "company": "Diocesano Santa María",
-          "description": "Redesign and maintenance of a web application in the educational sector. Teaching programming classes to senior students. Leading the Science and Technology committee of the institution."
-        },
-        {
-          "role": "Support Technician",
-          "date": "December 2018 - December 2019",
-          "company": "La Sucursal",
-          "description": "Developed cost simulation application for construction materials. Managed and provided technical support to accounting and billing software. Implemented communication management and teamwork tools."
+          "role": "Full Stack Developer",
+          "date": "January 2022 - May 2024",
+          "company": "Colraices",
+          "description": "I co-founded and built the backend and frontend of the credit eligibility and limit system based on partner banks' rules, now in production. I led the development of the automated credit analysis, which cut evaluation from 2 hours to 5 minutes per client and enabled client self-service."
         }
       ]
     },
