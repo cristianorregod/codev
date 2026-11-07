@@ -62,13 +62,5 @@ export const PERSONAL_LINKS_DATA = {
         },
       ],
     },
-    {
-      id: "active-teams",
-      type: "simple",
-      icon: "💻",
-      titleKey: "sections.active-teams.title",
-      descriptionKey: "sections.active-teams.description",
-      url: "https://gist.github.com/cristianorregod/6f71ff128e92e989911332bf92af0bd5",
-    },
   ],
 };
