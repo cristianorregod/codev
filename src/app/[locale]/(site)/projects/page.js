@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `Cristian Orrego Dev 👨‍💻 | ${t("projects")}`,
     description:
-      "Explora mí portafolio web y descubre mis proyectos más destacados.",
+      "Explora mi portafolio web y descubre mis proyectos más destacados.",
     metadataBase: new URL("https://cristianorrego.dev"),
     author: "cristianorregodev",
   };

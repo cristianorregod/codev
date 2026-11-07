@@ -34,7 +34,7 @@ export const experienceInfo = [
     date: "Mayo 2024 - Presente",
     company: "Industrial Distributions International Co.",
     description:
-      "Líderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa.",
+      "Liderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa.",
   },
   {
     role: "Programador FullStack",
@@ -181,7 +181,7 @@ export const MY_SERVICES = [
       },
       {
         image: "/images/vitrina/cover.webp",
-        url: "https://colraices.com/casas-apartamentos-colombia-desde-el-exterior",
+        url: "https://colraices.com",
         title: "Portal inmobiliario",
       },
     ],

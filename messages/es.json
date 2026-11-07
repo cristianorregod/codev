@@ -24,7 +24,7 @@
           "role": "Programador FullStack",
           "date": "Mayo 2024 - Presente",
           "company": "Industrial Distributions International Co.",
-          "description": "Líderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa."
+          "description": "Liderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa."
         },
         {
           "role": "Programador FullStack",
@@ -91,11 +91,11 @@
       "title": "Si te pasa esto, hay una oportunidad clara de mejora.",
       "subtitle": "Antes de hablar de tecnología, partimos de problemas concretos que frenan ventas, confianza o eficiencia.",
       "items": [
-        "Tu negocio no transmite confianza online y cuesta explicar qué ofrecés.",
-        "Tenés visitas, pero tu web no convierte consultas o ventas de forma constante.",
-        "Vendés, pero la operación sigue siendo manual y dependiente de WhatsApp o planillas.",
+        "Tu negocio no transmite confianza online y cuesta explicar qué ofreces.",
+        "Tienes visitas, pero tu web no convierte consultas o ventas de forma constante.",
+        "Vendes, pero la operación sigue siendo manual y dependiente de WhatsApp o planillas.",
         "Tu equipo pierde tiempo en tareas repetitivas que se pueden automatizar.",
-        "No tenés una base digital sólida para escalar campañas o incorporar IA con criterio."
+        "No tienes una base digital sólida para escalar campañas o incorporar IA con criterio."
       ]
     },
     "services": {
@@ -108,7 +108,7 @@
         "solution": "Solución propuesta",
         "deliverables": "Entregables típicos",
         "benefits": "Beneficios esperados",
-        "aiUseCases": "AI aplicable",
+        "aiUseCases": "IA aplicable",
         "ctaHint": "Siguiente paso"
       },
       "items": [
@@ -190,7 +190,7 @@
       ]
     },
     "ai": {
-      "title": "AI aplicada",
+      "title": "IA aplicada",
       "subtitle": "Primero ordenamos la base digital. Después evaluamos dónde la IA puede ahorrar tiempo, mejorar decisiones o aumentar conversión con impacto real.",
       "noHype": {
         "yesTitle": "Cuándo sí conviene",
@@ -285,14 +285,14 @@
           "answer": "Cuando existe un problema repetitivo, medible y con datos mínimos para operar. Si no hay base digital ordenada, primero se fortalece eso."
         },
         {
-          "question": "¿Qué información necesitás para cotizar?",
+          "question": "¿Qué información necesitas para cotizar?",
           "answer": "Objetivo del proyecto, tipo de usuario, proceso actual, urgencia y referencias. Con eso se puede armar un alcance inicial realista."
         }
       ]
     },
     "closing": {
       "title": "¿Listo para convertir tu idea en una solución que mueva el negocio?",
-      "subtitle": "Podés empezar con una conversación rápida. Te propongo el mejor camino según tu contexto actual, sin complejidad innecesaria.",
+      "subtitle": "Puedes empezar con una conversación rápida. Te propongo el mejor camino según tu contexto actual, sin complejidad innecesaria.",
       "primaryCta": "Iniciar conversación por WhatsApp",
       "secondaryCta": "Enviar brief por email",
       "tertiaryCta": "Agendar llamada de descubrimiento"
