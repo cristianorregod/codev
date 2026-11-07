@@ -3,6 +3,7 @@ import { ArticleBody } from "@/components/ArticleBody";
 import "highlight.js/styles/atom-one-dark.css";
 import "highlightjs-copy/styles/highlightjs-copy.css";
 import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const locales = routing.locales;
@@ -45,7 +46,7 @@ export default async function PostPage({ params }) {
   const { slug, locale } = await params;
   const post = await getPostBySlug(slug, process.env.ARTICLES_PATH, locale);
 
-  if (!post) return <div>Post not found</div>;
+  if (!post) notFound();
 
   const { content, frontmatter } = post;
 

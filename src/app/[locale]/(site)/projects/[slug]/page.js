@@ -2,6 +2,7 @@ import { ProjectBody } from "@/components/ProjectBody";
 import { getPostBySlug, getPosts } from "@/lib/mdx";
 import "highlight.js/styles/atom-one-dark.css";
 import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const locales = routing.locales;
@@ -43,7 +44,7 @@ export default async function ProjectPage({ params }) {
   const { slug, locale } = await params;
   const project = await getPostBySlug(slug, process.env.PROJECTS_PATH, locale);
 
-  if (!project) return <div>Project not found</div>;
+  if (!project) notFound();
 
   const { content, frontmatter } = project;
 
