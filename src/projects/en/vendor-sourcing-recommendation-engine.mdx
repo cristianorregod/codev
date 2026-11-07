@@ -1,0 +1,59 @@
+---
+title: "Vendor sourcing recommendation engine"
+category: "Backend"
+date: "2026-11-02"
+excerpt: "A data pipeline and API that consolidate ERP purchase history to find items and recommend which vendors to ask for a quote, designed as the foundation for a future AI sourcing agent."
+cover: "/images/projects/vendor-sourcing-recommendation-engine/cover-en.webp"
+stack:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - pg_trgm
+  - Docker
+---
+
+## My role
+
+As the sole author of the project, I took it from design to implementation: data extraction, modeling, search, recommendations, evaluation and the API service.
+
+- **Incremental extraction**: Built the ERP extraction with watermarks and hash-based upserts into raw tables.
+- **Transformation layer**: Designed the SQL layer that builds a consolidated core model and a vendor×brand performance score from historical activity.
+- **Canonicalization**: Normalized items and brands so the same product can be found under different spellings.
+- **Search and recommendations**: Developed the multi-step item search and the vendor recommendation logic.
+- **Evaluation**: Wrote offline evaluation and backtesting commands to measure quality before any rollout.
+- **API service**: Built a containerized FastAPI service with API-key authentication and request logging.
+
+## Key project features
+
+- Multi-step item search: internal code → exact part number → fuzzy part number with trigram similarity → full-text.
+- Vendor recommendations (primary and backups) with confidence and human-readable reasons.
+- Daily scheduled refresh of the whole pipeline.
+- Offline evaluation and backtesting commands.
+- Currently deterministic (no ML or embeddings) and designed as the data foundation for a future AI sourcing agent, with embeddings and RAG planned.
+
+## Impact achieved
+
+Deciding which vendors to ask for a quote no longer has to depend only on each buyer's individual knowledge. In an offline evaluation on a test environment (not production), the engine reached:
+
+- Item search hit@1: 99.8% with brand + part number, 98.2% with part number only and 96.4% with a one-character typo.
+- Recommendation backtest hit@1: 88.5% for previously purchased items.
+- Search p50 latency of about 200 ms, over roughly 490k processed rows.
+
+The project is in development and not yet deployed.
+
+## Technologies
+
+| Technology | Use / Implementation                                              |
+| ---------- | ----------------------------------------------------------------- |
+| Python     | Extraction, transformation orchestration and evaluation commands. |
+| FastAPI    | Recommendation and search API with API-key authentication.        |
+| PostgreSQL | Raw and core data layers, scoring and full-text search.           |
+| pg_trgm    | Trigram similarity for fuzzy part number matching.                |
+| Docker     | Containerization of the service.                                  |
+
+## Project flow
+
+<img
+  src="/images/projects/vendor-sourcing-recommendation-engine/architecture.svg"
+  alt="Vendor sourcing pipeline: ERP extraction, raw layer, core build, item search, vendor scoring and recommendation API"
+/>

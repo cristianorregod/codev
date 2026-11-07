@@ -1,0 +1,61 @@
+---
+title: "Colraices Multi-Agent AI Assistant"
+category: "Backend"
+date: "2026-09-11"
+excerpt: "A multi-agent AI assistant for a Colombian real estate and financial services company that helps its consultants answer credit questions, search properties, look up client data and turn credit reports into financial analysis documents."
+cover: "/images/projects/colraices-multi-agent-ai-assistant/cover-en.webp"
+stack:
+  - Python
+  - LangGraph
+  - LangChain
+  - OpenAI
+  - FastAPI
+  - PostgreSQL
+  - Azure Blob Storage
+  - Docker
+---
+
+## My role
+
+I was the sole developer of the project, responsible for its architecture, agents and API from the first MVP to the current feature work.
+
+- **Agent architecture**: Designed the LangGraph state graph with a supervisor that plans, delegates to specialists and reviews their results before answering.
+- **Specialised agents**: Built the credit, real estate, client data and financial analysis (Brujula) agents, each with its own tools and instructions.
+- **API and security**: Developed the FastAPI service with JWT authentication, per-user chat ownership and response streaming.
+- **Document pipeline**: Implemented direct PDF uploads to Azure Blob Storage, AI extraction of credit reports and PDF report generation.
+- **Data and delivery**: Set up PostgreSQL persistence, versioned SQL migrations, the Docker image and the technical documentation.
+
+## Key project features
+
+- Supervisor agent that builds an ordered plan of specialists, reviews each result and decides whether to continue or finalize, with an iteration limit to prevent loops.
+- Credit agent that answers policy and requirement questions using retrieval over a document vector store.
+- Real estate agent that searches properties through an external listings API with filters such as city, budget and property type.
+- Client data agent that queries the company backend for the client linked to the chat, requesting only the level of detail the question needs.
+- Brujula agent that analyzes an uploaded credit bureau report, grounds its interpretation in a reference manual and generates a structured financial analysis PDF.
+- A final responder node that keeps a single, consistent voice in every answer.
+- Per-chat conversation memory in PostgreSQL, synchronous and streaming (SSE) endpoints, and identity checks that keep each chat tied to one client.
+
+## Impact achieved
+
+Consultants get one conversational entry point for credit guidance, property search, client information and credit report analysis, instead of switching between documents and systems. The credit and real estate assistant is the base MVP, while the Brujula analysis and client data capabilities are in active development on a feature branch.
+
+## Technologies
+
+| Technology          | Use / Implementation                                                 |
+| ------------------- | -------------------------------------------------------------------- |
+| Python              | Main language for the agents, API and document pipeline.             |
+| LangGraph           | State graph that orchestrates the supervisor and specialised agents. |
+| LangChain           | Model integration, tool binding and structured outputs.              |
+| OpenAI              | LLMs for every agent, file search retrieval and PDF analysis.        |
+| FastAPI             | HTTP API with JWT authentication, chat endpoints and SSE streaming.  |
+| PostgreSQL          | Conversation checkpointer, chat ownership, documents and reports.    |
+| Azure Blob Storage  | Storage of uploaded credit reports and generated PDF documents.      |
+| Jinja2 / WeasyPrint | HTML report templates rendered to PDF.                               |
+| Docker              | Container image with the native dependencies for PDF rendering.      |
+
+## Project flow
+
+<img
+  src="/images/projects/colraices-multi-agent-ai-assistant/architecture.svg"
+  alt="Colraices multi-agent AI assistant architecture: web app, FastAPI, supervisor agent, credit, real estate, client data and Brujula agents, their tools and data sources, and the final responder"
+/>

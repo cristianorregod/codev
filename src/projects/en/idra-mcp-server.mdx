@@ -1,0 +1,54 @@
+---
+title: "IDRA MCP Server"
+category: "Backend"
+date: "2026-10-27"
+excerpt: "A Model Context Protocol server that gives AI assistants secure, audited, real-time access to data spread across an industrial distribution company's ERP and analytics databases."
+cover: "/images/projects/idra-mcp-server/cover-en.webp"
+stack:
+  - Python
+  - FastMCP
+  - PostgreSQL
+  - Docker
+  - Microsoft Entra ID
+---
+
+## My role
+
+As the creator and lead developer of the project, I designed the server architecture and built most of its foundation, while teammates contributed the finance domain and the customer conversations analytics.
+
+- **Base server and transport**: Built the MCP server with Streamable HTTP transport and its Docker setup.
+- **Authentication**: Integrated OAuth with Microsoft Entra ID so every call is attributed to the signed-in user.
+- **Tools by domain**: Developed most of the sales and operations tools, plus the notification tools.
+- **Usage analytics**: Built tools to measure adoption and usage of the server itself.
+- **Architecture documentation**: Documented the layered design and the conventions for adding new tools.
+
+## Key project features
+
+- 25 tools across 7 domains: sales, operations, finance, customer conversations analytics, performance, files/datasets and notifications.
+- 23 tools are read-only and annotated as such; 2 action tools send email and Teams messages through workflow automation.
+- Middleware that audits every tool call (tool, user, duration, result) to PostgreSQL, redacting sensitive payloads.
+- Parameterized SQL, input validation and a shared response envelope across all tools.
+- Clean layered design per feature: tools → use cases → queries → domain.
+- Data sources: the ERP (via JDBC) and PostgreSQL, covered by automated tests.
+
+## Impact achieved
+
+Business users and AI assistants now have one secure, audited entry point to company data, replacing the manual pulling of reports with consistent, real-time answers and structured analysis, while every access remains traceable to a specific user.
+
+## Technologies
+
+| Technology         | Use / Implementation                                           |
+| ------------------ | -------------------------------------------------------------- |
+| Python             | Main language for the server, use cases and data queries.      |
+| FastMCP            | Framework to expose the tools over the Model Context Protocol. |
+| PostgreSQL         | Analytics data source and audit log of every tool call.        |
+| Docker             | Containerization of the server for consistent deployments.     |
+| Microsoft Entra ID | OAuth authentication and per-user attribution of every call.   |
+| JDBC               | Read access to the ERP data.                                   |
+
+## Project flow
+
+<img
+  src="/images/projects/idra-mcp-server/architecture.svg"
+  alt="IDRA MCP Server architecture: AI client, Entra ID OAuth, audit middleware, tools by domain, ERP and PostgreSQL"
+/>

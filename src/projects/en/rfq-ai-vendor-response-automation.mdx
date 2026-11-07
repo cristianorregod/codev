@@ -1,0 +1,61 @@
+---
+title: "RFQ AI vendor response automation"
+category: "Fullstack"
+date: "2026-11-01"
+excerpt: "A module that turns vendor replies to requests for quotation, whether free text, PDFs, spreadsheets or images, into AI-proposed quote data that a buyer reviews and confirms."
+cover: "/images/projects/rfq-ai-vendor-response-automation/cover-en.webp"
+stack:
+  - TypeScript
+  - Node.js
+  - Express
+  - Python
+  - Flask
+  - React
+  - OpenAI
+  - PostgreSQL
+  - Azure Blob Storage
+  - Power Automate
+---
+
+## My role
+
+I designed the module and was the main implementer across its three codebases: the Node backend, the Python AI worker and the React frontend.
+
+- **Reply matching**: Introduced a reference token in outgoing RFQ emails and built the backend logic that matches each reply to its request.
+- **Email ingestion**: Built the workflow that routes replies from a shared mailbox, stores attachments in blob storage and posts the email to the backend.
+- **AI worker**: Developed a stateless Python service that sends the email and its attachments natively to an LLM with strict structured outputs.
+- **Validation**: Implemented backend re-validation of every AI suggestion against the system catalogs.
+- **Review UI**: Built the prefilled review form and the confirmation flow in React.
+
+## Key project features
+
+- Automatic linking of vendor replies to the request they answer; unmatched replies go to a manual triage inbox.
+- Classification of each reply and per-item quote proposals with evidence and confidence.
+- Versioned prompt with a prompt-injection guard: the email is always treated as untrusted data.
+- Output restricted to the system catalogs and re-validated by the backend.
+- Nothing is saved without explicit human confirmation.
+- Field-level usage logging that measures how many AI suggestions are accepted versus edited.
+
+## Impact achieved
+
+In real test cases, the extraction matched the source documents correctly. The module is currently in testing, with a pilot planned, and aims to remove the manual, item-by-item typing of vendor replies.
+
+## Technologies
+
+| Technology         | Use / Implementation                                               |
+| ------------------ | ------------------------------------------------------------------ |
+| TypeScript         | Typed code for the backend and frontend.                           |
+| Node.js / Express  | Backend for data, reply matching and validation.                   |
+| Python / Flask     | Stateless AI worker that calls the LLM.                            |
+| React              | Review interface with a prefilled form and confirmation.           |
+| OpenAI             | Reply classification and quote extraction with structured outputs. |
+| PostgreSQL         | Storage of requests, replies, suggestions and usage logs.          |
+| Azure Blob Storage | Storage of reply attachments.                                      |
+| Power Automate     | Workflow that ingests replies from the shared mailbox.             |
+
+## Project flow
+
+<img
+  src="/images/projects/rfq-ai-vendor-response-automation/architecture.svg"
+  alt="RFQ vendor response flow: shared mailbox, Power Automate, backend matching, Python AI worker, LLM, review UI and human confirmation"
+/>

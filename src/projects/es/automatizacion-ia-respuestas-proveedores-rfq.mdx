@@ -1,0 +1,61 @@
+---
+title: "Automatización con IA de respuestas de proveedores a RFQ"
+category: "Fullstack"
+date: "2026-11-01"
+excerpt: "Módulo que convierte las respuestas de proveedores a solicitudes de cotización, ya sea texto libre, PDF, hojas de cálculo o imágenes, en datos de cotización propuestos por IA que un comprador revisa y confirma."
+cover: "/images/projects/rfq-ai-vendor-response-automation/cover-es.webp"
+stack:
+  - TypeScript
+  - Node.js
+  - Express
+  - Python
+  - Flask
+  - React
+  - OpenAI
+  - PostgreSQL
+  - Azure Blob Storage
+  - Power Automate
+---
+
+## Mi rol
+
+Diseñé el módulo y fui el principal desarrollador en sus tres bases de código: el backend en Node, el worker de IA en Python y el frontend en React.
+
+- **Asociación de respuestas**: Incorporé un token de referencia en los correos de RFQ salientes y desarrollé la lógica del backend que asocia cada respuesta con su solicitud.
+- **Ingesta de correos**: Construí el flujo que enruta las respuestas desde un buzón compartido, guarda los adjuntos en blob storage y envía el correo al backend.
+- **Worker de IA**: Desarrollé un servicio en Python sin estado que envía el correo y sus adjuntos de forma nativa a un LLM con salidas estructuradas estrictas.
+- **Validación**: Implementé la revalidación en el backend de cada sugerencia de IA contra los catálogos del sistema.
+- **Interfaz de revisión**: Construí el formulario de revisión precargado y el flujo de confirmación en React.
+
+## Funcionalidades clave del proyecto
+
+- Asociación automática de las respuestas de proveedores con la solicitud que responden; las no asociadas van a una bandeja de revisión manual.
+- Clasificación de cada respuesta y propuestas de cotización por ítem con evidencia y nivel de confianza.
+- Prompt versionado con protección contra prompt injection: el correo siempre se trata como dato no confiable.
+- Salida restringida a los catálogos del sistema y revalidada por el backend.
+- Nada se guarda sin la confirmación explícita de una persona.
+- Registro de uso por campo que mide cuántas sugerencias de IA se aceptan y cuántas se editan.
+
+## Impacto logrado
+
+En casos de prueba reales, la extracción coincidió correctamente con los documentos de origen. El módulo está en fase de pruebas, con piloto planificado, y busca eliminar la digitación manual, ítem por ítem, de las respuestas de proveedores.
+
+## Tecnologías
+
+| Tecnología         | Uso / Implementación                                                       |
+| ------------------ | -------------------------------------------------------------------------- |
+| TypeScript         | Código tipado para el backend y el frontend.                               |
+| Node.js / Express  | Backend para datos, asociación de respuestas y validación.                 |
+| Python / Flask     | Worker de IA sin estado que invoca al LLM.                                 |
+| React              | Interfaz de revisión con formulario precargado y confirmación.             |
+| OpenAI             | Clasificación de respuestas y extracción de cotizaciones estructuradas.    |
+| PostgreSQL         | Almacenamiento de solicitudes, respuestas, sugerencias y registros de uso. |
+| Azure Blob Storage | Almacenamiento de los adjuntos de las respuestas.                          |
+| Power Automate     | Flujo que ingesta las respuestas desde el buzón compartido.                |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/rfq-ai-vendor-response-automation/architecture.svg"
+  alt="Flujo de respuestas de proveedores a RFQ: buzón compartido, Power Automate, asociación en el backend, worker de IA en Python, LLM, interfaz de revisión y confirmación humana"
+/>

@@ -1,0 +1,61 @@
+---
+title: "Asistente de IA multiagente Colraices"
+category: "Backend"
+date: "2026-09-11"
+excerpt: "Asistente de IA multiagente para una empresa colombiana de finca raíz y servicios financieros que ayuda a sus asesores a resolver consultas de crédito, buscar inmuebles, consultar datos de clientes y convertir reportes crediticios en documentos de análisis financiero."
+cover: "/images/projects/colraices-multi-agent-ai-assistant/cover-es.webp"
+stack:
+  - Python
+  - LangGraph
+  - LangChain
+  - OpenAI
+  - FastAPI
+  - PostgreSQL
+  - Azure Blob Storage
+  - Docker
+---
+
+## Mi rol
+
+Fui el único desarrollador del proyecto, responsable de su arquitectura, agentes y API desde el primer MVP hasta las funcionalidades actuales.
+
+- **Arquitectura de agentes**: Diseñé el grafo de estados en LangGraph con un supervisor que planifica, delega en especialistas y revisa sus resultados antes de responder.
+- **Agentes especializados**: Desarrollé los agentes de crédito, inmobiliario, datos de cliente y análisis financiero (Brújula), cada uno con sus propias herramientas e instrucciones.
+- **API y seguridad**: Construí el servicio en FastAPI con autenticación JWT, propiedad de chats por usuario y respuestas en streaming.
+- **Flujo de documentos**: Implementé la carga directa de PDF a Azure Blob Storage, la extracción con IA de reportes crediticios y la generación de reportes en PDF.
+- **Datos y entrega**: Configuré la persistencia en PostgreSQL, las migraciones SQL versionadas, la imagen Docker y la documentación técnica.
+
+## Funcionalidades clave del proyecto
+
+- Agente supervisor que arma un plan ordenado de especialistas, revisa cada resultado y decide si continuar o finalizar, con un límite de iteraciones para evitar ciclos.
+- Agente de crédito que responde sobre políticas y requisitos mediante recuperación sobre un almacén vectorial de documentos.
+- Agente inmobiliario que busca propiedades a través de una API externa de inmuebles con filtros como ciudad, presupuesto y tipo de inmueble.
+- Agente de datos de cliente que consulta el backend de la empresa sobre el cliente asociado al chat, pidiendo solo el nivel de detalle que la pregunta requiere.
+- Agente Brújula que analiza un reporte de centrales de riesgo cargado, fundamenta su interpretación en un manual de referencia y genera un PDF de análisis financiero estructurado.
+- Un nodo de respuesta final que mantiene una única voz consistente en cada respuesta.
+- Memoria de conversación por chat en PostgreSQL, endpoints síncronos y en streaming (SSE), y validaciones de identidad que mantienen cada chat ligado a un solo cliente.
+
+## Impacto logrado
+
+Los asesores cuentan con un único punto de entrada conversacional para orientación de crédito, búsqueda de inmuebles, información de clientes y análisis de reportes crediticios, en lugar de alternar entre documentos y sistemas. El asistente de crédito e inmuebles es el MVP base, mientras que el análisis Brújula y los datos de cliente están en desarrollo activo en una rama de funcionalidad.
+
+## Tecnologías
+
+| Tecnología          | Uso / Implementación                                                       |
+| ------------------- | -------------------------------------------------------------------------- |
+| Python              | Lenguaje principal de los agentes, la API y el flujo de documentos.        |
+| LangGraph           | Grafo de estados que orquesta el supervisor y los agentes especializados.  |
+| LangChain           | Integración de modelos, enlace de herramientas y salidas estructuradas.    |
+| OpenAI              | LLM de todos los agentes, recuperación con file search y análisis de PDF.  |
+| FastAPI             | API HTTP con autenticación JWT, endpoints de chat y streaming SSE.         |
+| PostgreSQL          | Checkpointer de conversaciones, propiedad de chats, documentos y reportes. |
+| Azure Blob Storage  | Almacenamiento de los reportes crediticios cargados y los PDF generados.   |
+| Jinja2 / WeasyPrint | Plantillas HTML de reportes convertidas a PDF.                             |
+| Docker              | Imagen de contenedor con las dependencias nativas para generar PDF.        |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/colraices-multi-agent-ai-assistant/architecture.svg"
+  alt="Arquitectura del asistente de IA multiagente Colraices: aplicación web, FastAPI, agente supervisor, agentes de crédito, inmobiliario, datos de cliente y Brújula, sus herramientas y fuentes de datos, y el nodo de respuesta final"
+/>

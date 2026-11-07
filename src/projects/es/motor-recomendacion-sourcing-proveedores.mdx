@@ -1,0 +1,59 @@
+---
+title: "Motor de recomendación de sourcing de proveedores"
+category: "Backend"
+date: "2026-11-02"
+excerpt: "Pipeline de datos y API que consolidan el historial de compras del ERP para encontrar ítems y recomendar a qué proveedores pedir cotización, diseñado como base para un futuro agente de sourcing con IA."
+cover: "/images/projects/vendor-sourcing-recommendation-engine/cover-es.webp"
+stack:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - pg_trgm
+  - Docker
+---
+
+## Mi rol
+
+Como único autor del proyecto, lo llevé desde el diseño hasta la implementación: extracción de datos, modelado, búsqueda, recomendaciones, evaluación y el servicio API.
+
+- **Extracción incremental**: Desarrollé la extracción desde el ERP con marcas de agua (watermarks) y upserts basados en hash hacia tablas raw.
+- **Capa de transformación**: Diseñé la capa SQL que construye un modelo core consolidado y un puntaje de desempeño proveedor×marca a partir de la actividad histórica.
+- **Canonicalización**: Normalicé ítems y marcas para que un mismo producto pueda encontrarse con distintas escrituras.
+- **Búsqueda y recomendaciones**: Desarrollé la búsqueda de ítems en varios pasos y la lógica de recomendación de proveedores.
+- **Evaluación**: Creé comandos de evaluación offline y backtesting para medir la calidad antes de cualquier despliegue.
+- **Servicio API**: Construí un servicio FastAPI contenerizado con autenticación por API key y registro de solicitudes.
+
+## Funcionalidades clave del proyecto
+
+- Búsqueda de ítems en varios pasos: código interno → número de parte exacto → número de parte aproximado por similitud de trigramas → texto completo.
+- Recomendaciones de proveedores (principal y alternativos) con nivel de confianza y razones legibles.
+- Actualización diaria programada de todo el pipeline.
+- Comandos de evaluación offline y backtesting.
+- Actualmente determinístico (sin ML ni embeddings) y diseñado como base de datos para un futuro agente de sourcing con IA, con embeddings y RAG planificados.
+
+## Impacto logrado
+
+Decidir a qué proveedores pedir cotización ya no depende únicamente del conocimiento individual de cada comprador. En una evaluación offline sobre un entorno de pruebas (no en producción), el motor alcanzó:
+
+- Búsqueda de ítems hit@1: 99.8% con marca + número de parte, 98.2% solo con número de parte y 96.4% con un error de un carácter.
+- Backtest de recomendaciones hit@1: 88.5% para ítems comprados previamente.
+- Latencia p50 de búsqueda de unos 200 ms, sobre aproximadamente 490k filas procesadas.
+
+El proyecto está en desarrollo y aún no se ha desplegado.
+
+## Tecnologías
+
+| Tecnología | Uso / Implementación                                                       |
+| ---------- | -------------------------------------------------------------------------- |
+| Python     | Extracción, orquestación de transformaciones y comandos de evaluación.     |
+| FastAPI    | API de búsqueda y recomendación con autenticación por API key.             |
+| PostgreSQL | Capas de datos raw y core, puntajes y búsqueda de texto completo.          |
+| pg_trgm    | Similitud por trigramas para coincidencias aproximadas de número de parte. |
+| Docker     | Contenerización del servicio.                                              |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/vendor-sourcing-recommendation-engine/architecture.svg"
+  alt="Pipeline de sourcing de proveedores: extracción desde el ERP, capa raw, construcción del core, búsqueda de ítems, puntaje de proveedores y API de recomendación"
+/>
