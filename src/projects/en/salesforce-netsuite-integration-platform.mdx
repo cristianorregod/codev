@@ -1,0 +1,63 @@
+---
+title: "Salesforce ⇄ NetSuite integration platform"
+category: "Backend"
+date: "2026-10-06"
+excerpt: "An integration platform that gives the CRM, workflow automations, portals and add-ins controlled, authenticated access to ERP data and actions, keeping Salesforce and NetSuite consistent."
+cover: "/images/projects/salesforce-netsuite-integration-platform/cover-en.webp"
+stack:
+  - TypeScript
+  - Node.js
+  - Express
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - OpenAI
+  - GitHub Actions
+  - Azure App Service
+---
+
+## My role
+
+As a core contributor (the second-largest of five developers), I worked on the platform from its original bidirectional sync phase through its evolution into a shared integration layer.
+
+- **Original sync backends**: Built the Python backend that communicates with NetSuite, the Node.js middleware that receives data from Salesforce and NetSuite-side scripts that detect changes.
+- **Batch sync client**: Sole author of the shared batch client and the account synchronization.
+- **Opportunity sync**: Largest contributor to the opportunity synchronization module.
+- **Additional modules**: Built several of the platform modules and much of its documentation.
+
+## Key project features
+
+- Integration middleware that authenticates (JWT or API key), validates, maps and logs every operation before forwarding it to the ERP backend or the CRM.
+- Opportunities with idempotent create/update and background sync to the CRM.
+- Customer, vendor and contact synchronization, plus ERP → CRM synchronization.
+- Purchase order expediting notifications and RFQ data endpoints.
+- Rule-based expense transactions into the ERP and LLM-based invoice data extraction to strict JSON.
+- Operation logs in PostgreSQL for traceability and reprocessing, with error handling and retries.
+- CI/CD pipeline that deploys to Azure App Service.
+
+## Key evolution
+
+The ERP → CRM sync was migrated from single-record endpoints that caused conflicts to batch, idempotent upsert endpoints keyed by the ERP record ID, with per-record results (multi-status responses) handled through a shared batch client.
+
+## Impact achieved
+
+The CRM and ERP stay consistent with fewer sync conflicts, and every client accesses ERP data through a single controlled layer with full traceability and reprocessing capabilities.
+
+## Technologies
+
+| Technology        | Use / Implementation                                            |
+| ----------------- | --------------------------------------------------------------- |
+| TypeScript        | Typed code for the integration middleware.                      |
+| Node.js / Express | Middleware for authentication, validation, mapping and logging. |
+| Python / FastAPI  | ERP backend that communicates with NetSuite.                    |
+| PostgreSQL        | Operation logs for monitoring, traceability and reprocessing.   |
+| OpenAI            | Invoice data extraction to strict JSON.                         |
+| GitHub Actions    | CI/CD pipelines.                                                |
+| Azure App Service | Hosting of the platform services.                               |
+
+## Project flow
+
+<img
+  src="/images/projects/salesforce-netsuite-integration-platform/architecture.svg"
+  alt="Integration platform architecture: Salesforce CRM, middleware with auth, validation, mapping and logging, ERP backend, NetSuite and batch upsert sync"
+/>

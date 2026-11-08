@@ -1,0 +1,54 @@
+---
+title: "Servidor MCP IDRA"
+category: "Backend"
+date: "2026-10-27"
+excerpt: "Servidor Model Context Protocol que da a los asistentes de IA acceso seguro, auditado y en tiempo real a los datos distribuidos entre el ERP y las bases de datos analíticas de una empresa de distribución industrial."
+cover: "/images/projects/idra-mcp-server/cover-es.webp"
+stack:
+  - Python
+  - FastMCP
+  - PostgreSQL
+  - Docker
+  - Microsoft Entra ID
+---
+
+## Mi rol
+
+Como creador y desarrollador líder del proyecto, diseñé la arquitectura del servidor y construí la mayor parte de su base, mientras otros miembros del equipo aportaron el dominio de finanzas y la analítica de conversaciones con clientes.
+
+- **Servidor base y transporte**: Desarrollé el servidor MCP con transporte Streamable HTTP y su configuración en Docker.
+- **Autenticación**: Integré OAuth con Microsoft Entra ID para que cada llamada quede atribuida al usuario autenticado.
+- **Herramientas por dominio**: Desarrollé la mayoría de las herramientas de ventas y operaciones, además de las de notificaciones.
+- **Analítica de uso**: Construí herramientas para medir la adopción y el uso del propio servidor.
+- **Documentación de arquitectura**: Documenté el diseño por capas y las convenciones para agregar nuevas herramientas.
+
+## Funcionalidades clave del proyecto
+
+- 25 herramientas en 7 dominios: ventas, operaciones, finanzas, analítica de conversaciones con clientes, desempeño, archivos/datasets y notificaciones.
+- 23 herramientas son de solo lectura y están anotadas como tales; 2 herramientas de acción envían correos y mensajes de Teams mediante automatización de flujos.
+- Middleware que audita cada llamada (herramienta, usuario, duración, resultado) en PostgreSQL, con ocultamiento de datos sensibles.
+- SQL parametrizado, validación de entradas y un formato de respuesta común para todas las herramientas.
+- Diseño limpio por capas en cada funcionalidad: herramientas → casos de uso → consultas → dominio.
+- Fuentes de datos: el ERP (vía JDBC) y PostgreSQL, con pruebas automatizadas.
+
+## Impacto logrado
+
+Los usuarios de negocio y los asistentes de IA cuentan ahora con un único punto de entrada seguro y auditado a los datos de la empresa, que reemplaza la extracción manual de reportes por respuestas consistentes y en tiempo real con análisis estructurado, manteniendo cada acceso trazable a un usuario concreto.
+
+## Tecnologías
+
+| Tecnología         | Uso / Implementación                                                        |
+| ------------------ | --------------------------------------------------------------------------- |
+| Python             | Lenguaje principal del servidor, los casos de uso y las consultas de datos. |
+| FastMCP            | Framework para exponer las herramientas mediante Model Context Protocol.    |
+| PostgreSQL         | Fuente de datos analíticos y registro de auditoría de cada llamada.         |
+| Docker             | Contenerización del servidor para despliegues consistentes.                 |
+| Microsoft Entra ID | Autenticación OAuth y atribución por usuario de cada llamada.               |
+| JDBC               | Acceso de lectura a los datos del ERP.                                      |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/idra-mcp-server/architecture.svg"
+  alt="Arquitectura del servidor MCP IDRA: cliente de IA, OAuth con Entra ID, middleware de auditoría, herramientas por dominio, ERP y PostgreSQL"
+/>

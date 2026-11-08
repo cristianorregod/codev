@@ -1,0 +1,63 @@
+---
+title: "Plataforma de integración Salesforce ⇄ NetSuite"
+category: "Backend"
+date: "2026-10-06"
+excerpt: "Plataforma de integración que da al CRM, las automatizaciones de flujos, los portales y los complementos un acceso controlado y autenticado a los datos y acciones del ERP, manteniendo consistentes Salesforce y NetSuite."
+cover: "/images/projects/salesforce-netsuite-integration-platform/cover-es.webp"
+stack:
+  - TypeScript
+  - Node.js
+  - Express
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - OpenAI
+  - GitHub Actions
+  - Azure App Service
+---
+
+## Mi rol
+
+Como contribuidor principal (el segundo con más aportes de un equipo de cinco desarrolladores), trabajé en la plataforma desde su fase original de sincronización bidireccional hasta su evolución como capa de integración compartida.
+
+- **Backends de sincronización originales**: Desarrollé el backend en Python que se comunica con NetSuite, el middleware en Node.js que recibe datos desde Salesforce y scripts del lado de NetSuite que detectan cambios.
+- **Cliente de sincronización por lotes**: Único autor del cliente de lotes compartido y de la sincronización de cuentas.
+- **Sincronización de oportunidades**: Principal contribuidor del módulo de sincronización de oportunidades.
+- **Módulos adicionales**: Desarrollé varios módulos de la plataforma y gran parte de su documentación.
+
+## Funcionalidades clave del proyecto
+
+- Middleware de integración que autentica (JWT o API key), valida, transforma y registra cada operación antes de enviarla al backend del ERP o al CRM.
+- Oportunidades con creación/actualización idempotente y sincronización en segundo plano hacia el CRM.
+- Sincronización de clientes, proveedores y contactos, además de sincronización ERP → CRM.
+- Notificaciones de seguimiento de órdenes de compra y endpoints de datos de RFQ.
+- Transacciones de gastos basadas en reglas hacia el ERP y extracción de datos de facturas con LLM a JSON estricto.
+- Logs de operaciones en PostgreSQL para trazabilidad y reprocesamiento, con manejo de errores y reintentos.
+- Pipeline de CI/CD que despliega en Azure App Service.
+
+## Evolución clave
+
+La sincronización ERP → CRM se migró de endpoints de un solo registro, que generaban conflictos, a endpoints de upsert por lotes e idempotentes identificados por el ID del registro en el ERP, con resultados por registro (respuestas multi-status) gestionados mediante un cliente de lotes compartido.
+
+## Impacto logrado
+
+El CRM y el ERP se mantienen consistentes con menos conflictos de sincronización, y todos los clientes acceden a los datos del ERP a través de una única capa controlada, con trazabilidad completa y capacidad de reprocesamiento.
+
+## Tecnologías
+
+| Tecnología        | Uso / Implementación                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| TypeScript        | Código tipado del middleware de integración.                        |
+| Node.js / Express | Middleware de autenticación, validación, transformación y registro. |
+| Python / FastAPI  | Backend del ERP que se comunica con NetSuite.                       |
+| PostgreSQL        | Logs de operaciones para monitoreo, trazabilidad y reprocesamiento. |
+| OpenAI            | Extracción de datos de facturas a JSON estricto.                    |
+| GitHub Actions    | Pipelines de CI/CD.                                                 |
+| Azure App Service | Hosting de los servicios de la plataforma.                          |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/salesforce-netsuite-integration-platform/architecture.svg"
+  alt="Arquitectura de la plataforma de integración: Salesforce CRM, middleware con autenticación, validación, transformación y registro, backend del ERP, NetSuite y sincronización por lotes"
+/>

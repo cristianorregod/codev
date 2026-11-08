@@ -1,4 +1,4 @@
-import { Banner } from "@/components/Banner";
+import { PageHero } from "@/components/ui/PageHero";
 import { getAllPostsMetadata } from "@/lib/mdx";
 import { ListOfPosts } from "@/components/Articles/ListOfPosts";
 import { getTranslations } from "next-intl/server";
@@ -8,8 +8,9 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "HomePage.Nav" });
   return {
     title: `Cristian Orrego Dev 👨‍💻 | ${t("articles")}`,
-    description:
-      "Blog de programación. Explora diferentes tecnologías, encuentra guías y trucos.",
+    description: (await getTranslations({ locale, namespace: "PostsPage" }))(
+      "metaDescription",
+    ),
     metadataBase: new URL("https://cristianorrego.dev"),
     author: "cristianorregodev",
   };
@@ -18,13 +19,21 @@ export async function generateMetadata({ params }) {
 export default async function PostsPage({ params }) {
   const { locale } = await params;
   const posts = getAllPostsMetadata(process.env.ARTICLES_PATH, locale);
-  const t = await getTranslations({ locale, namespace: "HomePage.Nav" });
+  const t = await getTranslations({ locale, namespace: "PostsPage" });
 
   return (
     <>
-      <Banner title={t("articles")} image={"/images/bloggin.png"} />
-      <section className="pt-24 container mx-auto px-2 lg:w-[740px] ">
-        <ListOfPosts posts={posts} />
+      <PageHero
+        label={t("label")}
+        title={t("title")}
+        description={t("description")}
+      >
+        <span className="mono text-[13px] text-muted">
+          {t("count", { count: posts.length })}
+        </span>
+      </PageHero>
+      <section className="mx-auto max-w-site px-6 pb-24 pt-6 sm:pb-28">
+        <ListOfPosts posts={posts} locale={locale} />
       </section>
     </>
   );

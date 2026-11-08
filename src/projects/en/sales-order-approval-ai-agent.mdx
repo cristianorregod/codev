@@ -1,0 +1,59 @@
+---
+title: "Sales order approval AI agent"
+category: "Fullstack"
+date: "2026-09-10"
+excerpt: "An AI-assisted review tool that cross-checks each pending sales order against the customer's purchase order, addresses, vendor pricing and margin before a person approves it."
+cover: "/images/projects/sales-order-approval-ai-agent/cover-en.webp"
+stack:
+  - React
+  - TypeScript
+  - Node.js
+  - Express
+  - OpenAI
+  - PostgreSQL
+  - MUI
+---
+
+## My role
+
+As a fullstack developer in a team, I led the AI analysis and built most of the analysis interface, while teammates built the PDF report, the address analysis and the ERP approval step.
+
+- **Analysis controller**: Orchestrated document extraction and the parallel AI analyses for each order.
+- **Line items analysis**: Built the comparison of quantities, prices, totals and terms between documents and the system.
+- **Vendor price history**: Developed the AI-generated narrative of historical vendor pricing.
+- **Lead-time tool**: Implemented a logistics lead-time lookup exposed to the LLM through function calling.
+- **Margin assessment**: Built the deterministic margin health check in code.
+- **Analysis UI**: Developed most of the review screens in React and MUI.
+
+## Key project features
+
+- List of pending sales orders with the analysis status of each one.
+- Retrieval of the customer purchase order and vendor quote documents from the ERP, with LLM-based data extraction.
+- Three AI analyses running in parallel: line items consistency, billing/shipping addresses and vendor price history.
+- Strict JSON schema outputs for every AI response.
+- Persisted results with a generated PDF report stored in cloud storage, plus a batch job that pre-computes analyses.
+- Side-by-side document-vs-system comparison per item, with consistency status, accuracy and confidence.
+- Approval gated fail-closed by backend checks and always requiring a human click.
+
+## Impact achieved
+
+The pre-approval review became faster and more consistent: reviewers see every discrepancy in one place instead of cross-checking documents by hand, while the final decision always stays with a person.
+
+## Technologies
+
+| Technology | Use / Implementation                                                         |
+| ---------- | ---------------------------------------------------------------------------- |
+| React      | Review interface with per-item comparison and approval flow.                 |
+| TypeScript | Typed code across frontend and backend.                                      |
+| Node.js    | Backend runtime for the analysis pipeline and batch jobs.                    |
+| Express    | REST API for orders, analyses and approvals.                                 |
+| OpenAI     | Document extraction, AI analyses with structured outputs and function calls. |
+| PostgreSQL | Persistence of analyses and their results.                                   |
+| MUI        | Component library for the review screens.                                    |
+
+## Project flow
+
+<img
+  src="/images/projects/sales-order-approval-ai-agent/architecture.svg"
+  alt="Sales order approval flow: document retrieval, LLM extraction, parallel AI analyses, margin check, review UI and human approval"
+/>

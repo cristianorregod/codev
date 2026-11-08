@@ -1,0 +1,58 @@
+---
+title: "Agente logístico de IA Walle"
+category: "Backend"
+date: "2026-07-26"
+excerpt: "Agente de IA que lee los hilos de correo de proveedores sobre órdenes de compra abiertas, los resume y clasifica, y los convierte en acciones priorizadas y auditables para los analistas de logística."
+cover: "/images/projects/walle-logistics-ai-agent/cover-es.webp"
+stack:
+  - TypeScript
+  - Node.js
+  - Express
+  - OpenAI
+  - PostgreSQL
+  - Azure Web PubSub
+  - Power Automate
+---
+
+## Mi rol
+
+Como codesarrollador dentro de un equipo, me enfoqué en convertir el análisis del agente en acciones reales. El núcleo de clasificación y sugerencias con IA fue desarrollado por otros miembros del equipo; mi trabajo cubrió la capa de ejecución y varios módulos alrededor de ella.
+
+- **Capa de ejecución de acciones**: Desarrollé la ejecución de correos a proveedores, notificaciones de Teams y actualizaciones en el ERP.
+- **Autenticación y roles**: Implementé la autenticación de usuarios y el acceso basado en roles.
+- **Acciones estándar y listas priorizadas**: Desarrollé las acciones estándar determinísticas por escenario y las listas de trabajo diarias priorizadas.
+- **Notificaciones multilingües**: Construí los mensajes de notificación en varios idiomas.
+- **Módulo de finanzas**: Desarrollé el módulo de soportes de pago.
+- **Tránsito internacional**: Desarrollé la mayor parte del flujo de tránsito internacional: recogidas, cotizaciones de flete, seguimiento aduanero y última milla.
+
+## Funcionalidades clave del proyecto
+
+- Sincronización diaria orquestada que obtiene los correos pendientes de proveedores desde el ERP y los limpia.
+- Resumen estructurado generado por LLM y clasificación del último mensaje en escenarios predefinidos, con nivel de confianza.
+- Acciones estándar por escenario más acciones sugeridas por IA (correo al proveedor, notificación de Teams, actualización de estado/fechas de la OC) con mensajes bilingües y evidencia citada.
+- Reglas en código que descartan acciones para respuestas automáticas y correos irrelevantes.
+- Vistas SQL que priorizan una lista de trabajo diaria; un analista revisa y ejecuta cada acción.
+- Auditoría completa de acciones sugeridas frente a manuales, notificaciones en tiempo real y seguimiento de tokens/costo por llamada.
+
+## Impacto logrado
+
+Los analistas ya no tienen que leer desde cero largos hilos de correo de proveedores cada día: parten de una lista de trabajo priorizada con resúmenes y acciones sugeridas, las ejecutan en un solo lugar y cada decisión queda auditada.
+
+## Tecnologías
+
+| Tecnología       | Uso / Implementación                                                     |
+| ---------------- | ------------------------------------------------------------------------ |
+| TypeScript       | Código tipado en todo el backend.                                        |
+| Node.js          | Entorno del orquestador y de la capa de ejecución de acciones.           |
+| Express          | API REST para listas de trabajo, acciones y módulos.                     |
+| OpenAI           | Resúmenes de correos, clasificación por escenarios y acciones sugeridas. |
+| PostgreSQL       | Almacenamiento, vistas de priorización y registro de auditoría.          |
+| Azure Web PubSub | Notificaciones en tiempo real para los analistas.                        |
+| Power Automate   | Automatización de flujos integrada con el agente.                        |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/walle-logistics-ai-agent/architecture.svg"
+  alt="Flujo de Walle: correos de proveedores desde el ERP, orquestador diario, resumen y clasificación con LLM, acciones estándar y sugeridas, reglas de control, revisión del analista y ejecución de acciones"
+/>

@@ -1,4 +1,4 @@
-import "@fontsource-variable/onest";
+import { Onest, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { DarkModeProvider } from "../providers/DarkModeProvider";
 import "../globals.css";
@@ -6,6 +6,20 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+
+const onest = Onest({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-onest",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://cristianorrego.dev"),
@@ -39,8 +53,12 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html suppressHydrationWarning lang={locale} className="scroll-smooth">
-      <body className="bg-dark-50 dark:bg-dark-950 ">
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      className={`${onest.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="min-h-screen bg-bg font-sans text-fg">
         <NextIntlClientProvider messages={messages}>
           <DarkModeProvider>{children}</DarkModeProvider>
         </NextIntlClientProvider>

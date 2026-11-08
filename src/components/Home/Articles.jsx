@@ -1,41 +1,85 @@
-import { ArticleCard } from "../ArticleCard";
-import { SectionTitle } from "../SectionTitle";
 import { Link } from "@/i18n/routing";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { Container } from "../Container";
-import { getAllPostsMetadata } from "@/lib/mdx";
 import { getTranslations } from "next-intl/server";
+import { getAllPostsMetadata } from "@/lib/mdx";
+import {
+  monthYear,
+  primaryTag,
+  sortByDateDesc,
+  stripEmoji,
+} from "@/lib/format";
+import { SectionHeading } from "../ui/SectionHeading";
+import { CoverFallback } from "../ui/CoverFallback";
 
 export const Articles = async ({ locale }) => {
   const t = await getTranslations({ locale, namespace: "HomePage.Articles" });
-  const posts = getAllPostsMetadata(process.env.ARTICLES_PATH, locale);
-  const articles = posts
-    .sort((a, b) => {
-      if (a.date < b.date) {
-        return 1;
-      }
-      if (a.date > b.date) {
-        return -1;
-      }
-      return 0;
-    })
-    .slice(0, 3);
+  const posts = sortByDateDesc(
+    getAllPostsMetadata(process.env.ARTICLES_PATH, locale),
+  ).slice(0, 3);
+
+  if (posts.length === 0) return null;
 
   return (
-    <Container id="articles">
-      <SectionTitle>{t("title")}</SectionTitle>
-
-      {articles.map((item) => (
-        <ArticleCard key={item.slug} article={item} />
-      ))}
-      <div className="flex justify-center w-full mt-8">
-        <Link
-          className="flex justify-center items-center gap-2 text-dark-800 font-bold dark:text-dark-200 relative overflow-hidden z-10   before:content-[''] before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-dark-900 dark:before:bg-dark-50 before:rounded-lg   before:-z-10 before:transition-all before:duration-500 before:hover:w-full  transition-all duration-300  hover:text-dark-900  dark:hover:text-dark-50"
-          href="/posts"
-        >
-          {t("more")} <AiOutlineArrowRight />
-        </Link>
+    <section
+      id="articles"
+      aria-labelledby="articles-title"
+      className="mx-auto max-w-site px-6 pb-6 pt-20 sm:pt-24"
+    >
+      <SectionHeading
+        number="04"
+        id="articles-title"
+        title={t("title")}
+        className="mb-7"
+        action={
+          <Link
+            href="/posts"
+            className="mono text-sm text-p no-underline hover:text-fg"
+          >
+            {t("more")} →
+          </Link>
+        }
+      />
+      <div className="flex flex-wrap gap-5">
+        {posts.map((post) => {
+          const tag = primaryTag(post.tags);
+          const title = stripEmoji(post.title);
+          return (
+            <article
+              key={post.slug}
+              className="card relative flex min-w-0 flex-[1_1_300px] flex-col overflow-hidden rounded-2xl border border-line bg-surface has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-p"
+            >
+              {post.cover ? (
+                <img
+                  src={post.cover}
+                  alt={title}
+                  loading="lazy"
+                  className="block aspect-video w-full border-b border-line object-cover"
+                />
+              ) : (
+                <CoverFallback
+                  label={tag}
+                  className="aspect-video w-full border-x-0 border-t-0"
+                />
+              )}
+              <div className="flex flex-col gap-2.5 p-5">
+                <div className="mono flex gap-2.5 text-xs text-muted">
+                  {tag ? <span className="text-s">#{tag}</span> : null}
+                  <time dateTime={post.date}>
+                    {monthYear(post.date, locale)}
+                  </time>
+                </div>
+                <h3 className="m-0 text-lg font-bold leading-[1.3]">
+                  <Link
+                    href={`/posts/${post.slug}`}
+                    className="text-fg no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+                  >
+                    {title}
+                  </Link>
+                </h3>
+              </div>
+            </article>
+          );
+        })}
       </div>
-    </Container>
+    </section>
   );
 };

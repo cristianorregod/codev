@@ -1,42 +1,49 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 
-const TableOfContents = () => {
-  const [headings, setHeadings] = useState([]);
-  const t = useTranslations("Article");
+import { useEffect, useState } from "react";
+
+/** Heading list for long-form pages; highlights the section in view. */
+export const TableOfContents = ({ headings, tracked = false }) => {
+  const [activeId, setActiveId] = useState(null);
 
   useEffect(() => {
-    // Obtener todas las etiquetas h2 del artículo
-    const h2Elements = document.querySelectorAll("article h2[id]");
-
-    const headingData = Array.from(h2Elements).map((heading) => ({
-      id: heading.id,
-      title: heading.innerText,
-    }));
-
-    setHeadings(headingData);
-  }, []);
+    if (!tracked || headings.length === 0) return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-96px 0px -65% 0px" },
+    );
+    headings.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, [headings, tracked]);
 
   return (
-    <nav className="hidden lg:block lg:sticky lg:top-24 self-auto min-w-80 rounded-lg shadow-sm shadow-slate-500 p-4 text-[15px]">
-      <h2 className="text-crusta-800 dark:text-crusta-300 font-bold mb-4">
-        {t("contentTable")}
-      </h2>
-      <ol>
-        {headings.map((heading) => (
-          <li key={heading.id} className="mb-2">
+    <ol className="m-0 flex list-none flex-col border-l border-line p-0">
+      {headings.map((heading) => {
+        const active = tracked && heading.id === activeId;
+        return (
+          <li key={heading.id}>
             <a
-              className="hover:underline text-dark-700 dark:text-dark-200"
               href={`#${heading.id}`}
+              aria-current={active ? "location" : undefined}
+              className={`-ml-px block border-l py-2 pl-4 text-sm leading-[1.45] no-underline transition-colors ${
+                active
+                  ? "border-p text-fg"
+                  : "border-transparent text-muted hover:text-fg"
+              }`}
             >
-              # {heading.title}
+              {heading.title}
             </a>
           </li>
-        ))}
-      </ol>
-    </nav>
+        );
+      })}
+    </ol>
   );
 };
-
-export default TableOfContents;

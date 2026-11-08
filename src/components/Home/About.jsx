@@ -1,44 +1,48 @@
-import { AiOutlineFileProtect } from "react-icons/ai";
-import { Container } from "../Container";
-import { SectionTitle } from "../SectionTitle";
-import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import { PERSONAL_LINKS_DATA } from "@/data/personal-links";
+import { SectionHeading } from "../ui/SectionHeading";
+import { DownloadIcon } from "../ui/icons";
 
 export const About = async () => {
   const t = await getTranslations("HomePage.About");
-  return (
-    <Container id="about">
-      <SectionTitle>{t("title")}</SectionTitle>
-      <div className="pt-12 md:pt-8 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-        <img
-          src="/images/me.JPG"
-          alt="Programador mirando a la cámara con escritorio atrás"
-          className="object-cover rounded-full size-64 md:size-48 shadow-lg shadow-dark-900/20 dark:shadow-dark-50/10 shrink-0 lg:-rotate-3 hover:rotate-0 transition-transform duration-300"
-          loading="lazy"
-        />
 
-        <div className="flex flex-col gap-4">
-          <p className="text-dark-700 dark:text-dark-200 text-pretty">
-            {t("p1")}
+  return (
+    <section
+      id="about"
+      aria-labelledby="about-title"
+      className="mx-auto max-w-site px-6 pb-6 pt-20 sm:pt-24"
+    >
+      <SectionHeading number="03" id="about-title" title={t("title")} />
+      <div className="flex flex-wrap items-start gap-12">
+        <figure className="m-0 flex flex-[0_1_300px] flex-col gap-3.5">
+          <img
+            src={PERSONAL_LINKS_DATA.profile.avatar}
+            alt={t("photoAlt")}
+            loading="lazy"
+            className="block aspect-square w-full max-w-[300px] rounded-[18px] border border-line object-cover"
+          />
+          <figcaption className="mono text-xs text-muted">
+            {t("caption")}
+          </figcaption>
+        </figure>
+        <div className="flex min-w-0 flex-[999_1_480px] flex-col gap-5">
+          <p className="m-0 text-[21px] font-semibold leading-[1.45] sm:text-2xl">
+            {t("lead")}
           </p>
-          <p className="text-dark-700 dark:text-dark-200 text-pretty">
-            {t("p2")}
-          </p>
-          <p className="text-dark-700 dark:text-dark-200 text-pretty">
-            {t("p3")}
-          </p>
+          <p className="m-0 text-[17px] leading-[1.7] text-muted">{t("p2")}</p>
+          <p className="m-0 text-[17px] leading-[1.7] text-muted">{t("p3")}</p>
+          <div className="mt-2 flex flex-wrap gap-3">
+            <a
+              href="/cristian-orrego-cv.pdf"
+              download="Cristian-Orrego-CV.pdf"
+              className="btn inline-flex min-h-12 items-center gap-2.5 rounded-xl bg-s-fill px-[22px] font-bold text-s-on no-underline"
+            >
+              <DownloadIcon />
+              {t("cv")}
+            </a>
+          </div>
         </div>
       </div>
-      <div className="flex justify-center w-full mt-8">
-        <a
-          className="flex items-center gap-2 px-6 py-2 font-bold relative z-10 overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:h-full before:w-0 before:rounded-full before:bg-primary-600 before:-z-10 before:transition-all before:duration-300 before:hover:w-full text-dark-100 bg-dark-800 rounded-full hover:bg-dark-600 hover:shadow-md hover:shadow-primary-500/50 ease duration-500"
-          href="https://docs.google.com/document/d/1qroZkOm9Bxvuf5LKPC12N-yTHao0oP0hR7HS_8qyZas/edit?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("cv")} <AiOutlineFileProtect />
-        </a>
-      </div>
-    </Container>
+    </section>
   );
 };

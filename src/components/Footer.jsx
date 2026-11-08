@@ -1,53 +1,48 @@
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { PERSONAL_LINKS_DATA } from "@/data/personal-links";
+
+const SOCIAL = PERSONAL_LINKS_DATA.profile.social.filter(
+  (social) => social.id !== "email",
+);
+
+const linkClass =
+  "navlink inline-flex min-h-11 items-center text-muted no-underline lg:min-h-0";
 
 export const Footer = () => {
-  const t = useTranslations("HomePage.Nav");
+  const t = useTranslations("HomePage");
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="container mx-auto px-2 lg:px-28 2xl:px-52 mt-14 mb-8">
-      <div className="rounded-lg border-dark-100 dark:border-dark-700 shadow dark:shadow-dark-700 mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between ">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          <a href="https://cristianorrego.dev" className="hover:underline">
-            Codev
-          </a>
+    <footer className="border-t border-line">
+      <div className="mx-auto flex max-w-site flex-wrap items-center justify-between gap-3 px-6 py-7 text-sm text-muted">
+        <span>
+          © {year} Cristian Orrego. {t("Footer.rights")}
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="mono m-0 flex list-none flex-wrap gap-x-[18px] p-0 text-[13px]">
           <li>
-            <Link href="/services" className="mr-4 hover:underline md:mr-6">
-              {t("services")}
+            <Link href="/services" className={linkClass}>
+              {t("Nav.services")}
             </Link>
           </li>
+          {SOCIAL.map((social) => (
+            <li key={social.id}>
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                {t(`Footer.${social.id}`)}
+              </a>
+            </li>
+          ))}
           <li>
-            <Link href="/projects" className="mr-4 hover:underline md:mr-6">
-              {t("projects")}
-            </Link>
-          </li>
-          <li>
-            <Link href="/#experience" className="mr-4 hover:underline md:mr-6">
-              {t("experience")}
-            </Link>
-          </li>
-          <li>
-            <Link href="/posts" className="mr-4 hover:underline md:mr-6 ">
-              {t("articles")}
+            <Link href="/links" className={linkClass}>
+              {t("Footer.links")}
             </Link>
           </li>
         </ul>
-      </div>
-      <div className="mt-8 flex justify-center opacity-70">
-        <small className="text-dark-700 dark:text-dark-200 text-center">
-          {" "}
-          Inspirado en{" "}
-          <a
-            href="https://porfolio.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-primary-700 dark:text-primary-400 font-bold"
-          >
-            porfolio.dev
-          </a>{" "}
-          de <span className="font-bold">midudev</span>
-        </small>
       </div>
     </footer>
   );

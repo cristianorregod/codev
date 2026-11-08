@@ -1,0 +1,59 @@
+---
+title: "Agente de IA para aprobación de órdenes de venta"
+category: "Fullstack"
+date: "2026-09-10"
+excerpt: "Herramienta de revisión asistida por IA que contrasta cada orden de venta pendiente con la orden de compra del cliente, las direcciones, los precios del proveedor y el margen antes de que una persona la apruebe."
+cover: "/images/projects/sales-order-approval-ai-agent/cover-es.webp"
+stack:
+  - React
+  - TypeScript
+  - Node.js
+  - Express
+  - OpenAI
+  - PostgreSQL
+  - MUI
+---
+
+## Mi rol
+
+Como desarrollador Fullstack dentro de un equipo, lideré el análisis con IA y construí la mayor parte de la interfaz de análisis, mientras otros miembros del equipo desarrollaron el reporte PDF, el análisis de direcciones y el paso de aprobación en el ERP.
+
+- **Controlador del análisis**: Orquesté la extracción de documentos y los análisis de IA en paralelo para cada orden.
+- **Análisis de ítems**: Desarrollé la comparación de cantidades, precios, totales y condiciones entre los documentos y el sistema.
+- **Historial de precios del proveedor**: Desarrollé la narrativa generada por IA sobre el historial de precios del proveedor.
+- **Herramienta de tiempos de entrega**: Implementé una consulta logística de tiempos de entrega expuesta al LLM mediante function calling.
+- **Evaluación de margen**: Construí la verificación determinística de salud del margen en código.
+- **Interfaz de análisis**: Desarrollé la mayoría de las pantallas de revisión en React y MUI.
+
+## Funcionalidades clave del proyecto
+
+- Listado de órdenes de venta pendientes con el estado de análisis de cada una.
+- Obtención de la orden de compra del cliente y la cotización del proveedor desde el ERP, con extracción de datos mediante LLM.
+- Tres análisis de IA en paralelo: consistencia de ítems, direcciones de facturación/envío e historial de precios del proveedor.
+- Salidas con esquema JSON estricto en todas las respuestas de IA.
+- Resultados persistidos con un reporte PDF generado y almacenado en la nube, más un proceso por lotes que precalcula los análisis.
+- Comparación lado a lado documento vs. sistema por ítem, con estado de consistencia, precisión y confianza.
+- Aprobación protegida por validaciones del backend que fallan de forma segura y que siempre requiere el clic de una persona.
+
+## Impacto logrado
+
+La revisión previa a la aprobación se volvió más rápida y consistente: quien revisa ve todas las diferencias en un solo lugar en lugar de contrastar documentos a mano, y la decisión final siempre queda en manos de una persona.
+
+## Tecnologías
+
+| Tecnología | Uso / Implementación                                                                 |
+| ---------- | ------------------------------------------------------------------------------------ |
+| React      | Interfaz de revisión con comparación por ítem y flujo de aprobación.                 |
+| TypeScript | Código tipado en frontend y backend.                                                 |
+| Node.js    | Entorno del backend para el pipeline de análisis y los procesos por lotes.           |
+| Express    | API REST para órdenes, análisis y aprobaciones.                                      |
+| OpenAI     | Extracción de documentos, análisis con salidas estructuradas y llamadas a funciones. |
+| PostgreSQL | Persistencia de los análisis y sus resultados.                                       |
+| MUI        | Librería de componentes para las pantallas de revisión.                              |
+
+## Flujo del proyecto
+
+<img
+  src="/images/projects/sales-order-approval-ai-agent/architecture.svg"
+  alt="Flujo de aprobación de órdenes de venta: obtención de documentos, extracción con LLM, análisis de IA en paralelo, verificación de margen, interfaz de revisión y aprobación humana"
+/>

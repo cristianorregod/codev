@@ -1,13 +1,35 @@
 {
   "HomePage": {
     "Banner": {
-      "greeting": "Hola,",
-      "name": "soy Cristian",
       "role": "Ingeniero de Software",
-      "title": "Transformo operaciones complejas en",
-      "experience": "ecosistemas inteligentes con Ingeniería de Software y Automatización",
-      "specialization": "Experto en integrar Datos, IA y Plataformas Empresariales.",
-      "finale": "No solo escribo código, construyo soluciones."
+      "greeting": "Hola, soy",
+      "name": "Cristian",
+      "lead": "Transformo operaciones complejas en ecosistemas inteligentes con ingeniería de software y automatización.",
+      "body": "Integro datos, IA y plataformas empresariales para que los procesos funcionen solos. No solo escribo código: construyo soluciones.",
+      "cta": "Ver experiencia",
+      "codeLabel": "Resumen del perfil",
+      "code": {
+        "file": "perfil.ts",
+        "name": "cristian",
+        "fields": [
+          {
+            "key": "rol",
+            "value": "Applications Lead"
+          },
+          {
+            "key": "enfoque",
+            "value": [["IA", "Integraciones"], ["Automatización"]]
+          },
+          {
+            "key": "plataformas",
+            "value": [["ERP", "CRM"]]
+          },
+          {
+            "key": "stack",
+            "value": [["Python", "Node.js"], ["Next.js"]]
+          }
+        ]
+      }
     },
     "Nav": {
       "experience": "Experiencia",
@@ -15,48 +37,53 @@
       "projects": "Proyectos",
       "about": "Sobre mí",
       "articles": "Artículos",
-      "stack": "Stack"
+      "stack": "Stack",
+      "primary": "Principal",
+      "menuOpen": "Abrir menú",
+      "menuClose": "Cerrar menú",
+      "language": "Idioma",
+      "switchTo": "Cambiar idioma a {language}",
+      "themeToLight": "Cambiar a modo claro",
+      "themeToDark": "Cambiar a modo oscuro",
+      "skip": "Saltar al contenido"
     },
     "Experience": {
       "title": "Experiencia",
       "items": [
         {
-          "role": "Programador FullStack",
-          "date": "Mayo 2024 - Presente",
-          "company": "Industrial Distributions International Co.",
-          "description": "Líderar el proceso de automatización implementando soluciones de RPA. Desarrollar integraciones del ERP con soluciones personalizadas. Realizar personalizaciones en el ERP según la lógica de negocio de la empresa."
+          "role": "Applications Lead",
+          "roleNote": "(antes Software Engineer)",
+          "date": "Mayo 2024 — Presente",
+          "company": "Industrial Distributors International Co.",
+          "description": "Defino la arquitectura de las soluciones de IA e integración de la compañía y lidero al equipo en su construcción y despliegue, integrando modelos LLM con sistemas empresariales (ERP - CRM) y Microsoft 365 con autenticación, auditoría y trazabilidad."
         },
         {
-          "role": "Programador FullStack",
-          "date": "Enero 2022 - Presente",
+          "role": "Consultor de Software / Asesor Técnico",
+          "date": "Junio 2024 — Presente",
           "company": "Colraices",
-          "description": "Encargado de desarrollar soluciones web en empresa del sector financiero e inmobiliario. Desarrollo de convenciones de código internas de acuerdo a buenas prácticas de programación. Liderar el equipo de desarrollo Backend."
+          "description": "Asesoro la arquitectura de software e IA y coordino al equipo de desarrollo, asegurando la continuidad operativa y la seguridad de los sistemas críticos de crédito. Diseñé y construí un asistente multiagente que analiza políticas de crédito, inmuebles, datos del cliente y reportes de crédito duplicando la capacidad de gestión de los asesores comerciales."
         },
         {
-          "role": "Web master",
-          "date": "Febrero 2020 - Noviembre 2021",
-          "company": "Diocesano Santa María",
-          "description": "Rediseño y mantenimiento de sitio y aplicación web en institución del sector educativo. Dar clases de programación a cursos de ultimo grado. Liderar el comité de Ciencia y Tecnología de la institución."
-        },
-        {
-          "role": "Técnico de soporte",
-          "date": "Diciembre 2018 - Diciembre 2019",
-          "company": "La Sucursal",
-          "description": "Desarrollar aplicación de simulación de costos para materiales de construcción. Administrar y dar soporte técnico al software contable y de facturación. Implementar herramientas de gestión de la comunicación y trabajo en equipo."
+          "role": "Desarrollador Full Stack",
+          "date": "Enero 2022 — Mayo 2024",
+          "company": "Colraices",
+          "description": "Cofundé y desarrollé el backend y el frontend del sistema de viabilidad y cupo de crédito con reglas de bancos aliados, hoy en producción. Lideré el desarrollo del análisis automatizado de crédito, que redujo la evaluación de 2 horas a 5 minutos por cliente y habilitó la autogestión."
         }
       ]
     },
     "Projects": {
       "title": "Proyectos",
-      "description": "Mis proyectos más emocionantes y creativos. Cada proyecto es el resultado de mi dedicación y pasión por la programación, y estoy encantado de compartirlos contigo. Descubre cómo transformo ideas en realidades digitales. ¡Explora, inspira y crea con mis proyectos de software!",
+      "description": "Soluciones que llevan la IA y las integraciones a la operación real: agentes, servidores MCP y plataformas que conectan ERP, CRM y datos.",
       "more": "Más proyectos"
     },
     "About": {
       "title": "Sobre mí",
-      "p1": "Me apasiona resolver problemas, ya sea construyendo aplicaciones desde cero o encontrando la lógica oculta tras los datos.",
-      "p2": "La atención al detalle, la investigación y la curiosidad hacen que vea lo que otros no ven.",
-      "p3": "Creo que la tecnología solo es útil si hace la vida más fácil a las personas; por eso, pongo el mismo entusiasmo en escribir código limpio que en colaborar y comunicarme bien con mi equipo.",
-      "cv": "Ver CV"
+      "lead": "Me apasiona resolver problemas: construir aplicaciones desde cero o descubrir la lógica que se esconde detrás de los datos.",
+      "p2": "La atención al detalle, la investigación y la curiosidad me ayudan a ver lo que otros pasan por alto.",
+      "p3": "Creo que la tecnología solo vale la pena si le hace la vida más fácil a las personas. Por eso pongo el mismo cuidado en escribir código limpio que en colaborar y comunicarme bien con mi equipo.",
+      "cv": "Descargar CV",
+      "photoAlt": "Foto de Cristian Orrego",
+      "caption": "Cristian Orrego · Colombia"
     },
     "Articles": {
       "title": "Artículos",
@@ -64,14 +91,17 @@
     },
     "Stack": {
       "title": "Tecnologías",
-      "description": "En mi viaje por el mundo del desarrollo web, he cultivado experiencia y habilidades en una variedad de tecnologías. Mi stack tecnológico incluye:",
+      "description": "Las herramientas con las que construyo a diario y las que estoy aprendiendo.",
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Herramientas",
       "learning": "Aprendiendo"
     },
     "Footer": {
-      "rights": "Todos los derechos reservados."
+      "rights": "Todos los derechos reservados.",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "links": "Links"
     }
   },
   "ServicesPage": {
@@ -85,17 +115,18 @@
       "title": "Webs corporativas, e-commerce y software a medida para vender más y operar mejor.",
       "subtitle": "Trabajo cada proyecto con enfoque de negocio: claridad estratégica, experiencia de usuario y ejecución técnica. La IA se integra cuando mejora conversión, atención o automatización, no por moda.",
       "primaryCta": "Hablar por WhatsApp",
-      "secondaryCta": "Ver proyectos reales"
+      "secondaryCta": "Ver proyectos reales",
+      "label": "~/servicios"
     },
     "painPoints": {
       "title": "Si te pasa esto, hay una oportunidad clara de mejora.",
       "subtitle": "Antes de hablar de tecnología, partimos de problemas concretos que frenan ventas, confianza o eficiencia.",
       "items": [
-        "Tu negocio no transmite confianza online y cuesta explicar qué ofrecés.",
-        "Tenés visitas, pero tu web no convierte consultas o ventas de forma constante.",
-        "Vendés, pero la operación sigue siendo manual y dependiente de WhatsApp o planillas.",
+        "Tu negocio no transmite confianza online y cuesta explicar qué ofreces.",
+        "Tienes visitas, pero tu web no convierte consultas o ventas de forma constante.",
+        "Vendes, pero la operación sigue siendo manual y dependiente de WhatsApp o planillas.",
         "Tu equipo pierde tiempo en tareas repetitivas que se pueden automatizar.",
-        "No tenés una base digital sólida para escalar campañas o incorporar IA con criterio."
+        "No tienes una base digital sólida para escalar campañas o incorporar IA con criterio."
       ]
     },
     "services": {
@@ -108,7 +139,7 @@
         "solution": "Solución propuesta",
         "deliverables": "Entregables típicos",
         "benefits": "Beneficios esperados",
-        "aiUseCases": "AI aplicable",
+        "aiUseCases": "IA aplicable",
         "ctaHint": "Siguiente paso"
       },
       "items": [
@@ -190,7 +221,7 @@
       ]
     },
     "ai": {
-      "title": "AI aplicada",
+      "title": "IA aplicada",
       "subtitle": "Primero ordenamos la base digital. Después evaluamos dónde la IA puede ahorrar tiempo, mejorar decisiones o aumentar conversión con impacto real.",
       "noHype": {
         "yesTitle": "Cuándo sí conviene",
@@ -285,22 +316,23 @@
           "answer": "Cuando existe un problema repetitivo, medible y con datos mínimos para operar. Si no hay base digital ordenada, primero se fortalece eso."
         },
         {
-          "question": "¿Qué información necesitás para cotizar?",
+          "question": "¿Qué información necesitas para cotizar?",
           "answer": "Objetivo del proyecto, tipo de usuario, proceso actual, urgencia y referencias. Con eso se puede armar un alcance inicial realista."
         }
       ]
     },
     "closing": {
       "title": "¿Listo para convertir tu idea en una solución que mueva el negocio?",
-      "subtitle": "Podés empezar con una conversación rápida. Te propongo el mejor camino según tu contexto actual, sin complejidad innecesaria.",
+      "subtitle": "Puedes empezar con una conversación rápida. Te propongo el mejor camino según tu contexto actual, sin complejidad innecesaria.",
       "primaryCta": "Iniciar conversación por WhatsApp",
       "secondaryCta": "Enviar brief por email",
       "tertiaryCta": "Agendar llamada de descubrimiento"
     }
   },
   "Article": {
-    "readingTime": "Lectura {minutes} min",
-    "contentTable": "Tabla de Contenidos"
+    "readingTime": "{minutes} min de lectura",
+    "contentTable": "Contenido",
+    "back": "Artículos"
   },
   "PersonalLinks": {
     "meta": {
@@ -308,12 +340,13 @@
       "description": "Todos mis enlaces importantes en un solo lugar para compartir rápidamente."
     },
     "profile": {
-      "bio": "Ingeniero de Software enfocado en automatización, integraciones y productos web de alto impacto."
+      "bio": "Ingeniero de Software enfocado en automatización, integraciones y productos web de alto impacto.",
+      "avatarAlt": "Foto de Cristian Orrego"
     },
     "share": {
       "button": "Compartir perfil",
-      "success": "Enlace copiado al portapapeles ✅",
-      "error": "No se pudo copiar automáticamente. Copialo manualmente."
+      "success": "Enlace copiado al portapapeles",
+      "error": "No se pudo copiar automáticamente. Cópialo manualmente."
     },
     "social": {
       "linkedin": "LinkedIn",
@@ -324,9 +357,6 @@
       "open": "Expandir sección {title}",
       "close": "Cerrar sección {title}"
     },
-    "links": {
-      "open": "Abrir enlace: {label}"
-    },
     "sections": {
       "services": {
         "title": "Servicios",
@@ -334,7 +364,7 @@
       },
       "projects": {
         "title": "Proyectos",
-        "description": "Explorá demos, código y casos reales que ya resolví."
+        "description": "Explora demos, código y casos reales que ya resolví."
       },
       "learning-sql": {
         "title": "Aprende SQL",
@@ -344,11 +374,38 @@
           "sql-side-quest": "SQL Side Quest",
           "aprende-sql": "Aprende SQL"
         }
-      },
-      "active-teams": {
-        "title": "Mantén Teams en Verde",
-        "description": "Mantén tu Microsoft Teams activo y evita ser eliminado por inactividad con este simple script de PowerShell."
       }
-    }
+    },
+    "home": "cristianorrego.dev",
+    "navLabel": "Enlaces"
+  },
+  "ProjectsPage": {
+    "label": "~/proyectos",
+    "title": "Proyectos",
+    "description": "Explora mi portafolio y descubre los proyectos que he construido: agentes de IA, servidores MCP e integraciones entre plataformas empresariales.",
+    "filterLabel": "Filtrar por categoría",
+    "all": "Todos",
+    "empty": "Próximamente…",
+    "results": "{count, plural, =0 {Sin proyectos} one {# proyecto} other {# proyectos}}",
+    "back": "Proyectos",
+    "stack": "Stack",
+    "visit": "Ir al sitio",
+    "repo": "Repositorio",
+    "metaDescription": "Explora mi portafolio: agentes de IA, servidores MCP e integraciones entre ERP, CRM y datos."
+  },
+  "PostsPage": {
+    "label": "~/artículos",
+    "title": "Artículos",
+    "description": "Blog de programación: explora diferentes tecnologías y encuentra guías y trucos.",
+    "count": "{count, plural, one {# artículo publicado} other {# artículos publicados}}",
+    "metaDescription": "Blog de programación: guías y trucos sobre IA, bases de datos y desarrollo web."
+  },
+  "NotFound": {
+    "label": "~/404",
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o cambió de dirección. Puedes volver al inicio o seguir explorando.",
+    "home": "Volver al inicio",
+    "projects": "Ver proyectos",
+    "posts": "Leer artículos"
   }
 }
