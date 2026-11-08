@@ -527,3 +527,27 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
 }
+
+/* Stack chips: muted icon that takes its brand color on hover. */
+.tchip {
+  transition: border-color 0.2s ease;
+}
+.tchip:hover {
+  border-color: var(--p-line);
+}
+.tchip .ticon {
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.tchip:hover .ticon {
+  color: var(--brand-d);
+}
+:root.light .tchip:hover .ticon {
+  color: var(--brand-l);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tchip,
+  .tchip .ticon {
+    transition: none;
+  }
+}
