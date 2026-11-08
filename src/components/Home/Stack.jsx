@@ -1,93 +1,54 @@
-import { Container } from "../Container";
-import { SectionTitle } from "../SectionTitle";
-import { MY_STACK } from "@/helpers/staticData";
-import { SetStack } from "@/components/SetStack";
 import { getTranslations } from "next-intl/server";
+import { MY_STACK } from "@/helpers/staticData";
+import { SectionHeading } from "../ui/SectionHeading";
+
+const GROUPS = [
+  { key: "frontend", accent: "text-p" },
+  { key: "backend", accent: "text-p" },
+  { key: "tools", accent: "text-p" },
+  { key: "learning", accent: "text-s" },
+];
 
 export const Stack = async () => {
   const t = await getTranslations("HomePage.Stack");
+
   return (
-    <Container>
-      <SectionTitle>{t("title")}</SectionTitle>
-      <p className="my-8 text-pretty md:text-lg max-w-[740px] text-dark-700 dark:text-dark-200">
+    <section
+      id="stack"
+      aria-labelledby="stack-title"
+      className="mx-auto max-w-site px-6 pb-24 pt-20 sm:pb-28 sm:pt-24"
+    >
+      <SectionHeading
+        number="05"
+        id="stack-title"
+        title={t("title")}
+        className="mb-4"
+      />
+      <p className="mb-8 mt-0 max-w-[640px] text-[17px] leading-[1.65] text-muted">
         {t("description")}
       </p>
-      <section className="grid lg:grid-cols-2 lg:grid-rows-2 gap-6 lg:place-content-center">
-        <SetStack>
-          <h3 className="text-center mb-8 text-xl font-bold  lg:text-4xl lg:break-words bg-gradient-to-t from-[#54fbff] to-[#00a4c9] dark:from-[#c9fffe] dark:to-[#00cfef] bg-clip-text  text-transparent">
-            {t("frontend")}
-          </h3>
-          <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.frontend.map((skill) => (
-              <li
-                key={skill.name}
-                className=" rounded-2xl  group flex flex-col fle justify-center items-center"
-              >
-                <skill.icon className="size-12 mb-2" />
-                <span className=" text-sm w-full text-center">
-                  {skill.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </SetStack>
-        <SetStack reverse={true}>
-          <h3 className="text-center mb-8 text-xl font-bold  lg:text-4xl lg:break-words bg-gradient-to-t from-[#94a3b8] to-[#1e293b] dark:from-[#f1f5f9] dark:to-[#64748b] bg-clip-text text-transparent">
-            {t("backend")}
-          </h3>
-          <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.backend.map((skill) => (
-              <li
-                key={skill.name}
-                className=" rounded-2xl  group flex flex-col fle justify-center items-center"
-              >
-                <skill.icon className="size-12 mb-2" />
-                <span className=" text-sm w-full text-center">
-                  {skill.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </SetStack>
-
-        <SetStack>
-          <h3 className="text-center mb-8 text-xl font-bold  lg:text-4xl lg:break-words bg-gradient-to-t from-[#75dbff] to-[#0072ab] dark:from-[#def3ff] dark:to-[#00a8e8] bg-clip-text  text-transparent">
-            {t("tools")}
-          </h3>
-          <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.tools.map((skill) => (
-              <li
-                key={skill.name}
-                className=" rounded-2xl  group flex flex-col fle justify-center items-center"
-              >
-                <skill.icon className="size-12 mb-2" />
-                <span className=" text-sm w-full text-center">
-                  {skill.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </SetStack>
-
-        <SetStack reverse={true}>
-          <h3 className="text-center mb-8 text-xl font-bold lg:text-4xl lg:break-words bg-gradient-to-t from-[#ffb272] to-[#ee4a08] dark:from-[#ffebd4] dark:to-[#fd6412] bg-clip-text  text-transparent">
-            {t("learning")}
-          </h3>
-          <ul className="grid grid-cols-3 gap-4 ">
-            {MY_STACK.learning.map((skill) => (
-              <li
-                key={skill.name}
-                className=" rounded-2xl  group flex flex-col fle justify-center items-center"
-              >
-                <skill.icon className="size-12 mb-2" />
-                <span className=" text-sm w-full text-center">
-                  {skill.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </SetStack>
-      </section>
-    </Container>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] overflow-hidden rounded-2xl border border-line bg-surface">
+        {GROUPS.map((group) => (
+          <div
+            key={group.key}
+            className="-mb-px -mr-px flex flex-col gap-4 border-b border-r border-line p-6"
+          >
+            <h3 className={`mono m-0 text-[13px] font-normal ${group.accent}`}>
+              {t(group.key)}
+            </h3>
+            <ul className="mono m-0 flex list-none flex-wrap gap-2 p-0 text-[13px]">
+              {MY_STACK[group.key].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg border border-line bg-surface-2 px-2.5 py-1.5 text-fg"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };

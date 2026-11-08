@@ -1,13 +1,35 @@
 {
   "HomePage": {
     "Banner": {
-      "greeting": "Hi,",
-      "name": "I'm Cristian",
       "role": "Software Engineer",
-      "title": "I transform complex operations through",
-      "experience": "intelligent ecosystems using Software Engineering and Automation",
-      "specialization": "Expert in integrating Data, AI, and Enterprise Platforms.",
-      "finale": "I don't just write code, I build solutions."
+      "greeting": "Hi, I'm",
+      "name": "Cristian",
+      "lead": "I turn complex operations into intelligent ecosystems through software engineering and automation.",
+      "body": "I connect data, AI and enterprise platforms so processes run on their own. I don't just write code: I build solutions.",
+      "cta": "View experience",
+      "codeLabel": "Profile summary",
+      "code": {
+        "file": "profile.ts",
+        "name": "cristian",
+        "fields": [
+          {
+            "key": "role",
+            "value": "Applications Lead"
+          },
+          {
+            "key": "focus",
+            "value": [["AI", "Integrations"], ["Automation"]]
+          },
+          {
+            "key": "platforms",
+            "value": [["ERP", "CRM"]]
+          },
+          {
+            "key": "stack",
+            "value": [["Python", "Node.js"], ["Next.js"]]
+          }
+        ]
+      }
     },
     "Nav": {
       "experience": "Experience",
@@ -15,26 +37,35 @@
       "projects": "Projects",
       "about": "About me",
       "articles": "Articles",
-      "stack": "Stack"
+      "stack": "Stack",
+      "primary": "Main",
+      "menuOpen": "Open menu",
+      "menuClose": "Close menu",
+      "language": "Language",
+      "switchTo": "Switch language to {language}",
+      "themeToLight": "Switch to light mode",
+      "themeToDark": "Switch to dark mode",
+      "skip": "Skip to content"
     },
     "Experience": {
       "title": "Experience",
       "items": [
         {
-          "role": "Applications Lead (previously Software Engineer)",
-          "date": "May 2024 - Present",
+          "role": "Applications Lead",
+          "roleNote": "(previously Software Engineer)",
+          "date": "May 2024 — Present",
           "company": "Industrial Distributors International Co.",
           "description": "I define the architecture of the company's AI and integration solutions and lead the team that builds and deploys them, integrating LLMs with enterprise systems (ERP - CRM) and Microsoft 365 with authentication, auditing and traceability."
         },
         {
           "role": "Software Consultant / Technical Advisor",
-          "date": "June 2024 - Present",
+          "date": "June 2024 — Present",
           "company": "Colraices",
           "description": "I advise on software and AI architecture and coordinate the development team, ensuring operational continuity and security of the critical credit systems. I designed and built a multi-agent assistant that analyzes credit policies, properties, client data and credit reports, doubling the client capacity of the sales advisors."
         },
         {
           "role": "Full Stack Developer",
-          "date": "January 2022 - May 2024",
+          "date": "January 2022 — May 2024",
           "company": "Colraices",
           "description": "I co-founded and built the backend and frontend of the credit eligibility and limit system based on partner banks' rules, now in production. I led the development of the automated credit analysis, which cut evaluation from 2 hours to 5 minutes per client and enabled client self-service."
         }
@@ -42,15 +73,17 @@
     },
     "Projects": {
       "title": "Projects",
-      "description": "My most exciting and creative projects. Each project is the result of my dedication and passion for programming, and I'm delighted to share them with you. Discover how I transform ideas into digital realities. Explore, inspire and create with my software projects!",
+      "description": "Solutions that bring AI and integrations into real operations: agents, MCP servers and platforms that connect ERP, CRM and data.",
       "more": "More projects"
     },
     "About": {
       "title": "About me",
-      "p1": "I am passionate about solving problems, whether it's building applications from scratch or uncovering the hidden logic behind data.",
-      "p2": "Attention to detail, research, and curiosity allow me to see what others might miss.",
-      "p3": "I believe technology is only useful if it makes people's lives easier; that’s why I put as much enthusiasm into writing clean code as I do into collaborating and communicating effectively with my team.",
-      "cv": "Resume"
+      "lead": "I love solving problems: building applications from scratch or uncovering the logic hidden behind the data.",
+      "p2": "Attention to detail, research and curiosity help me notice what others overlook.",
+      "p3": "I believe technology is only worth it when it makes people's lives easier. That's why I put the same care into writing clean code as into collaborating and communicating well with my team.",
+      "cv": "Download CV",
+      "photoAlt": "Photo of Cristian Orrego",
+      "caption": "Cristian Orrego · Colombia"
     },
     "Articles": {
       "title": "Articles",
@@ -58,14 +91,17 @@
     },
     "Stack": {
       "title": "Technologies",
-      "description": "In my journey through the world of web development, I have cultivated experience and skills in a variety of technologies. My technology stack includes:",
+      "description": "The tools I build with every day and the ones I'm learning.",
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Tools",
       "learning": "Learning"
     },
     "Footer": {
-      "rights": "All rights reserved."
+      "rights": "All rights reserved.",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "links": "Links"
     }
   },
   "ServicesPage": {
@@ -79,7 +115,8 @@
       "title": "Corporate websites, e-commerce, and custom software to sell more and operate better.",
       "subtitle": "Every project is built around business goals: strategic clarity, user experience, and technical execution. AI is added when it improves conversion, support, or automation—not as a trend.",
       "primaryCta": "Chat on WhatsApp",
-      "secondaryCta": "View real projects"
+      "secondaryCta": "View real projects",
+      "label": "~/services"
     },
     "painPoints": {
       "title": "If this sounds familiar, there is a clear improvement opportunity.",
@@ -293,8 +330,9 @@
     }
   },
   "Article": {
-    "readingTime": "Read {minutes} min",
-    "contentTable": "Table of Contents"
+    "readingTime": "{minutes} min read",
+    "contentTable": "Contents",
+    "back": "Articles"
   },
   "PersonalLinks": {
     "meta": {
@@ -302,11 +340,12 @@
       "description": "All my key links in one place, ready to share quickly."
     },
     "profile": {
-      "bio": "Software Engineer focused on automation, integrations, and high-impact web products."
+      "bio": "Software Engineer focused on automation, integrations, and high-impact web products.",
+      "avatarAlt": "Photo of Cristian Orrego"
     },
     "share": {
       "button": "Share profile",
-      "success": "Link copied to clipboard ✅",
+      "success": "Link copied to clipboard",
       "error": "Automatic copy failed. Please copy it manually."
     },
     "social": {
@@ -317,9 +356,6 @@
     "accordion": {
       "open": "Expand section {title}",
       "close": "Collapse section {title}"
-    },
-    "links": {
-      "open": "Open link: {label}"
     },
     "sections": {
       "services": {
@@ -339,6 +375,37 @@
           "aprende-sql": "Aprende SQL"
         }
       }
-    }
+    },
+    "home": "cristianorrego.dev",
+    "navLabel": "Links"
+  },
+  "ProjectsPage": {
+    "label": "~/projects",
+    "title": "Projects",
+    "description": "Browse my portfolio and discover the projects I've built: AI agents, MCP servers and integrations between enterprise platforms.",
+    "filterLabel": "Filter by category",
+    "all": "All",
+    "empty": "Coming soon…",
+    "results": "{count, plural, =0 {No projects} one {# project} other {# projects}}",
+    "back": "Projects",
+    "stack": "Stack",
+    "visit": "Visit site",
+    "repo": "Repository",
+    "metaDescription": "Explore my portfolio: AI agents, MCP servers and integrations across ERP, CRM and data."
+  },
+  "PostsPage": {
+    "label": "~/articles",
+    "title": "Articles",
+    "description": "A programming blog: explore different technologies and find guides and tips.",
+    "count": "{count, plural, one {# article published} other {# articles published}}",
+    "metaDescription": "Programming blog: guides and tips on AI, databases and web development."
+  },
+  "NotFound": {
+    "label": "~/404",
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved. Head back home or keep exploring.",
+    "home": "Back to home",
+    "projects": "View projects",
+    "posts": "Read articles"
   }
 }

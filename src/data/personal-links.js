@@ -21,27 +21,32 @@ export const PERSONAL_LINKS_DATA = {
       },
     ],
   },
+  // `url` starting with "/" is an internal, locale-aware route.
+  // `icon` maps to an SVG icon in PersonalLinksLanding; `tone` picks the accent.
   sections: [
     {
       id: "services",
       type: "simple",
-      icon: "🚀",
+      icon: "briefcase",
+      tone: "primary",
       titleKey: "sections.services.title",
       descriptionKey: "sections.services.description",
-      url: "https://cristianorrego.dev/services",
+      url: "/services",
     },
     {
       id: "projects",
       type: "simple",
-      icon: "🛠️",
+      icon: "code",
+      tone: "primary",
       titleKey: "sections.projects.title",
       descriptionKey: "sections.projects.description",
-      url: "https://cristianorrego.dev/projects",
+      url: "/projects",
     },
     {
       id: "learning-sql",
       type: "accordion",
-      icon: "📊",
+      icon: "database",
+      tone: "secondary",
       titleKey: "sections.learning-sql.title",
       descriptionKey: "sections.learning-sql.description",
       items: [

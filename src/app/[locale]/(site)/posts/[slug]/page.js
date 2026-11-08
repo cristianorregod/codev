@@ -1,7 +1,5 @@
 import { getPostBySlug, getPosts } from "@/lib/mdx";
 import { ArticleBody } from "@/components/ArticleBody";
-import "highlight.js/styles/atom-one-dark.css";
-import "highlightjs-copy/styles/highlightjs-copy.css";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 
@@ -52,7 +50,11 @@ export default async function PostPage({ params }) {
 
   return (
     <>
-      <ArticleBody content={content} frontmatter={frontmatter} />
+      <ArticleBody
+        content={content}
+        frontmatter={frontmatter}
+        locale={locale}
+      />
     </>
   );
 }

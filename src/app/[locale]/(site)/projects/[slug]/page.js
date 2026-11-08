@@ -1,6 +1,5 @@
 import { ProjectBody } from "@/components/ProjectBody";
 import { getPostBySlug, getPosts } from "@/lib/mdx";
-import "highlight.js/styles/atom-one-dark.css";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 
@@ -50,7 +49,11 @@ export default async function ProjectPage({ params }) {
 
   return (
     <>
-      <ProjectBody content={content} frontmatter={frontmatter} />
+      <ProjectBody
+        content={content}
+        frontmatter={frontmatter}
+        locale={locale}
+      />
     </>
   );
 }

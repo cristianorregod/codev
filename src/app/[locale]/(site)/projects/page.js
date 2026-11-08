@@ -1,7 +1,6 @@
-import { Banner } from "@/components/Banner";
+import { PageHero } from "@/components/ui/PageHero";
 import { ListOfProjects } from "@/components/Projects/ListOfProjects";
 import { getAllPostsMetadata } from "@/lib/mdx";
-import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params }) {
@@ -9,8 +8,9 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "HomePage.Nav" });
   return {
     title: `Cristian Orrego Dev 👨‍💻 | ${t("projects")}`,
-    description:
-      "Explora mi portafolio web y descubre mis proyectos más destacados.",
+    description: (await getTranslations({ locale, namespace: "ProjectsPage" }))(
+      "metaDescription",
+    ),
     metadataBase: new URL("https://cristianorrego.dev"),
     author: "cristianorregodev",
   };
@@ -19,16 +19,17 @@ export async function generateMetadata({ params }) {
 export default async function ProjectsPage({ params }) {
   const { locale } = await params;
   const projects = getAllPostsMetadata(process.env.PROJECTS_PATH, locale);
-  const t = await getTranslations({ locale, namespace: "HomePage.Nav" });
+  const t = await getTranslations({ locale, namespace: "ProjectsPage" });
 
   return (
     <>
-      <Banner title={t("projects")} maxWith="lg:w-[900px]" />
-
-      <section className="mt-16 container mx-auto px-2 md:px-0 lg:w-[900px]  ">
-        <Suspense>
-          <ListOfProjects projects={projects} />
-        </Suspense>
+      <PageHero
+        label={t("label")}
+        title={t("title")}
+        description={t("description")}
+      />
+      <section className="mx-auto max-w-site px-6 pb-24 pt-10 sm:pb-28">
+        <ListOfProjects projects={projects} />
       </section>
     </>
   );
