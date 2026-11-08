@@ -1,10 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { PERSONAL_LINKS_DATA } from "@/data/personal-links";
 import { SectionHeading } from "../ui/SectionHeading";
 import { DownloadIcon } from "../ui/icons";
 
 export const About = async () => {
   const t = await getTranslations("HomePage.About");
+  const isEnglish = (await getLocale()) === "en";
+  const cv = isEnglish
+    ? { href: "/cristian-orrego-cv-en.pdf", file: "Cristian-Orrego-CV-EN.pdf" }
+    : { href: "/cristian-orrego-cv.pdf", file: "Cristian-Orrego-CV.pdf" };
 
   return (
     <section
@@ -33,8 +37,8 @@ export const About = async () => {
           <p className="m-0 text-[17px] leading-[1.7] text-muted">{t("p3")}</p>
           <div className="mt-2 flex flex-wrap gap-3">
             <a
-              href="/cristian-orrego-cv.pdf"
-              download="Cristian-Orrego-CV.pdf"
+              href={cv.href}
+              download={cv.file}
               className="btn inline-flex min-h-12 items-center gap-2.5 rounded-xl bg-s-fill px-[22px] font-bold text-s-on no-underline"
             >
               <DownloadIcon />

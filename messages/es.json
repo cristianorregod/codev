@@ -92,10 +92,11 @@
     "Stack": {
       "title": "Tecnologías",
       "description": "Las herramientas con las que construyo a diario y las que estoy aprendiendo.",
-      "frontend": "Frontend",
-      "backend": "Backend",
       "tools": "Herramientas",
-      "learning": "Aprendiendo"
+      "learning": "Aprendiendo",
+      "ai": "IA",
+      "web": "Web/Backend",
+      "count": "Tecnologías"
     },
     "Footer": {
       "rights": "Todos los derechos reservados.",

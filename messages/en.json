@@ -92,10 +92,11 @@
     "Stack": {
       "title": "Technologies",
       "description": "The tools I build with every day and the ones I'm learning.",
-      "frontend": "Frontend",
-      "backend": "Backend",
       "tools": "Tools",
-      "learning": "Learning"
+      "learning": "Learning",
+      "ai": "AI",
+      "web": "Web/Backend",
+      "count": "Technologies"
     },
     "Footer": {
       "rights": "All rights reserved.",
