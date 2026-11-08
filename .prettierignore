@@ -4,3 +4,4 @@ package-lock.json
 .atl
 .codegraph
 *.mdx
+src/data/knowledge

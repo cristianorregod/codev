@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "knowledge": "node --env-file-if-exists=.env --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-knowledge.mjs"
   },
   "husky": {
     "hooks": {
@@ -30,6 +31,7 @@
     "next": "^16.4.4",
     "next-intl": "^4.7.0",
     "next-themes": "^0.2.1",
+    "openai": "^7.53.0",
     "postcss": "^8.5.32",
     "react": "18.2.0",
     "react-dom": "18.2.0",
