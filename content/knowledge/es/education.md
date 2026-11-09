@@ -5,11 +5,15 @@ url: /es#about
 
 ## Formación universitaria
 
-Soy Ingeniero de Sistemas. Estudié en la Corporación Universitaria Remington entre junio de 2017 y diciembre de 2021.
+Soy Ingeniero de Sistemas. Estudié en la Corporación Universitaria Remington entre junio de 2017 y diciembre de 2021. Además de la carrera, he complementado mi formación con cursos recientes de arquitectura de software, Docker, MCP con Microsoft Azure, Node.js avanzado, FastAPI y Next.js.
+
+## Aprendizaje continuo
+
+Además de la carrera, sigo formándome de manera constante, sobre todo en arquitectura, backend e IA, que son justamente los temas con los que trabajo a diario: diseñar soluciones, construir APIs e integrar IA con los sistemas de la empresa.
 
 ## Cursos recientes
 
-Me gusta seguir formándome de manera constante, sobre todo en arquitectura, backend e IA. Estos son los cursos que he tomado más recientemente:
+Estos son los cursos que he tomado más recientemente:
 
 - Arquitectura de Software Aplicada — Platzi, enero de 2026 (30 horas).
 - Docker — Udemy, enero de 2026 (20 horas).

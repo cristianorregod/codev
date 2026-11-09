@@ -5,7 +5,7 @@ url: /es#about
 
 ## Dónde vivo y mi familia
 
-Vivo en Cali con mi familia: mi esposa y mi hija.
+Vivo en Cali, Colombia, con mi familia: mi esposa y mi hija.
 
 ## Lo que me da paz
 
@@ -17,4 +17,4 @@ En mi tiempo libre me gusta jugar fútbol, ir a cine y descubrir lugares nuevos:
 
 ## Mi hobby: la cartomagia
 
-Estoy aprendiendo cartomagia, algo que ya practicaba de adolescente. Me ayuda a desestresarme, a ser creativo y a encontrar inspiración.
+Estoy aprendiendo cartomagia, algo que ya practicaba de adolescente y que retomé. Me ayuda a desestresarme, a ser creativo y a encontrar inspiración.

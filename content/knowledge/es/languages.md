@@ -13,4 +13,4 @@ Mi nivel de inglés es B1 en general. Leo y escribo en inglés con un nivel alto
 
 ## Uso del inglés en el trabajo
 
-En IDICO (Industrial Distributors International Co.) interactúo ocasionalmente en inglés con proveedores y clientes.
+En IDICO (Industrial Distributors International Co.) interactúo ocasionalmente en inglés con proveedores y clientes. Además, en el Agente logístico de IA Walle construí los mensajes de notificación en varios idiomas.

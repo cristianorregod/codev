@@ -5,11 +5,15 @@ url: /en#about
 
 ## University degree
 
-I'm a Systems Engineer. I studied at Corporación Universitaria Remington from June 2017 to December 2021.
+I'm a Systems Engineer. I studied at Corporación Universitaria Remington from June 2017 to December 2021. Beyond my degree, I've complemented my education with recent courses on software architecture, Docker, MCP with Microsoft Azure, advanced Node.js, FastAPI and Next.js.
+
+## Continuous learning
+
+Beyond my degree, I keep learning constantly, especially about architecture, backend and AI, which are exactly the topics I work with every day: designing solutions, building APIs and integrating AI with the company's systems.
 
 ## Recent courses
 
-I like to keep learning constantly, especially about architecture, backend and AI. These are the courses I've taken most recently:
+These are the courses I've taken most recently:
 
 - Applied Software Architecture — Platzi, January 2026 (30 hours).
 - Docker — Udemy, January 2026 (20 hours).
