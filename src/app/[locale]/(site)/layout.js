@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AskAI } from "@/components/AskAI/AskAI";
 
 export default function SiteLayout({ children }) {
   const t = useTranslations("HomePage.Nav");
@@ -15,6 +16,7 @@ export default function SiteLayout({ children }) {
       <Navbar />
       <main id="main">{children}</main>
       <Footer />
+      <AskAI />
     </>
   );
 }

@@ -2,6 +2,9 @@
 title: "Vendor sourcing recommendation engine"
 category: "Backend"
 date: "2026-11-02"
+role: "Initiator and sole developer"
+team: 1
+duration: "2 months"
 excerpt: "A data pipeline and API that consolidate ERP purchase history to find items and recommend which vendors to ask for a quote, designed as the foundation for a future AI sourcing agent."
 cover: "/images/projects/vendor-sourcing-recommendation-engine/cover-en.webp"
 stack:
@@ -14,7 +17,7 @@ stack:
 
 ## My role
 
-As the sole author of the project, I took it from design to implementation: data extraction, modeling, search, recommendations, evaluation and the API service.
+The project started as an improvement to an existing quoting bot: I studied how it worked and proposed an initiative to improve it with multiple search levels and multiple sources. As the sole author, I took it from design to implementation: data extraction, modeling, search, recommendations, evaluation and the API service.
 
 - **Incremental extraction**: Built the ERP extraction with watermarks and hash-based upserts into raw tables.
 - **Transformation layer**: Designed the SQL layer that builds a consolidated core model and a vendor×brand performance score from historical activity.
@@ -33,13 +36,13 @@ As the sole author of the project, I took it from design to implementation: data
 
 ## Impact achieved
 
-Deciding which vendors to ask for a quote no longer has to depend only on each buyer's individual knowledge. In an offline evaluation on a test environment (not production), the engine reached:
+The engine cuts the time sales users spend on sourcing, that is, finding vendors for the items they are asked for. It searches internal sources (purchase history), the vendor catalog through RAG and the internet, and suggests 3 scored vendors per item. That reduces their operational time by about 70%, depending on the number of items.
+
+In an offline evaluation on a test environment, the engine reached:
 
 - Item search hit@1: 99.8% with brand + part number, 98.2% with part number only and 96.4% with a one-character typo.
 - Recommendation backtest hit@1: 88.5% for previously purchased items.
 - Search p50 latency of about 200 ms, over roughly 490k processed rows.
-
-The project is in development and not yet deployed.
 
 ## Technologies
 

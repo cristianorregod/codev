@@ -2,6 +2,9 @@
 title: "RFQ AI vendor response automation"
 category: "Fullstack"
 date: "2026-11-01"
+role: "Creator and technical owner"
+team: 3
+duration: "1 month"
 excerpt: "A module that turns vendor replies to requests for quotation, whether free text, PDFs, spreadsheets or images, into AI-proposed quote data that a buyer reviews and confirms."
 cover: "/images/projects/rfq-ai-vendor-response-automation/cover-en.webp"
 stack:
@@ -19,7 +22,7 @@ stack:
 
 ## My role
 
-I designed the module and was the main implementer across its three codebases: the Node backend, the Python AI worker and the React frontend.
+The module was my initiative, and I'm still its direct owner. I designed it and, in a three-person team, was the main implementer across its three codebases: the Node backend, the Python AI worker and the React frontend.
 
 - **Reply matching**: Introduced a reference token in outgoing RFQ emails and built the backend logic that matches each reply to its request.
 - **Email ingestion**: Built the workflow that routes replies from a shared mailbox, stores attachments in blob storage and posts the email to the backend.
@@ -38,7 +41,7 @@ I designed the module and was the main implementer across its three codebases: t
 
 ## Impact achieved
 
-In real test cases, the extraction matched the source documents correctly. The module is currently in testing, with a pilot planned, and aims to remove the manual, item-by-item typing of vendor replies.
+When RFQs (requests for quotation) go out and vendors reply by email, users used to transcribe prices and corrections into the system by hand. Now the agent reads the email, extracts the response and prepares the data to load automatically; the user only validates it. This removed manual transcription from email and cut the user’s operational time by 45%.
 
 ## Technologies
 

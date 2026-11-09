@@ -2,6 +2,9 @@
 title: "Salesforce ⇄ NetSuite integration platform"
 category: "Backend"
 date: "2026-10-06"
+role: "Integration developer"
+team: 3
+duration: "2 months"
 excerpt: "An integration platform that gives the CRM, workflow automations, portals and add-ins controlled, authenticated access to ERP data and actions, keeping Salesforce and NetSuite consistent."
 cover: "/images/projects/salesforce-netsuite-integration-platform/cover-en.webp"
 stack:
@@ -18,7 +21,7 @@ stack:
 
 ## My role
 
-As a core contributor (the second-largest of five developers), I worked on the platform from its original bidirectional sync phase through its evolution into a shared integration layer.
+In a three-person team, I built the SQL extraction scripts and the API and SOAP integrations with NetSuite, and I worked on the platform from its original bidirectional sync phase through its evolution into a shared integration layer.
 
 - **Original sync backends**: Built the Python backend that communicates with NetSuite, the Node.js middleware that receives data from Salesforce and NetSuite-side scripts that detect changes.
 - **Batch sync client**: Sole author of the shared batch client and the account synchronization.
@@ -41,7 +44,7 @@ The ERP → CRM sync was migrated from single-record endpoints that caused confl
 
 ## Impact achieved
 
-The CRM and ERP stay consistent with fewer sync conflicts, and every client accesses ERP data through a single controlled layer with full traceability and reprocessing capabilities.
+Records used to be created and changed by hand in both systems. Now real-time bidirectional sync between Salesforce and NetSuite means any change or new record on one side propagates to the other, through a single controlled layer with traceability and reprocessing capabilities.
 
 ## Technologies
 

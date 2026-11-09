@@ -2,6 +2,9 @@
 title: "Servidor MCP IDRA"
 category: "Backend"
 date: "2026-10-27"
+role: "Creador y responsable técnico"
+team: 1
+duration: "3 meses · en evolución"
 excerpt: "Servidor Model Context Protocol que da a los asistentes de IA acceso seguro, auditado y en tiempo real a los datos distribuidos entre el ERP y las bases de datos analíticas de una empresa de distribución industrial."
 cover: "/images/projects/idra-mcp-server/cover-es.webp"
 stack:
@@ -14,7 +17,7 @@ stack:
 
 ## Mi rol
 
-Como creador y desarrollador líder del proyecto, diseñé la arquitectura del servidor y construí la mayor parte de su base, mientras otros miembros del equipo aportaron el dominio de finanzas y la analítica de conversaciones con clientes.
+La iniciativa de construir este servidor fue mía y sigo siendo su responsable directo. Diseñé la arquitectura y construí la base en solitario durante los primeros meses; después se sumó el equipo de BI, al que le enseñé a crear nuevas herramientas siguiendo la arquitectura del proyecto. Desde entonces ese equipo desarrolla herramientas de analítica y yo me encargo de la revisión de código y de los despliegues.
 
 - **Servidor base y transporte**: Desarrollé el servidor MCP con transporte Streamable HTTP y su configuración en Docker.
 - **Autenticación**: Integré OAuth con Microsoft Entra ID para que cada llamada quede atribuida al usuario autenticado.
@@ -33,7 +36,7 @@ Como creador y desarrollador líder del proyecto, diseñé la arquitectura del s
 
 ## Impacto logrado
 
-Los usuarios de negocio y los asistentes de IA cuentan ahora con un único punto de entrada seguro y auditado a los datos de la empresa, que reemplaza la extracción manual de reportes por respuestas consistentes y en tiempo real con análisis estructurado, manteniendo cada acceso trazable a un usuario concreto.
+Los usuarios ya no dependen de abrir un ticket para obtener un reporte o construir una gráfica: cada persona arma sus propias métricas conversando con un asistente como Claude o ChatGPT. Esto redujo los tickets repetitivos de distintas áreas y promovió la autonomía de los usuarios: una métrica que como ticket para una gráfica en Tableau podía tardar hasta una semana ahora se obtiene en minutos, y cada acceso sigue siendo trazable a un usuario concreto.
 
 ## Tecnologías
 

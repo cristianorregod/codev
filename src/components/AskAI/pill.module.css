@@ -1,0 +1,88 @@
+/* Floating "Ask AI" pill. Scoped tokens that the global theme does not have. */
+.pill {
+  --ask-pill-bg: rgba(17, 19, 25, 0.86);
+  --ask-shadow: rgba(0, 0, 0, 0.45);
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 40;
+  width: min(560px, calc(100vw - 32px));
+  transform: translate(-50%, 0);
+  background: var(--ask-pill-bg);
+  box-shadow: 0 18px 40px var(--ask-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.25s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+:global(.light) .pill {
+  --ask-pill-bg: rgba(255, 255, 255, 0.9);
+  --ask-shadow: rgba(0, 0, 0, 0.14);
+}
+.pill:hover {
+  border-color: var(--p);
+  box-shadow:
+    0 0 0 4px var(--p-soft),
+    0 18px 40px var(--ask-shadow);
+}
+.hidden {
+  transform: translate(-50%, 140%);
+  opacity: 0;
+  pointer-events: none;
+}
+.away {
+  transform: translate(-50%, -38vh) scale(1.25);
+  opacity: 0;
+  pointer-events: none;
+}
+@media (max-width: 639px) {
+  .pill {
+    bottom: 16px;
+  }
+  .away {
+    transform: translate(-50%, 140%);
+  }
+}
+
+@keyframes spark {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(1.12) rotate(12deg);
+  }
+}
+.spark {
+  animation: spark 2.8s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+.live {
+  background: #10b981;
+  animation: livePulse 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    transition: opacity 0.2s ease;
+  }
+  .hidden,
+  .away {
+    transform: translate(-50%, 0);
+  }
+  .spark,
+  .live {
+    animation: none;
+  }
+}

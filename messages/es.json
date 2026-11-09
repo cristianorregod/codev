@@ -394,6 +394,12 @@
     "repo": "Repositorio",
     "metaDescription": "Explora mi portafolio: agentes de IA, servidores MCP e integraciones entre ERP, CRM y datos."
   },
+  "ProjectFacts": {
+    "role": "Rol",
+    "team": "Equipo",
+    "duration": "Duración",
+    "people": "{count, plural, one {# persona} other {# personas}}"
+  },
   "PostsPage": {
     "label": "~/artículos",
     "title": "Artículos",
@@ -408,5 +414,94 @@
     "home": "Volver al inicio",
     "projects": "Ver proyectos",
     "posts": "Leer artículos"
+  },
+  "AskAI": {
+    "pill": "Entrevista a mi asistente de IA",
+    "pillContinue": "Continuar la entrevista · {count, plural, one {# pregunta} other {# preguntas}}",
+    "open": "Abrir la entrevista con mi asistente de IA",
+    "dialogLabel": "Entrevista al asistente de IA de Cristian",
+    "inputLabel": "Tu pregunta para la entrevista",
+    "placeholder": "Entrevístame: pregunta por mi experiencia, proyectos o stack…",
+    "send": "Enviar pregunta",
+    "stop": "Detener respuesta",
+    "close": "Cerrar la entrevista",
+    "clear": "Nueva entrevista",
+    "suggestionsTitle": "Preguntas para empezar",
+    "searching": "buscando en proyectos, experiencia y artículos",
+    "sourcesTitle": "Fuentes · {count}",
+    "you": "Tú",
+    "assistant": "IA",
+    "hintSend": "enviar",
+    "hintClose": "cerrar",
+    "disclaimer": "Generado con IA · puede contener errores",
+    "stopped": "Respuesta detenida.",
+    "Errors": {
+      "generic": "No pude responder en este momento. Inténtalo de nuevo en unos segundos.",
+      "network": "No hay conexión con el asistente. Revisa tu red e inténtalo de nuevo.",
+      "invalid": "No pude procesar esa pregunta. Prueba a reformularla (máximo 300 caracteres).",
+      "forbidden": "Esta solicitud no está permitida desde aquí.",
+      "rateLimitSeconds": "Has hecho muchas preguntas seguidas. Inténtalo de nuevo en {count, plural, one {# segundo} other {# segundos}}.",
+      "rateLimitMinutes": "Has hecho muchas preguntas seguidas. Inténtalo de nuevo en {count, plural, one {# minuto} other {# minutos}}.",
+      "rateLimit": "Has hecho muchas preguntas seguidas. Inténtalo de nuevo en un rato."
+    },
+    "Kinds": {
+      "project": "Proyecto",
+      "post": "Artículo",
+      "experience": "Experiencia",
+      "about": "Sobre mí",
+      "stack": "Stack",
+      "services": "Servicios",
+      "contact": "Contacto",
+      "knowledge": "Perfil",
+      "download": "Descarga",
+      "other": "Fuente"
+    },
+    "Cta": {
+      "project": "Ver proyecto →",
+      "post": "Leer artículo →",
+      "internal": "Ver sección →",
+      "external": "Abrir enlace ↗",
+      "download": "Descargar ↓"
+    },
+    "Suggestions": {
+      "home": [
+        "¿Qué proyectos de IA has construido?",
+        "¿Tienes experiencia con Python?",
+        "¿Has integrado sistemas ERP y CRM?",
+        "Resúmeme tu perfil en 3 líneas"
+      ],
+      "projects": [
+        "¿Cuáles son tus proyectos más destacados?",
+        "¿Qué proyectos usan agentes de IA?",
+        "¿Qué impacto han tenido tus proyectos?",
+        "¿Has trabajado con NetSuite o Salesforce?"
+      ],
+      "project": [
+        "¿Qué problema resuelve {title}?",
+        "¿Cuál fue tu rol en {title}?",
+        "¿Qué impacto tuvo {title}?",
+        "¿Qué otros proyectos se parecen a este?"
+      ],
+      "posts": [
+        "¿Sobre qué temas escribes?",
+        "¿Qué artículos tienes sobre IA?",
+        "Recomiéndame un artículo para empezar"
+      ],
+      "post": [
+        "Resúmeme el artículo {title}",
+        "¿Qué otros artículos tratan temas similares?",
+        "¿Has aplicado esto en algún proyecto?"
+      ],
+      "services": [
+        "¿Qué servicios ofreces?",
+        "¿Cómo trabajas en un proyecto nuevo?",
+        "¿Cómo puedo contactarte?"
+      ],
+      "fallback": [
+        "¿Qué proyectos de IA has construido?",
+        "Resúmeme tu perfil en 3 líneas",
+        "¿Cómo puedo contactarte?"
+      ]
+    }
   }
 }
