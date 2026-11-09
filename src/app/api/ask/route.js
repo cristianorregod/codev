@@ -138,10 +138,10 @@ export async function POST(request) {
         answer = finalAnswer;
         if (!meta) status = status === "ok" ? "no_meta" : status;
 
-        resolved = resolveMeta(meta, retrieval);
+        resolved = resolveMeta(meta, retrieval, locale);
         send({ type: "sources", sources: resolved.sources });
         send({ type: "follow", items: resolved.follow });
-        send({ type: "done" });
+        send({ type: "done", noInfo: resolved.noInfo });
       } catch (err) {
         if (abort.signal.aborted) {
           status = "aborted";

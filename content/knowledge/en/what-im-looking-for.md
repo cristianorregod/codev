@@ -52,6 +52,6 @@ Because I already do the work of a Solutions Architect, Tech Lead and AI Enginee
 - I help the people around me grow through mentoring and hands-on guidance.
 - I have 5 years of experience designing enterprise software.
 
-## Arrangement: remote, hybrid or on-site
+## Location and arrangement: remote, hybrid or on-site
 
-I prefer working remotely. If the position is in Cali, a hybrid or on-site arrangement also works for me. At IDICO I currently work 100% on-site.
+I live in Cali, Colombia. I prefer working remotely. If the position is in Cali, a hybrid or on-site arrangement also works for me. At IDICO I currently work 100% on-site.

@@ -7,6 +7,13 @@ import { embed } from "./openai";
 const CONTACT_RE =
   /\b(contact\w*|linkedin|cv|curr[ií]cul\w*|resume|r[eé]sum[eé]|hire|hiring|contrat\w*|email|e-mail|correo|mail|tel[eé]fono|phone|whatsapp|disponib\w*|available|availability|reach|escrib\w*|hablar|talk|entrevista|interview|freelance|salari\w*|salary|tarifa\w*|rates?|cobr\w*|precio\w*|prices?|pricing)\b/i;
 
+// Attempts to override the persona or extract the prompt. These get no
+// retrieved context, so the decline cannot drift into unrelated articles.
+const INJECTION_RE =
+  /\b(ignor\w*|olvid\w*|forget|disregard)\b[^.?!]{0,40}\b(instruc\w*|reglas|rules|prompt)|\b(system prompt|prompt del sistema|tu prompt|your prompt|tus instrucciones|your instructions|jailbreak|developer mode|modo desarrollador)\b/i;
+
+const STACK_DOC_ID = "stack:technologies";
+
 /** Lowercases and strips accents so matching is case/accent-insensitive. */
 const fold = (value) =>
   value.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -37,6 +44,19 @@ export const detectTech = (text, techKeys) => {
     }
   }
   return found;
+};
+
+/** Tech names listed in the stack doc ("Group: a, b, c" lines). */
+const stackItems = (chunksByDoc) => {
+  const chunks = chunksByDoc.get(STACK_DOC_ID) || [];
+  return chunks
+    .flatMap((chunk) => chunk.text.split("\n"))
+    .map((line) => line.match(/^[^:]{2,40}:\s*(.+,.+)$/)?.[1])
+    .filter(Boolean)
+    .flatMap((list) => list.split(","))
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
 };
 
 /** Original-cased tech label from any project stack, e.g. "fastapi" -> "FastAPI". */
@@ -84,6 +104,22 @@ const contactBlock = (locale, docs) => {
 export async function retrieve({ question, history = [], locale, signal }) {
   const knowledge = getKnowledge(locale);
   const { docs, chunks, chunksByDoc, tech, techKeys } = knowledge;
+
+  if (INJECTION_RE.test(fold(question))) {
+    const profile = chunksByDoc.get("about:profile")?.[0];
+    return {
+      context: [
+        profile && formatChunk(profile, docs),
+        contactBlock(locale, docs),
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
+      docs,
+      docIds: [],
+      techFacts: [],
+      isFollowUp: false,
+    };
+  }
 
   const previous = lastUserQuestion(history);
   const isFollowUp =
@@ -133,7 +169,12 @@ export async function retrieve({ question, history = [], locale, signal }) {
   const summaries = techProjects
     .map((docId) => chunksByDoc.get(docId)?.[0])
     .filter(Boolean);
-  const queue = [...summaries, ...semantic, ...techChunks];
+  // A stack-only technology (e.g. one not used in any project) still needs
+  // the stack doc in context, otherwise the model would treat it as unknown.
+  const stackChunks = detectTech(techText, stackItems(chunksByDoc)).length
+    ? chunksByDoc.get(STACK_DOC_ID) || []
+    : [];
+  const queue = [...summaries, ...stackChunks, ...semantic, ...techChunks];
 
   for (const chunk of queue) {
     if (seen.has(chunk.id)) continue;

@@ -52,6 +52,6 @@ Porque ya hago hoy el trabajo de arquitecto de soluciones, líder técnico e ing
 - Hago crecer a las personas a mi alrededor con mentorías y acompañamiento.
 - Tengo 5 años de experiencia diseñando software empresarial.
 
-## Modalidad: remoto, híbrido o presencial
+## Modalidad y ubicación: remoto, híbrido o presencial
 
-Prefiero trabajar de forma remota. Si la posición es en Cali, también me sirve la modalidad híbrida o presencial. Actualmente en IDICO trabajo 100% presencial.
+Vivo en Cali, Colombia. Prefiero trabajar de forma remota. Si la posición es en Cali, también me sirve la modalidad híbrida o presencial. Actualmente en IDICO trabajo 100% presencial.
