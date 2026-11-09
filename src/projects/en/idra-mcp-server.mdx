@@ -2,6 +2,9 @@
 title: "IDRA MCP Server"
 category: "Backend"
 date: "2026-10-27"
+role: "Creator and technical owner"
+team: 1
+duration: "3 months · ongoing"
 excerpt: "A Model Context Protocol server that gives AI assistants secure, audited, real-time access to data spread across an industrial distribution company's ERP and analytics databases."
 cover: "/images/projects/idra-mcp-server/cover-en.webp"
 stack:
@@ -14,7 +17,7 @@ stack:
 
 ## My role
 
-As the creator and lead developer of the project, I designed the server architecture and built most of its foundation, while teammates contributed the finance domain and the customer conversations analytics.
+Building this server was my initiative, and I'm still its direct owner. I designed the architecture and built the foundation on my own during the first months; later the BI team joined, and I taught them how to build new tools following the project's architecture. Since then that team has built analytics tools, while I handle code review and deployments.
 
 - **Base server and transport**: Built the MCP server with Streamable HTTP transport and its Docker setup.
 - **Authentication**: Integrated OAuth with Microsoft Entra ID so every call is attributed to the signed-in user.
@@ -33,7 +36,7 @@ As the creator and lead developer of the project, I designed the server architec
 
 ## Impact achieved
 
-Business users and AI assistants now have one secure, audited entry point to company data, replacing the manual pulling of reports with consistent, real-time answers and structured analysis, while every access remains traceable to a specific user.
+Users no longer need to open a ticket to get a report or build a chart: each person builds their own metrics by chatting with an assistant such as Claude or ChatGPT. This cut repetitive tickets from different areas and encouraged user autonomy: a metric that could take up to a week as a ticket for a Tableau chart now takes minutes, and every access stays traceable to a specific user.
 
 ## Technologies
 

@@ -2,6 +2,9 @@
 title: "Plataforma de integración Salesforce ⇄ NetSuite"
 category: "Backend"
 date: "2026-10-06"
+role: "Desarrollador de integraciones"
+team: 3
+duration: "2 meses"
 excerpt: "Plataforma de integración que da al CRM, las automatizaciones de flujos, los portales y los complementos un acceso controlado y autenticado a los datos y acciones del ERP, manteniendo consistentes Salesforce y NetSuite."
 cover: "/images/projects/salesforce-netsuite-integration-platform/cover-es.webp"
 stack:
@@ -18,7 +21,7 @@ stack:
 
 ## Mi rol
 
-Como contribuidor principal (el segundo con más aportes de un equipo de cinco desarrolladores), trabajé en la plataforma desde su fase original de sincronización bidireccional hasta su evolución como capa de integración compartida.
+En un equipo de tres personas, desarrollé los scripts de extracción SQL y las integraciones por API y SOAP con NetSuite, y trabajé en la plataforma desde su fase original de sincronización bidireccional hasta su evolución como capa de integración compartida.
 
 - **Backends de sincronización originales**: Desarrollé el backend en Python que se comunica con NetSuite, el middleware en Node.js que recibe datos desde Salesforce y scripts del lado de NetSuite que detectan cambios.
 - **Cliente de sincronización por lotes**: Único autor del cliente de lotes compartido y de la sincronización de cuentas.
@@ -41,7 +44,7 @@ La sincronización ERP → CRM se migró de endpoints de un solo registro, que g
 
 ## Impacto logrado
 
-El CRM y el ERP se mantienen consistentes con menos conflictos de sincronización, y todos los clientes acceden a los datos del ERP a través de una única capa controlada, con trazabilidad completa y capacidad de reprocesamiento.
+Antes, los cambios y la creación de registros se hacían a mano en ambos sistemas. Ahora la sincronización bidireccional en tiempo real entre Salesforce y NetSuite hace que cualquier cambio o creación en un lado se refleje en el otro, a través de una única capa controlada con trazabilidad y capacidad de reprocesamiento.
 
 ## Tecnologías
 

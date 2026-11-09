@@ -394,6 +394,12 @@
     "repo": "Repositorio",
     "metaDescription": "Explora mi portafolio: agentes de IA, servidores MCP e integraciones entre ERP, CRM y datos."
   },
+  "ProjectFacts": {
+    "role": "Rol",
+    "team": "Equipo",
+    "duration": "Duración",
+    "people": "{count, plural, one {# persona} other {# personas}}"
+  },
   "PostsPage": {
     "label": "~/artículos",
     "title": "Artículos",

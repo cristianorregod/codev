@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { monthYear, stripEmoji } from "@/lib/format";
 import { DetailHeader } from "./ui/DetailHeader";
 import { CategoryChip, TechChips } from "./ui/Chips";
+import { ProjectFacts } from "./ui/ProjectFacts";
 import { ArrowUpRightIcon } from "./ui/icons";
 import { LongformContent } from "./LongformContent";
 
@@ -42,6 +43,11 @@ export const ProjectBody = ({ content, frontmatter, locale }) => {
           </>
         }
       >
+        <ProjectFacts
+          role={frontmatter?.role}
+          team={frontmatter?.team}
+          duration={frontmatter?.duration}
+        />
         {stack.length > 0 ? (
           <div className="flex flex-col gap-2.5 pt-1">
             <span className="mono text-xs text-muted">{t("stack")}</span>

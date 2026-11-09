@@ -2,6 +2,9 @@
 title: "Automatización con IA de respuestas de proveedores a RFQ"
 category: "Fullstack"
 date: "2026-11-01"
+role: "Creador y responsable técnico"
+team: 3
+duration: "1 mes"
 excerpt: "Módulo que convierte las respuestas de proveedores a solicitudes de cotización, ya sea texto libre, PDF, hojas de cálculo o imágenes, en datos de cotización propuestos por IA que un comprador revisa y confirma."
 cover: "/images/projects/rfq-ai-vendor-response-automation/cover-es.webp"
 stack:
@@ -19,7 +22,7 @@ stack:
 
 ## Mi rol
 
-Diseñé el módulo y fui el principal desarrollador en sus tres bases de código: el backend en Node, el worker de IA en Python y el frontend en React.
+El módulo fue una iniciativa mía y sigo siendo su responsable directo. Lo diseñé y, en un equipo de tres personas, fui el principal desarrollador en sus tres bases de código: el backend en Node, el worker de IA en Python y el frontend en React.
 
 - **Asociación de respuestas**: Incorporé un token de referencia en los correos de RFQ salientes y desarrollé la lógica del backend que asocia cada respuesta con su solicitud.
 - **Ingesta de correos**: Construí el flujo que enruta las respuestas desde un buzón compartido, guarda los adjuntos en blob storage y envía el correo al backend.
@@ -38,7 +41,7 @@ Diseñé el módulo y fui el principal desarrollador en sus tres bases de códig
 
 ## Impacto logrado
 
-En casos de prueba reales, la extracción coincidió correctamente con los documentos de origen. El módulo está en fase de pruebas, con piloto planificado, y busca eliminar la digitación manual, ítem por ítem, de las respuestas de proveedores.
+Cuando se envían RFQ (solicitudes de cotización) y los proveedores responden por correo, los usuarios tenían que transcribir a mano los precios y las correcciones en el sistema. Ahora el agente lee el correo, extrae la respuesta y deja los datos listos para cargarse automáticamente; el usuario solo valida. La operación se redujo cerca de un 50% y hoy se procesan aproximadamente el doble de respuestas.
 
 ## Tecnologías
 

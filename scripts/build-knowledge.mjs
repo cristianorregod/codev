@@ -65,6 +65,40 @@ const TYPE_LABELS = {
 
 const SUMMARY_HEADING = { es: "Resumen", en: "Summary" };
 
+const FACT_LABELS = {
+  es: {
+    role: "Rol",
+    team: "Equipo",
+    duration: "Duración",
+    people: (n) => `${n} ${n === 1 ? "persona" : "personas"}`,
+  },
+  en: {
+    role: "Role",
+    team: "Team",
+    duration: "Duration",
+    people: (n) => `${n} ${n === 1 ? "person" : "people"}`,
+  },
+};
+
+/** "Rol: … · Equipo: N personas · Duración: …" from project frontmatter. */
+const projectFactsLine = (locale, data) => {
+  const labels = FACT_LABELS[locale] || FACT_LABELS.en;
+  const team = Number(data.team);
+  const parts = [
+    data.role ? `${labels.role}: ${cleanInline(data.role)}` : null,
+    Number.isInteger(team) && team > 0
+      ? `${labels.team}: ${labels.people(team)}`
+      : null,
+    data.duration ? `${labels.duration}: ${cleanInline(data.duration)}` : null,
+  ].filter(Boolean);
+  return parts.join(" · ");
+};
+
+const STACK_INTRO = {
+  es: "Tecnologías y herramientas de mi stack, con las que he trabajado. El grupo «Aprendiendo» reúne las que estoy aprendiendo. Los años y el nivel por tecnología están en el documento de años de experiencia.",
+  en: "Technologies and tools in my stack that I have worked with. The “Learning” group lists the ones I'm currently learning. Years and level per technology are in the years-of-experience doc.",
+};
+
 // Synonym groups for the tech index (lowercase). When any member appears in a
 // project stack, every member of the group points to the same projects.
 const TECH_ALIASES = [
@@ -330,9 +364,11 @@ async function loadProjects(locale) {
       stack: toList(data.stack),
       date: data.date ? String(data.date) : null,
     };
+    const facts = projectFactsLine(locale, data);
+    const summary = [doc.excerpt, facts].filter(Boolean).join("\n\n");
     const sections = [];
-    if (doc.excerpt) {
-      sections.push({ heading: SUMMARY_HEADING[locale], body: doc.excerpt });
+    if (summary) {
+      sections.push({ heading: SUMMARY_HEADING[locale], body: summary });
     }
     sections.push(...splitSections(content));
     out.push({ doc, sections });
@@ -452,7 +488,9 @@ function loadStack(locale, messages) {
         .map((item) => item.name)
         .join(", ")}`,
   );
-  const intro = cleanInline(labels.description);
+  // The site caption ("tools I build with daily…") is not used: it would make
+  // the assistant claim daily use of every listed tool.
+  const intro = STACK_INTRO[locale];
   const body = [intro, lines.join("\n")].filter(Boolean).join("\n\n");
   return [{ doc, sections: [{ heading: null, body }] }];
 }

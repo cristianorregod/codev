@@ -394,6 +394,12 @@
     "repo": "Repository",
     "metaDescription": "Explore my portfolio: AI agents, MCP servers and integrations across ERP, CRM and data."
   },
+  "ProjectFacts": {
+    "role": "Role",
+    "team": "Team",
+    "duration": "Duration",
+    "people": "{count, plural, one {# person} other {# people}}"
+  },
   "PostsPage": {
     "label": "~/articles",
     "title": "Articles",
