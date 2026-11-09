@@ -10,17 +10,33 @@ const CV_PATHS = {
   en: "/cristian-orrego-cv-en.pdf",
 };
 
+// Public WhatsApp link (same number as the services page CTAs).
+const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=+573113988094";
+
 const cache = new Map();
 
-const linkedInUrl = () =>
-  PERSONAL_LINKS_DATA.profile.social.find((s) => s.id === "linkedin")?.url;
+const socialUrl = (id) =>
+  PERSONAL_LINKS_DATA.profile.social.find((s) => s.id === id)?.url;
 
 /** Static, citable docs that do not live in the knowledge index. */
 const virtualDocs = (locale) => ({
   "contact:linkedin": {
     type: "contact",
     title: "LinkedIn — Cristian Orrego",
-    url: linkedInUrl(),
+    url: socialUrl("linkedin"),
+    kind: "external",
+  },
+  "contact:whatsapp": {
+    type: "contact",
+    title: "WhatsApp — Cristian Orrego",
+    url: WHATSAPP_URL,
+    kind: "external",
+  },
+  "contact:email": {
+    type: "contact",
+    title:
+      locale === "es" ? "Correo — Cristian Orrego" : "E-mail — Cristian Orrego",
+    url: socialUrl("email"),
     kind: "external",
   },
   "contact:cv": {

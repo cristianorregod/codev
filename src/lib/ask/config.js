@@ -30,6 +30,14 @@ export const RETRIEVAL = {
   fallbackSources: 3,
 };
 
+// Virtual contact docs (see knowledge.js), in the order they are suggested.
+export const CONTACT_DOC_IDS = [
+  "contact:linkedin",
+  "contact:whatsapp",
+  "contact:email",
+  "contact:cv",
+];
+
 export const MESSAGES = {
   es: {
     rateLimited:

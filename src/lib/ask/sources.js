@@ -1,5 +1,15 @@
 import "server-only";
-import { RETRIEVAL } from "./config";
+import { CONTACT_DOC_IDS, RETRIEVAL } from "./config";
+
+// Contact channels shown as cards whenever the contact knowledge doc is used.
+const CHANNEL_IDS = CONTACT_DOC_IDS.filter((id) => id !== "contact:cv");
+const CONTACT_KNOWLEDGE_ID = "knowledge:contact";
+
+const withContactChannels = (ids) => {
+  if (!ids.includes(CONTACT_KNOWLEDGE_ID)) return ids;
+  if (ids.some((id) => CHANNEL_IDS.includes(id))) return ids;
+  return [...CHANNEL_IDS, ...ids.filter((id) => id !== CONTACT_KNOWLEDGE_ID)];
+};
 
 const toCard = (id, doc) => ({
   id,
@@ -20,8 +30,7 @@ export function resolveMeta(meta, { docs, docIds, techFacts = [] }) {
   const allowed = new Set([
     ...docIds,
     ...techFacts.flatMap((f) => f.projects),
-    "contact:linkedin",
-    "contact:cv",
+    ...CONTACT_DOC_IDS,
   ]);
   const valid = meta && typeof meta === "object" && Array.isArray(meta.sources);
 
@@ -31,6 +40,7 @@ export function resolveMeta(meta, { docs, docIds, techFacts = [] }) {
       (id) => typeof id === "string" && allowed.has(id) && docs[id],
     );
     if (meta.noInfo === true && !ids.length) ids = ["contact:linkedin"];
+    ids = withContactChannels(ids);
   } else {
     ids = docIds.filter((id) => docs[id]).slice(0, RETRIEVAL.fallbackSources);
   }

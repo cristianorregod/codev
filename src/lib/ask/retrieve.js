@@ -1,11 +1,11 @@
 import "server-only";
 import { topK } from "@/lib/knowledge/vectors";
-import { RETRIEVAL } from "./config";
+import { CONTACT_DOC_IDS, RETRIEVAL } from "./config";
 import { getKnowledge } from "./knowledge";
 import { embed } from "./openai";
 
 const CONTACT_RE =
-  /\b(contact\w*|linkedin|cv|curr[ií]cul\w*|resume|r[eé]sum[eé]|hire|hiring|contrat\w*|email|e-mail|correo|mail|tel[eé]fono|phone|whatsapp|disponib\w*|available|availability|reach|escrib\w*|hablar|talk|entrevista|interview|freelance)\b/i;
+  /\b(contact\w*|linkedin|cv|curr[ií]cul\w*|resume|r[eé]sum[eé]|hire|hiring|contrat\w*|email|e-mail|correo|mail|tel[eé]fono|phone|whatsapp|disponib\w*|available|availability|reach|escrib\w*|hablar|talk|entrevista|interview|freelance|salari\w*|salary|tarifa\w*|rates?|cobr\w*|precio\w*|prices?|pricing)\b/i;
 
 /** Lowercases and strips accents so matching is case/accent-insensitive. */
 const fold = (value) =>
@@ -53,18 +53,27 @@ const formatChunk = (chunk, docs) => {
   return `<doc id="${chunk.docId}" type="${doc.type}" title="${doc.title}">\n${chunk.text}\n</doc>`;
 };
 
+const emailAddress = (docs) =>
+  String(docs["contact:email"]?.url || "").replace(/^mailto:/, "");
+
 const contactBlock = (locale, docs) => {
+  const email = emailAddress(docs);
   const lines =
     locale === "es"
       ? [
-          `- LinkedIn (id "contact:linkedin"): la mejor vía para contactarme o proponerme un proyecto.`,
+          `- LinkedIn (id "contact:linkedin"): respondo rápido, en cuestión de minutos.`,
+          `- WhatsApp (id "contact:whatsapp"): respondo rápido, en cuestión de minutos. Prefiero mensajes antes que llamadas porque trabajo presencial.`,
+          `- Correo (id "contact:email"): ${email} — lo reviso durante el día.`,
           `- CV en PDF (id "contact:cv"): descargable desde el sitio.`,
         ]
       : [
-          `- LinkedIn (id "contact:linkedin"): the best way to contact me or propose a project.`,
+          `- LinkedIn (id "contact:linkedin"): I reply quickly, within minutes.`,
+          `- WhatsApp (id "contact:whatsapp"): I reply quickly, within minutes. I prefer messages over calls because I work on-site.`,
+          `- E-mail (id "contact:email"): ${email} — I check it during the day.`,
           `- Resume PDF (id "contact:cv"): downloadable from the site.`,
         ];
-  return `<doc id="contact" type="contact" title="${docs["contact:linkedin"].title}">\n${lines.join("\n")}\n</doc>`;
+  const title = locale === "es" ? "Contacto" : "Contact";
+  return `<doc id="contact" type="contact" title="${title}">\n${lines.join("\n")}\n</doc>`;
 };
 
 /**
@@ -149,7 +158,7 @@ export async function retrieve({ question, history = [], locale, signal }) {
   return {
     context,
     docs,
-    docIds: isContact ? ["contact:linkedin", "contact:cv", ...docIds] : docIds,
+    docIds: isContact ? [...CONTACT_DOC_IDS, ...docIds] : docIds,
     techFacts,
     isFollowUp,
   };
