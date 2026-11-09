@@ -4,8 +4,8 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "@/i18n/routing";
 import { Markdown } from "./Markdown";
-import { SourceCard } from "./SourceCard";
-import { SendIcon, SparkIcon, StopIcon } from "./icons";
+import { SourceCard, SourceRow } from "./SourceCard";
+import { NewChatIcon, SendIcon, SparkIcon, StopIcon } from "./icons";
 import { QUESTION_MAX, useAskChat } from "./useAskChat";
 import styles from "./panel.module.css";
 
@@ -73,14 +73,14 @@ const AnswerMessage = ({ message, locale, onNavigate, onAsk, busy }) => {
   const ended = status === "done" || status === "stopped";
 
   return (
-    <div className="flex items-start gap-3.5">
+    <div className="flex min-w-0 items-start gap-2.5 sm:gap-3.5">
       <span
         aria-hidden="true"
-        className="mono flex h-[30px] w-[30px] flex-none items-center justify-center rounded-[9px] bg-p-soft text-[11px] font-semibold text-p"
+        className="mono flex h-7 w-7 flex-none items-center justify-center rounded-[9px] bg-p-soft text-[11px] font-semibold text-p sm:h-[30px] sm:w-[30px]"
       >
         {t("assistant")}
       </span>
-      <div className="flex min-w-0 flex-1 flex-col gap-3.5">
+      <div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-3.5">
         {status === "searching" && (
           <p className="mono m-0 pt-1.5 text-[13px] text-muted">
             <span className="text-p">›</span> {t("searching")}
@@ -92,7 +92,10 @@ const AnswerMessage = ({ message, locale, onNavigate, onAsk, busy }) => {
           </p>
         )}
         {content && (
-          <div className="pt-[3px] text-[15px] leading-[1.7] text-fg sm:text-base">
+          <div
+            data-role="answer"
+            className="min-w-0 pt-[3px] text-sm leading-[1.65] text-fg [overflow-wrap:anywhere]"
+          >
             <Markdown
               text={content}
               locale={locale}
@@ -111,17 +114,28 @@ const AnswerMessage = ({ message, locale, onNavigate, onAsk, busy }) => {
         {status === "error" && (
           <p
             role="alert"
-            className="m-0 rounded-xl border border-line bg-surface-2 px-3.5 py-3 text-[15px] leading-relaxed text-prose"
+            className="m-0 rounded-xl border border-line bg-surface-2 px-3.5 py-3 text-sm leading-[1.65] text-prose"
           >
             <ErrorText error={message.error} />
           </p>
         )}
         {ended && sources.length > 0 && (
-          <div className="flex flex-col gap-2.5">
+          <div className="flex min-w-0 flex-col gap-2 sm:gap-2.5">
             <span className="mono text-xs uppercase text-muted">
               {t("sourcesTitle", { count: sources.length })}
             </span>
-            <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+            <ul className="m-0 flex min-w-0 list-none flex-col p-0 sm:hidden">
+              {sources.map((source) => (
+                <li key={source.id || source.url} className="min-w-0">
+                  <SourceRow
+                    source={source}
+                    locale={locale}
+                    onNavigate={onNavigate}
+                  />
+                </li>
+              ))}
+            </ul>
+            <div className="hidden min-w-0 grid-cols-3 gap-2.5 sm:grid">
               {sources.map((source) => (
                 <SourceCard
                   key={source.id || source.url}
@@ -134,14 +148,16 @@ const AnswerMessage = ({ message, locale, onNavigate, onAsk, busy }) => {
           </div>
         )}
         {ended && follow.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-1">
+          <div
+            className={`${styles.chips} flex min-w-0 gap-1.5 overflow-x-auto pt-0.5 sm:flex-wrap sm:overflow-visible sm:pt-1`}
+          >
             {follow.map((text) => (
               <button
                 key={text}
                 type="button"
                 disabled={busy}
                 onClick={() => onAsk(text)}
-                className={`${styles.sugg} mono cursor-pointer rounded-full border border-line bg-transparent px-3 py-[7px] text-left text-xs text-muted disabled:cursor-not-allowed disabled:opacity-60`}
+                className={`${styles.sugg} mono flex-none cursor-pointer whitespace-nowrap rounded-full border border-line bg-transparent px-2.5 py-[5px] text-left text-[11px] leading-snug text-muted disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial sm:whitespace-normal`}
               >
                 › {text}
               </button>
@@ -280,7 +296,7 @@ export default function AskPanel({ open, onClose, onCount }) {
             event.preventDefault();
             submit(input);
           }}
-          className="flex flex-none items-center gap-3 border-b border-line py-3 pl-[18px] pr-3"
+          className="flex flex-none items-center gap-2 border-b border-line py-2 pl-3.5 pr-2.5 sm:gap-3 sm:py-3 sm:pl-[18px] sm:pr-3"
         >
           <SparkIcon size={20} className={`${styles.spark} flex-none text-p`} />
           <input
@@ -293,7 +309,7 @@ export default function AskPanel({ open, onClose, onCount }) {
             maxLength={QUESTION_MAX}
             autoComplete="off"
             enterKeyHint="send"
-            className={`${styles.input} min-w-0 flex-1 border-0 bg-transparent py-3 font-sans text-base text-fg outline-none focus-visible:outline-none sm:text-[19px]`}
+            className={`${styles.input} min-w-0 flex-1 truncate border-0 bg-transparent py-3 font-sans text-base sm:text-sm leading-[1.65] text-fg outline-none focus-visible:outline-none`}
           />
           {input.length > QUESTION_MAX - 60 && (
             <span className="mono flex-none text-[11px] text-muted">
@@ -305,7 +321,7 @@ export default function AskPanel({ open, onClose, onCount }) {
               type="button"
               onClick={stop}
               aria-label={t("stop")}
-              className="btn flex h-11 w-11 flex-none cursor-pointer items-center justify-center rounded-xl border border-line bg-surface-2 text-fg"
+              className="btn flex h-10 w-10 flex-none cursor-pointer items-center justify-center rounded-xl border border-line bg-surface-2 text-fg sm:h-11 sm:w-11"
             >
               <StopIcon />
             </button>
@@ -314,7 +330,7 @@ export default function AskPanel({ open, onClose, onCount }) {
               type="submit"
               disabled={!canSend}
               aria-label={t("send")}
-              className={`btn flex h-11 w-11 flex-none items-center justify-center rounded-xl border-0 ${
+              className={`btn flex h-10 w-10 flex-none items-center justify-center rounded-xl border-0 sm:h-11 sm:w-11 ${
                 canSend
                   ? "cursor-pointer bg-p-fill text-p-on"
                   : "cursor-not-allowed bg-surface-2 text-muted"
@@ -323,18 +339,33 @@ export default function AskPanel({ open, onClose, onCount }) {
               <SendIcon />
             </button>
           )}
+          {!empty && (
+            <button
+              type="button"
+              onClick={() => {
+                clear();
+                inputRef.current?.focus();
+              }}
+              aria-label={t("clear")}
+              title={t("clear")}
+              className="ghost flex h-8 w-8 flex-none cursor-pointer items-center justify-center rounded-lg border border-line bg-transparent text-muted"
+            >
+              <NewChatIcon />
+            </button>
+          )}
           <button
             type="button"
             onClick={onClose}
             aria-label={t("close")}
+            title={t("close")}
             className="ghost mono h-8 flex-none cursor-pointer rounded-lg border border-line bg-transparent px-[9px] text-[11px] text-muted"
           >
             esc
           </button>
         </form>
 
-        <div className="flex min-h-0 flex-1 flex-col-reverse overflow-y-auto overscroll-contain">
-          <div className="flex flex-col gap-[22px] px-4 pb-[18px] pt-[22px] sm:px-6">
+        <div className="flex min-h-0 flex-1 flex-col-reverse overflow-y-auto overflow-x-hidden overscroll-contain">
+          <div className="flex min-w-0 flex-col gap-[18px] px-3 pb-4 pt-[18px] sm:gap-[22px] sm:px-6 sm:pb-[18px] sm:pt-[22px]">
             {empty && (
               <div className="flex flex-col gap-3.5">
                 <span className="mono text-xs uppercase text-muted">
@@ -346,12 +377,14 @@ export default function AskPanel({ open, onClose, onCount }) {
                       key={text}
                       type="button"
                       onClick={() => submit(text)}
-                      className={`${styles.sugg} flex cursor-pointer items-center gap-3 rounded-xl border border-transparent bg-surface-2 px-3.5 py-[13px] text-left font-sans text-[15px] text-fg sm:text-base`}
+                      className={`${styles.sugg} flex min-w-0 cursor-pointer items-center gap-3 rounded-xl border border-transparent bg-surface-2 px-3 py-[11px] text-left font-sans text-sm leading-[1.65] text-fg sm:px-3.5 sm:py-[13px]`}
                     >
                       <span aria-hidden="true" className="mono text-p">
                         ›
                       </span>
-                      <span className="flex-1">{text}</span>
+                      <span className="min-w-0 flex-1 [overflow-wrap:anywhere]">
+                        {text}
+                      </span>
                       <span
                         aria-hidden="true"
                         className="mono text-xs text-muted"
@@ -367,15 +400,18 @@ export default function AskPanel({ open, onClose, onCount }) {
               message.role === "user" ? (
                 <div
                   key={message.id}
-                  className={`${styles.msg} flex justify-end`}
+                  className={`${styles.msg} flex min-w-0 justify-end`}
                 >
-                  <p className="m-0 max-w-[85%] whitespace-pre-line break-words rounded-[14px_14px_4px_14px] border border-line bg-surface-2 px-[15px] py-[11px] text-[15px] leading-[1.55] sm:max-w-[78%] sm:text-base">
+                  <p
+                    data-role="user"
+                    className="m-0 min-w-0 max-w-[85%] whitespace-pre-line rounded-[14px_14px_4px_14px] border border-line bg-surface-2 px-3 py-2 text-sm leading-[1.65] [overflow-wrap:anywhere] sm:max-w-[78%] sm:px-3.5 sm:py-2.5"
+                  >
                     <span className="sr-only">{t("you")}: </span>
                     {message.content}
                   </p>
                 </div>
               ) : (
-                <div key={message.id} className={styles.msg}>
+                <div key={message.id} className={`${styles.msg} min-w-0`}>
                   <AnswerMessage
                     message={message}
                     locale={locale}
@@ -389,28 +425,16 @@ export default function AskPanel({ open, onClose, onCount }) {
           </div>
         </div>
 
-        <div className="mono flex flex-none items-center gap-4 border-t border-line px-[18px] py-[11px] text-[11px] text-muted max-sm:pb-[max(11px,env(safe-area-inset-bottom))]">
+        <div className="mono flex flex-none items-center gap-4 border-t border-line px-3.5 py-2 text-[11px] text-muted max-sm:pb-[max(8px,env(safe-area-inset-bottom))] sm:px-[18px] sm:py-[11px]">
           <span className="hidden sm:inline">
             <kbd className="text-fg">↵</kbd> {t("hintSend")}
           </span>
           <span className="hidden sm:inline">
             <kbd className="text-fg">esc</kbd> {t("hintClose")}
           </span>
-          <span className="flex-1 leading-snug sm:text-right">
+          <span className="min-w-0 flex-1 truncate text-[10.5px] opacity-80 sm:text-right">
             {t("disclaimer")}
           </span>
-          {!empty && (
-            <button
-              type="button"
-              onClick={() => {
-                clear();
-                inputRef.current?.focus();
-              }}
-              className="ghost flex-none cursor-pointer rounded-[7px] border border-line bg-transparent px-[9px] py-[5px] font-[inherit] text-[11px] text-muted"
-            >
-              {t("clear")}
-            </button>
-          )}
         </div>
       </section>
     </>

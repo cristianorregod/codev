@@ -143,7 +143,24 @@
   color: var(--muted);
 }
 
+/* Follow-up chips: one swipeable row on phones, the scroll stays in the row. */
+@media (max-width: 639px) {
+  .chips {
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Minimal markdown rendering for answers. */
+.md {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
 .md > * + * {
   margin-top: 12px;
 }
@@ -172,6 +189,7 @@
   color: var(--text);
 }
 .md a {
+  overflow-wrap: anywhere;
   color: var(--p);
   font-weight: 600;
   text-decoration: underline;
@@ -188,6 +206,12 @@
   border-radius: 6px;
   border: 1px solid var(--border);
   background: var(--surface-2);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.md pre {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

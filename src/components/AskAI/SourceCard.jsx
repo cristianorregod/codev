@@ -1,4 +1,12 @@
 import { useTranslations } from "next-intl";
+import {
+  DocIcon,
+  DownloadIcon,
+  ExternalIcon,
+  FolderIcon,
+  HashIcon,
+  MailIcon,
+} from "./icons";
 import { SmartLink, isExternal } from "./links";
 import styles from "./panel.module.css";
 
@@ -33,12 +41,55 @@ const tileLabel = (source, kindLabel) => {
   return `~/${segment && !/^(es|en)$/.test(segment) ? segment : kindLabel.toLowerCase()}`;
 };
 
+const sourceType = (source) =>
+  KIND_TYPES.has(source.type) ? source.type : "other";
+
+const isAccent = (source, type) =>
+  type === "post" || type === "contact" || source.kind !== "internal";
+
+/** Small icon that hints what kind of destination a source opens. */
+const SourceIcon = ({ source, type, ...props }) => {
+  const url = String(source.url || "");
+  if (source.kind === "download") return <DownloadIcon {...props} />;
+  if (/^mailto:/i.test(url)) return <MailIcon {...props} />;
+  if (source.kind === "external" || isExternal(url)) {
+    return <ExternalIcon {...props} />;
+  }
+  if (type === "project") return <FolderIcon {...props} />;
+  if (type === "post") return <DocIcon {...props} />;
+  return <HashIcon {...props} />;
+};
+
+/** Compact one-line source link, used instead of cards on small screens. */
+export const SourceRow = ({ source, locale, onNavigate }) => {
+  const t = useTranslations("AskAI");
+  const type = sourceType(source);
+  return (
+    <SmartLink
+      href={source.url}
+      kind={source.kind}
+      locale={locale}
+      onNavigate={onNavigate}
+      className="flex min-w-0 items-center gap-2 py-1 text-[13px] leading-snug text-fg no-underline"
+    >
+      <SourceIcon
+        source={source}
+        type={type}
+        className={`flex-none ${isAccent(source, type) ? "text-s" : "text-p"}`}
+      />
+      <span className="sr-only">{t(`Kinds.${type}`)}: </span>
+      <span className="min-w-0 truncate underline decoration-line underline-offset-[3px]">
+        {source.title}
+      </span>
+    </SmartLink>
+  );
+};
+
 export const SourceCard = ({ source, locale, onNavigate }) => {
   const t = useTranslations("AskAI");
-  const type = KIND_TYPES.has(source.type) ? source.type : "other";
+  const type = sourceType(source);
   const kindLabel = t(`Kinds.${type}`);
-  const accent =
-    type === "post" || type === "contact" || source.kind !== "internal";
+  const accent = isAccent(source, type);
   const cta =
     source.kind === "download"
       ? t("Cta.download")
@@ -56,7 +107,7 @@ export const SourceCard = ({ source, locale, onNavigate }) => {
       kind={source.kind}
       locale={locale}
       onNavigate={onNavigate}
-      className={`${styles.source} flex flex-col overflow-hidden rounded-xl border border-line bg-surface-2 text-fg no-underline`}
+      className={`${styles.source} flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface-2 text-fg no-underline`}
     >
       {source.cover ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -70,18 +121,18 @@ export const SourceCard = ({ source, locale, onNavigate }) => {
       ) : (
         <span
           aria-hidden="true"
-          className={`mono flex aspect-[16/8] items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap border-b border-line px-2 text-[13px] ${
+          className={`mono flex aspect-[16/8] min-w-0 items-center justify-center overflow-hidden border-b border-line px-2 text-[13px] ${
             accent ? "bg-s-soft text-s" : "bg-p-soft text-p"
           }`}
         >
-          {tileLabel(source, kindLabel)}
+          <span className="truncate">{tileLabel(source, kindLabel)}</span>
         </span>
       )}
-      <span className="flex flex-col gap-1 px-[11px] pb-[11px] pt-[9px]">
+      <span className="flex min-w-0 flex-col gap-1 px-[11px] pb-[11px] pt-[9px]">
         <span className={`mono text-[11px] ${accent ? "text-s" : "text-p"}`}>
           {kindLabel}
         </span>
-        <span className="clamp2 text-sm font-semibold leading-[1.35]">
+        <span className="clamp2 text-sm font-semibold leading-[1.35] [overflow-wrap:anywhere]">
           {source.title}
         </span>
         <span className="mono text-xs text-p">{cta}</span>
