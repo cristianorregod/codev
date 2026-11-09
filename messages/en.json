@@ -408,5 +408,94 @@
     "home": "Back to home",
     "projects": "View projects",
     "posts": "Read articles"
+  },
+  "AskAI": {
+    "pill": "Interview my AI assistant",
+    "pillContinue": "Continue the conversation · {count, plural, one {# question} other {# questions}}",
+    "open": "Open the AI assistant",
+    "dialogLabel": "Cristian's AI assistant",
+    "inputLabel": "Type your question",
+    "placeholder": "Ask my AI about my experience…",
+    "send": "Send question",
+    "stop": "Stop answer",
+    "close": "Close assistant",
+    "clear": "New conversation",
+    "suggestionsTitle": "Suggestions",
+    "searching": "searching projects, experience and articles",
+    "sourcesTitle": "Sources · {count}",
+    "you": "You",
+    "assistant": "AI",
+    "hintSend": "send",
+    "hintClose": "close",
+    "disclaimer": "Answers are AI-generated from this portfolio's content and may contain errors.",
+    "stopped": "Answer stopped.",
+    "Errors": {
+      "generic": "I couldn't answer right now. Please try again in a few seconds.",
+      "network": "Can't reach the assistant. Check your connection and try again.",
+      "invalid": "I couldn't process that question. Try rephrasing it (300 characters max).",
+      "forbidden": "This request isn't allowed from here.",
+      "rateLimitSeconds": "You've asked a lot of questions in a row. Try again in {count, plural, one {# second} other {# seconds}}.",
+      "rateLimitMinutes": "You've asked a lot of questions in a row. Try again in {count, plural, one {# minute} other {# minutes}}.",
+      "rateLimit": "You've asked a lot of questions in a row. Try again in a while."
+    },
+    "Kinds": {
+      "project": "Project",
+      "post": "Article",
+      "experience": "Experience",
+      "about": "About me",
+      "stack": "Stack",
+      "services": "Services",
+      "contact": "Contact",
+      "knowledge": "Profile",
+      "download": "Download",
+      "other": "Source"
+    },
+    "Cta": {
+      "project": "View project →",
+      "post": "Read article →",
+      "internal": "View section →",
+      "external": "Open link ↗",
+      "download": "Download ↓"
+    },
+    "Suggestions": {
+      "home": [
+        "What AI projects have you built?",
+        "Do you have experience with Python?",
+        "Have you integrated ERP and CRM systems?",
+        "Sum up your profile in 3 lines"
+      ],
+      "projects": [
+        "What are your standout projects?",
+        "Which projects use AI agents?",
+        "What impact have your projects had?",
+        "Have you worked with NetSuite or Salesforce?"
+      ],
+      "project": [
+        "What problem does {title} solve?",
+        "What was your role in {title}?",
+        "What impact did {title} have?",
+        "Which other projects are similar to this one?"
+      ],
+      "posts": [
+        "What topics do you write about?",
+        "Which articles do you have about AI?",
+        "Recommend an article to start with"
+      ],
+      "post": [
+        "Summarize the article {title}",
+        "Which other articles cover similar topics?",
+        "Have you applied this in a project?"
+      ],
+      "services": [
+        "What services do you offer?",
+        "How do you approach a new project?",
+        "How can I contact you?"
+      ],
+      "fallback": [
+        "What AI projects have you built?",
+        "Sum up your profile in 3 lines",
+        "How can I contact you?"
+      ]
+    }
   }
 }
